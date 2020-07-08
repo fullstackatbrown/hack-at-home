@@ -1,3 +1,25 @@
+<head>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+</head>
 <body>
-Hi
+<div>
+    <img src="hackathome.png">
+
+</div>
+<div id="count">
+</div>
+
+<script>
+    var countDownDate = new Date("Oct 9, 2020 15:37:25").getTime();
+    var now = new Date().getTime();
+    var distance = countDownDate - now;
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    console.log("WOWOW")
+    document.getElementById("count").innerHTML = "Coming in " + days + " days"
+    if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("count").innerHTML = "EXPIRED";
+    }
+</script>
 </body>
