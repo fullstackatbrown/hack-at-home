@@ -1,25 +1,62 @@
+<html>
 <head>
-    <link rel="stylesheet" type="text/css" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+    <title>My </title>
+    <link rel="stylesheet" type="text/css" href="assets/css/index.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap"
+          rel="stylesheet">
 </head>
 <body>
-<div>
-    <img src="hackathome.png">
+<header>
+    <a>image</a>
+    <a class="btn btn__header">About</a>
+    <div class="dropdown"><a class="btn btn__header">Hack&nbsp<i class="material-icons">expand_more</i></a>
+        <div class="dropdown__content">
+            <a class="btn" href="#">Code</a>
+            <a class="btn" href="#">Watch</a>
+            <a class="btn" href="#">Donate</a>
+            <a class="btn" href="#">Learn</a>
+            <a class="btn" href="#">Play</a>
+        </div>
+    </div>
+    <a class="btn btn__header">Schedule</a>
+    <a class="btn btn__header">FAQ</a>
+    <a class="btn btn__header">Sponsors</a>
+</header>
+<section class="pg pg__center">
+    <div>
 
-</div>
-<div id="count">
-</div>
-
-<script>
-    var countDownDate = new Date("Oct 9, 2020 15:37:25").getTime();
-    var now = new Date().getTime();
-    var distance = countDownDate - now;
-    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    console.log("WOWOW")
-    document.getElementById("count").innerHTML = "Coming in " + days + " days"
-    if (distance < 0) {
-        clearInterval(x);
-        document.getElementById("count").innerHTML = "EXPIRED";
-    }
-</script>
+    </div>
+    <h1>hack<span class="cereal">@</span>home</h1>
+    <h2>10.9 - 10.12, 2020</h2>
+    <div class="btn btn__box"><a>Log In / Join</a></div>
+</section>
+<section class="pg pg__vertical">
+    <h1>
+        something something
+    </h1>
+    <div class="block">
+        <div class="block__left">
+            <h2>Who we are</h2>
+            <p>
+                Full Stack at Brown is a Brown University club dedicated to promoting software engineering. Our members
+                complete pro-bono projects for other Brown University clubs and members of the Brown community.
+            </p>
+        </div>
+        <div class="block__right">
+            <h2>Socially distanced hacking</h2>
+            <p>
+                Hack@Home is virtual hackathon that focuses on bringing a diverse set of student hackers, designers, and
+                thinkers together to "hack@home" and create projects that will solve different issues brought up by the
+                coronavirus pandemic. Hackers can work on projects in groups or independently participate in CTF and
+                dataset challenges to win sponsored prizes. Newcomers will have an opportunity to get a taste of Brown
+                CS through workshops, the open Brown University Minecraft campus, and a diverse array of Brown
+                University speakers and panelists. We will also be conducting a fundraising livestream during the event
+                to raise money for different charities and organizations.
+            </p>
+        </div>
+    </div>
+</section>
+<!--<script type="module" src="./js/house.js"></script>-->
 </body>
+</html>
