@@ -1,7 +1,7 @@
 body {
-    width: 100vw;
     margin: 0;
-    font-family: 'Work Sans';
+    font-family: tenon, sans-serif;
+    font-size: 18px;
 }
 
 header {
@@ -9,9 +9,9 @@ header {
     position: fixed;
     backdrop-filter: blur(3px);
     padding: 10px 12%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 canvas {
@@ -22,6 +22,7 @@ section {
 }
 
 h1 {
+    font-family: 'Cutive Mono', monospace;
     margin: 0px 0px 20px;
     font-size: 50px;
     font-weight: 400;
@@ -29,14 +30,23 @@ h1 {
 
 h2 {
     margin: 0px 0px 30px;
-    font-size: 28px;
+    font-size: 26px;
     font-weight: 400;
 }
 
+h3 {
+
+}
+
 p {
-    font-size: 18px;
     font-weight: 300;
     line-height: 1.4;
+}
+
+.header__full {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .pg {
@@ -59,7 +69,7 @@ p {
 }
 
 .btn {
-    transition: 0.1s;
+    transition: 0.05s;
     cursor: pointer;
     display: flex;
     /*justify-content: center;*/
@@ -76,39 +86,30 @@ p {
 
 .btn__header {
     padding: 5px 10px;
-    font-size: 18px;
+    display: flex;
+    align-items: center;
 }
 
-.cereal {
-    font-family: "Airbnb Cereal App";
+.at-span {
+    margin: 0px 6px;
 }
 
 .block {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
     margin-top: 80px;
-}
-
-.block__left {
-    width: 44%;
-}
-
-.block__right {
-    width: 44%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 50px 100px;
 }
 
 .dropdown {
-    font-size: 18px;
 }
 
 .dropdown__content {
     padding: 8px 6px;
+    display: none;
     position: absolute;
-    display: flex;
     flex-direction: column;
     background-color: white;
-    opacity: 0;
 }
 
 .dropdown__content a {
@@ -118,5 +119,14 @@ p {
 }
 
 .dropdown:hover .dropdown__content {
-    opacity: 1;
+    display: flex;
+}
+
+@media only screen and (max-width: 600px) {
+    .block {
+        grid-template-columns: 1fr;
+    }
+    .header__full {
+        display: none;
+    }
 }
