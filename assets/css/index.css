@@ -34,10 +34,6 @@ h2 {
     font-weight: 400;
 }
 
-h3 {
-
-}
-
 p {
     font-weight: 300;
     line-height: 1.4;
@@ -66,6 +62,14 @@ p {
     align-items: center;
     text-align: center;
     min-height: 500px;
+}
+
+.pg__workshops {
+    padding: 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    position: relative;
 }
 
 .btn {
@@ -101,6 +105,22 @@ p {
     grid-gap: 50px 100px;
 }
 
+.block__padded {
+    padding: 140px 40px 140px 12%;
+}
+
+.block__workshop {
+    width: 50%;
+    height: 100%;
+    right: 0px;
+    background-color: blueviolet;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    position: absolute;
+    overflow: scroll;
+}
+
 .dropdown {
 }
 
@@ -120,6 +140,27 @@ p {
 
 .dropdown:hover .dropdown__content {
     display: flex;
+}
+
+.workshop {
+    color: white;
+    padding: 255px 60px 60px;
+}
+
+.workshop__info {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.workshop__organizers {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.workshop__person {
+    display: flex;
+    flex-direction: column;
 }
 
 @media only screen and (max-width: 600px) {
