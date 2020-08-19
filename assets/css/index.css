@@ -1,17 +1,11 @@
+html, body {
+    overflow-x:hidden
+}
+
 body {
     margin: 0;
     font-family: tenon, sans-serif;
     font-size: 18px;
-}
-
-header {
-    width: 100%;
-    position: fixed;
-    backdrop-filter: blur(3px);
-    padding: 10px 12%;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
 }
 
 canvas {
@@ -29,24 +23,19 @@ h1 {
 }
 
 h2 {
+    font-family: tenon, sans-serif;
     margin: 0px 0px 30px;
     font-size: 26px;
-    font-weight: 400;
+    font-weight: 300;
 }
 
 p {
-    font-weight: 300;
+    font-weight: 200;
     line-height: 1.4;
 }
 
-.header__full {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
 .pg {
-    background: linear-gradient(0deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.0) 100%);
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.0) 100%);
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
@@ -76,6 +65,7 @@ p {
     transition: 0.05s;
     cursor: pointer;
     display: flex;
+    outline: none;
     /*justify-content: center;*/
 }
 
@@ -94,6 +84,32 @@ p {
     align-items: center;
 }
 
+.btn__workshop {
+    text-align: left;
+    margin: 30px 0px;
+    border: none;
+    padding: 6px 0px;
+    position: relative;
+    background-color: transparent;
+}
+
+.btn__workshop h2 {
+    margin: 0px
+}
+
+.btn__open {
+    color: inherit;
+    text-decoration: none;
+}
+
+.btn__close {
+    color: inherit;
+    padding: 0px;
+    background-color: transparent;
+    border: none;
+
+}
+
 .at-span {
     margin: 0px 6px;
 }
@@ -106,19 +122,38 @@ p {
 }
 
 .block__padded {
-    padding: 140px 40px 140px 12%;
+    padding: 140px 12%;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 100%;
 }
 
 .block__workshop {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
     width: 50%;
     height: 100%;
-    right: 0px;
-    background-color: blueviolet;
+    right: -50vw;
+    background-color: gray;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     position: absolute;
     overflow: scroll;
+}
+
+.block__workshop::-webkit-scrollbar {
+    display: none;
+}
+
+.block__horizontal {
+    display: flex;
+    flex-direction: row;
+}
+
+.block__blurb {
+    margin-top: 70px;
 }
 
 .dropdown {
@@ -144,7 +179,19 @@ p {
 
 .workshop {
     color: white;
-    padding: 255px 60px 60px;
+}
+
+.workshop__header {
+    z-index: 1;
+    position: sticky;
+    width: 100%;
+    position: -webkit-sticky;
+    top: 0;
+    margin-top: 40px;
+    padding: 20px 60px;
+    display: flex;
+    justify-content: space-between;
+    background-color: transparent;
 }
 
 .workshop__info {
@@ -163,11 +210,65 @@ p {
     flex-direction: column;
 }
 
+.workshop__body {
+    padding: 60px 60px;
+}
+
+.underline {
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    border-bottom: 3px solid white;
+}
+
+.frame {
+    border: none;
+}
+
+.frame__wrapper {
+    position: relative;
+    padding-bottom: 56.25%;
+}
+
+.frame__spacing {
+    margin: 60px 0px;
+}
+
+.frame__youtube {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
 @media only screen and (max-width: 600px) {
     .block {
         grid-template-columns: 1fr;
     }
-    .header__full {
+}
+
+@media only screen and (max-width: 800px) {
+
+    .block__workshop {
+        width: 0%;
+    }
+
+    .workshop {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: black;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        z-index: 3;
+    }
+
+    .underline {
         display: none;
     }
 }
