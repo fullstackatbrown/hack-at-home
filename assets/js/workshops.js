@@ -153,6 +153,7 @@ $(".btn__close").on("click", () => {
                 }
             })
         }
+        $("body").css({overflow: "scroll"})
     }
 })
 
