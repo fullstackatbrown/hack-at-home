@@ -14,15 +14,23 @@ function triggerMenu(n) {
     if (!sections[n]) {
         if (n + 1 <= numSections) {
             sections[n + 1] = false
-            $("#underline" + (n + 1)).stop(true, false).animate({left: $("#workshop" + (n + 1)).width()}, 120, "linear")
+            $("#underline" + (n + 1)).stop(true, false).animate({left: $("#workshop" + (n + 1)).width()}, {
+                duration: 250,
+                easing: "swing",
+                queue: false
+            })
         }
         if (n - 1 >= 0) {
             sections[n - 1] = false
-            $("#underline" + (n - 1)).stop(true, false).animate({left: $("#workshop" + (n - 1)).width()}, 120, "linear")
+            $("#underline" + (n - 1)).stop(true, false).animate({left: $("#workshop" + (n - 1)).width()}, {
+                duration: 250,
+                easing: "swing",
+                queue: false
+            })
         }
         $("#underline" + n).css({left: "0px"})
         $("#underline" + n).css({right: "auto"})
-        $("#underline" + n).stop(true, false).animate({right: "0px"}, 120, "linear")
+        $("#underline" + n).stop(true, false).animate({right: "0px"}, {duration: 250, easing: "swing", queue: false})
         sections[n] = true
     }
 }
@@ -32,7 +40,7 @@ function closeAll(animate) {
         sections[n] = false
         if (animate) {
             $("#underline" + (n)).stop(true, false).animate({left: $("#workshop" + (n)).width()}, {
-                duration: 120,
+                duration: 250,
                 queue: false
             })
         } else {
@@ -42,7 +50,6 @@ function closeAll(animate) {
 }
 
 function checkUnderline() {
-    console.log($("#workshop3").offset().top - $(".block__workshop").offset().top)
     if ($("#workshop6").offset().top - $(".block__workshop").offset().top <= 10) {
         triggerMenu(6)
     } else if ($("#workshop5").offset().top - $(".block__workshop").offset().top <= 10) {
@@ -58,87 +65,40 @@ function checkUnderline() {
     }
 }
 
+function navWorkshop(n) {
+    closeAll(true)
+    // checkUnderline()
+    $(".block__workshop").animate({right: "0px"}, {duration: 300, queue: false})
+    if ($(window).width() >= 800) {
+        $(".block__workshop").scrollTop($("#workshop" + n).offset().top - $(".block__workshop").offset().top + $(".block__workshop").scrollTop())
+    } else {
+        $("#workshop" + n).css({display: "block"})
+        $("#workshop" + n).animate({opacity: 1})
+        $("body").css({overflow: "hidden"})
+    }
+}
+
 $(".block__workshop")[0].onscroll = function () {
     checkUnderline()
 }
 
 $("#btn1").on("click", () => {
-    $(".block__workshop").animate({right: "0px"}, {duration: 300, queue: false})
-    checkUnderline()
-    if ($(window).width() >= 800) {
-        $(".block__workshop").animate({
-            scrollTop: $("#workshop1").offset().top - $(".block__workshop").offset().top + $(".block__workshop").scrollTop()
-        }, "fast", "linear")
-    } else {
-        $("#workshop1").css({display: "block"})
-        $("#workshop1").animate({opacity: 1})
-        $("body").css({overflow: "hidden"})
-    }
+    navWorkshop(1)
 })
 $("#btn2").on("click", () => {
-    $(".block__workshop").animate({right: "0px"}, {duration: 300, queue: false})
-    checkUnderline()
-    if ($(window).width() >= 800) {
-        $(".block__workshop").animate({
-            scrollTop: $("#workshop2").offset().top - $(".block__workshop").offset().top + $(".block__workshop").scrollTop()
-        }, "fast", "linear")
-    } else {
-        $("#workshop2").css({display: "block"})
-        $("#workshop2").animate({opacity: 1})
-        $("body").css({overflow: "hidden"})
-    }
+    navWorkshop(2)
 })
 $("#btn3").on("click", () => {
-    $(".block__workshop").animate({right: "0px"}, {duration: 300, queue: false})
-    checkUnderline()
-    if ($(window).width() >= 800) {
-        $(".block__workshop").animate({
-            scrollTop: $("#workshop3").offset().top - $(".block__workshop").offset().top + $(".block__workshop").scrollTop()
-        }, "fast", "linear")
-    } else {
-        $("#workshop3").css({display: "block"})
-        $("#workshop3").animate({opacity: 1})
-        $("body").css({overflow: "hidden"})
-    }
+    navWorkshop(3)
 })
 $("#btn4").on("click", () => {
-    $(".block__workshop").animate({right: "0px"}, {duration: 300, queue: false})
-    checkUnderline()
-    if ($(window).width() >= 800) {
-        $(".block__workshop").animate({
-            scrollTop: $("#workshop4").offset().top - $(".block__workshop").offset().top + $(".block__workshop").scrollTop()
-        }, "fast", "linear")
-    } else {
-        $("#workshop4").css({display: "block"})
-        $("#workshop4").animate({opacity: 1})
-        $("body").css({overflow: "hidden"})
-    }
+    navWorkshop(4)
 })
 $("#btn5").on("click", () => {
-    $(".block__workshop").animate({right: "0px"}, {duration: 300, queue: false})
-    checkUnderline()
-    if ($(window).width() >= 800) {
-        $(".block__workshop").animate({
-            scrollTop: $("#workshop5").offset().top - $(".block__workshop").offset().top + $(".block__workshop").scrollTop()
-        }, "fast", "linear")
-    } else {
-        $("#workshop5").css({display: "block"})
-        $("#workshop5").animate({opacity: 1})
-        $("body").css({overflow: "hidden"})
-    }
+    navWorkshop(5)
 })
 $("#btn6").on("click", () => {
-    $(".block__workshop").animate({right: "0px"}, {duration: 300, queue: false})
-    checkUnderline()
-    if ($(window).width() >= 800) {
-        $(".block__workshop").animate({
-            scrollTop: $("#workshop6").offset().top - $(".block__workshop").offset().top + $(".block__workshop").scrollTop()
-        }, "fast", "linear")
-    } else {
-        $("#workshop6").css({display: "block"})
-        $("#workshop6").animate({opacity: 1})
-        $("body").css({overflow: "hidden"})
-    }
+    navWorkshop(6)
 })
 
 $(".btn__close").on("click", () => {
