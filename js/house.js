@@ -1,8 +1,8 @@
-import * as THREE from "../node_modules/three/build/three.module.js"
+import * as THREE from 'https://unpkg.com/three@0.119.1/build/three.module.js';
 
-import {GLTFLoader} from "../node_modules/three/examples/jsm/loaders/GLTFLoader.js";
-import {DRACOLoader} from '../node_modules/three/examples/jsm/loaders/DRACOLoader.js';
-import {CSS3DRenderer, CSS3DObject} from '../node_modules/three/examples/jsm/renderers/CSS3DRenderer.js';
+import {GLTFLoader} from "https://unpkg.com/three@0.119.1/examples/jsm/loaders/GLTFLoader.js";
+import {DRACOLoader} from 'https://unpkg.com/three@0.119.1/examples/jsm/loaders/DRACOLoader.js';
+import {CSS3DRenderer, CSS3DObject} from 'https://unpkg.com/three@0.119.1/examples/jsm/renderers/CSS3DRenderer.js';
 
 // camera control vars
 var isUserInteracting = false, shouldAnimate = false, animateTimeout = null,
