@@ -36,6 +36,7 @@ header {
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     display: none;
+    z-index: 5;
 }
 
 .header__vertical.open {
@@ -53,7 +54,7 @@ header {
 
 .header__hamburger {
     display: none;
-    z-index: 2;
+    z-index: 6;
     width: 20px;
     height: 14px;
     position: relative;
@@ -146,6 +147,9 @@ header {
 }
 
 @media only screen and (max-width: 600px) {
+    .header__full {
+        max-width: 100%;
+    }
     .header__full a:not(:first-child) {display: none;}
     .header__full div:not(:last-child) {display: none;}
     .header__hamburger {
