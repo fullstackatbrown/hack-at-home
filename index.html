@@ -13,38 +13,60 @@
 <body>
 <header>
     <div class="header__full">
-        <a>image</a>
+        <a class="btn" href="/"><img class="header__logo" src="assets/images/logo.png"></a>
         <a class="btn btn__header">About</a>
-        <div class="dropdown"><a class="btn btn__header">Hack&nbsp<i class="material-icons">expand_more</i></a>
-            <div class="dropdown__content">
-                <a class="btn" href="#">Code</a>
-                <a class="btn" href="#">Watch</a>
-                <a class="btn" href="#">Donate</a>
-                <a class="btn" href="#">Learn</a>
-                <a class="btn" href="#">Play</a>
-            </div>
-        </div>
-        <a class="btn btn__header">Schedule</a>
+        <!--        <div class="dropdown"><a class="btn btn__header">Hack&nbsp<i class="material-icons">expand_more</i></a>-->
+        <!--            <div class="dropdown__content">-->
+        <!--                <a class="btn" href="#">Code</a>-->
+        <!--                <a class="btn" href="#">Watch</a>-->
+        <!--                <a class="btn" href="#">Donate</a>-->
+        <!--                <a class="btn" href="#">Learn</a>-->
+        <!--                <a class="btn" href="#">Play</a>-->
+        <!--            </div>-->
+        <!--        </div>-->
+        <!--        <a class="btn btn__header">Schedule</a>-->
         <a class="btn btn__header">FAQ</a>
-        <a class="btn btn__header">Sponsors</a>
+        <!--        <a class="btn btn__header">Sponsors</a>-->
+        <a class="btn btn__header">Apply</a>
         <div class="header__hamburger">
             <span></span>
             <span></span>
             <span></span>
         </div>
     </div>
+    <div class="header__vertical">
+        <a class="btn btn__header">About</a>
+        <!--        <div class="dropdown"><a class="btn btn__header">Hack&nbsp<i class="material-icons">expand_more</i></a>-->
+        <!--            <div class="dropdown__content">-->
+        <!--                <a class="btn" href="#">Code</a>-->
+        <!--                <a class="btn" href="#">Watch</a>-->
+        <!--                <a class="btn" href="#">Donate</a>-->
+        <!--                <a class="btn" href="#">Learn</a>-->
+        <!--                <a class="btn" href="#">Play</a>-->
+        <!--            </div>-->
+        <!--        </div>-->
+        <!--        <a class="btn btn__header">Schedule</a>-->
+        <a class="btn btn__header">FAQ</a>
+        <!--        <a class="btn btn__header">Sponsors</a>-->
+        <a class="btn btn__header">Apply</a>
+    </div>
 </header>
-<section class="pg pg__center">
+<section class="pg pg__center pg__center_shift pg__bg_1">
+    <a id="mlh-trust-badge"
+       class="mlh-badge"
+       href="https://mlh.io/seasons/na-2021/events?utm_source=na-hackathon&utm_medium=TrustBadge&utm_campaign=2021-season&utm_content=white"
+       target="_blank"><img src="https://s3.amazonaws.com/logged-assets/trust-badge/2021/mlh-trust-badge-2021-white.svg"
+                            alt="Major League Hacking 2021 Hackathon Season" style="width:100%"></a>
     <h1>hack<span class="at-span">@</span>home</h1>
     <h2>10.9 - 10.12, 2020</h2>
     <div class="btn btn__box"><a>Apply</a></div>
 </section>
-<section class="pg">
+<section class="pg pg__bg_2">
     <h1 class="r">
         two codes six feet apart
     </h1>
     <div class="block">
-        <div>
+        <div class="block__chunk">
             <h2 class="r">Who we are</h2>
             <p class="r">
                 Full Stack at Brown is a Brown University club dedicated to promoting software engineering. Our members
@@ -52,364 +74,447 @@
             </p>
         </div>
         <div>
-            <h2 class="r">Socially distanced hacking</h2>
-            <p class="r">
-                Hack@Home is virtual hackathon that focuses on bringing a diverse set of student hackers, designers, and
-                thinkers together to "hack@home" and create projects that will solve different issues brought up by the
-                coronavirus pandemic. Hackers can work on projects in groups or independently participate in CTF and
-                dataset challenges to win sponsored prizes. Newcomers will have an opportunity to get a taste of Brown
-                CS through workshops, the open Brown University Minecraft campus, and a diverse array of Brown
-                University speakers and panelists. We will also be conducting a fundraising livestream during the event
-                to raise money for different charities and organizations.
-            </p>
-        </div>
-    </div>
-</section>
-<section class="pg pg__workshops">
-    <div class="block__padded">
-        <h1 class="r">learn</h1>
-        <div class="block">
-            <div class="block__buttons">
-                <button id="btn1" class="btn btn__workshop r">
-                    <h2>Git Workshop</h2>
-                    <span class="underline" id="underline1"></span>
-                </button>
-                <button id="btn2" class="btn btn__workshop r">
-                    <h2>HTML / CSS Workshop</h2>
-                    <span class="underline" id="underline2"></span>
-                </button>
-                <button id="btn3" class="btn btn__workshop r">
-                    <h2>SQL Workshop</h2>
-                    <span class="underline" id="underline3"></span>
-                </button>
-                <button id="btn4" class="btn btn__workshop r">
-                    <h2>GraphQL Workshop</h2>
-                    <span class="underline" id="underline4"></span>
-                </button>
-                <button id="btn5" class="btn btn__workshop r">
-                    <h2>Cybersecurity Workshops</h2>
-                    <span class="underline" id="underline5"></span>
-                </button>
-                <button id="btn6" class="btn btn__workshop r">
-                    <h2>Animation / Maya Workshop</h2>
-                    <span class="underline" id="underline6"></span>
-                </button>
-            </div>
-            <p class="block__blurb r">
-                In gearing up for our big day, Hack@Home has put together a series of workshops to help you get ready to
-                hack! Our workshops cover topics such as web development, databasing, security, and 3D modelling, and
-                range in difficulty from beginner to intermediate. Workshops will be released in pairs on the Friday of
-                every week, according to the attached schedule. If you have any questions about the workshops, please
-                let us know at workshops@hackathome.org - happy hacking!
-            </p>
-        </div>
-    </div>
-    <div class="block__workshop">
-        <div class="workshop" id="workshop1">
-            <header class="workshop__header"><a class="btn btn__open" href=""><i class="material-icons">open_in_new</i></a>
-                <button class="btn btn__close"><i class="material-icons">close</i></button>
-            </header>
-            <div class="workshop__body">
-                <h2 class="workshop__name">Git Workshop</h2>
-                <div class="workshop__info">
-                    <span>Wednesday May 6, 10:00AM EST</span>
-                    <span>Difficulty: Advanced</span>
-                </div>
-                <p>
-                    GitHub Actions gives teams world-class CI capabilities, helping developers merge and deploy code
-                    many
-                    times in a single day. The silent power of GitHub Actions lies in its ability to programmatically
-                    define
-                    just about any workflow to mirror your team's processes. In this workshop, you'll learn how to:
+            <div class="block__chunk">
+                <h2 class="r">All in one place</h2>
+                <p class="r">
+                    Ever wanted to hack a website? Want to dip your toes into machine learning? Feel like meeting new
+                    people
+                    and solving pandemic problems? Come to Hack@Home, a 4-day virtual hackathon all about exploring the
+                    world of computer science from the comfort of your home.
                 </p>
-                <ul>
-                    <li>Create and use multiple, customized workflows</li>
-                    <li>Implement a unit testing framework using GitHub Actions</li>
-                    <li>Use multiple jobs in a workflow and pass artifacts between jobs</li>
-                    <li>Configure a repository to work in conjunction with GitHub Actions workflows and your team's
-                        workflow
+            </div>
+            <div class="block__chunk">
+                <h2 class="r">A world at your fingertips</h2>
+                <ul class="r">
+                    <li>Cybersecurity challenges, model training datasets, team projects</li>
+                    <li>Pre-released weekly workshops</li>
+                    <li>Mentorship opportunities, sponsor panels and office hours</li>
+                    <li>Tech talks, professor research presentations, student panels</li>
+                    <li>Social events in the Brown Minecraft campus, the hackathon discord server, and zoom
+                        mini-events
                     </li>
                 </ul>
-                <div class="frame__wrapper frame__spacing">
-                    <iframe class="frame frame__youtube" scrolling="no"
-                            src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>
-                </div>
-                <h2>Organizers</h2>
-                <div class="workshop__organizers">
-                    <div class="workshop__person">
-                        <span>people</span>
-                        <span>first last</span>
-                    </div>
-                    <div class="workshop__person">
-                        <span>people</span>
-                        <span>first last</span>
-                    </div>
-                    <div class="workshop__person">
-                        <span>people</span>
-                        <span>first last</span>
-                    </div>
-                    <div class="workshop__person">
-                        <span>people</span>
-                        <span>first last</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="workshop" id="workshop2">
-            <header class="workshop__header"><a class="btn btn__open" href=""><i class="material-icons">open_in_new</i></a>
-                <button class="btn btn__close"><i class="material-icons">close</i></button>
-            </header>
-            <div class="workshop__body">
-                <h2 class="workshop__name">HTML / CSS Workshop</h2>
-                <div class="workshop__info">
-                    <span>Wednesday May 6, 10:00AM EST</span>
-                    <span>Difficulty: Advanced</span>
-                </div>
-                <p>
-                    GitHub Actions gives teams world-class CI capabilities, helping developers merge and deploy code
-                    many
-                    times in a single day. The silent power of GitHub Actions lies in its ability to programmatically
-                    define
-                    just about any workflow to mirror your team's processes. In this workshop, you'll learn how to:
-                </p>
-                <ul>
-                    <li>Create and use multiple, customized workflows</li>
-                    <li>Implement a unit testing framework using GitHub Actions</li>
-                    <li>Use multiple jobs in a workflow and pass artifacts between jobs</li>
-                    <li>Configure a repository to work in conjunction with GitHub Actions workflows and your team's
-                        workflow
-                    </li>
-                </ul>
-                <div class="frame__wrapper frame__spacing">
-                    <iframe class="frame frame__youtube" scrolling="no"
-                            src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>
-                </div>
-                <h2>Organizers</h2>
-                <div class="workshop__organizers">
-                    <div class="workshop__person">
-                        <span>people</span>
-                        <span>first last</span>
-                    </div>
-                    <div class="workshop__person">
-                        <span>people</span>
-                        <span>first last</span>
-                    </div>
-                    <div class="workshop__person">
-                        <span>people</span>
-                        <span>first last</span>
-                    </div>
-                    <div class="workshop__person">
-                        <span>people</span>
-                        <span>first last</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="workshop" id="workshop3">
-            <header class="workshop__header"><a class="btn btn__open" href=""><i class="material-icons">open_in_new</i></a>
-                <button class="btn btn__close"><i class="material-icons">close</i></button>
-            </header>
-            <div class="workshop__body">
-                <h2 class="workshop__name">SQL Workshop</h2>
-                <div class="workshop__info">
-                    <span>Wednesday May 6, 10:00AM EST</span>
-                    <span>Difficulty: Advanced</span>
-                </div>
-                <p>
-                    GitHub Actions gives teams world-class CI capabilities, helping developers merge and deploy code
-                    many
-                    times in a single day. The silent power of GitHub Actions lies in its ability to programmatically
-                    define
-                    just about any workflow to mirror your team's processes. In this workshop, you'll learn how to:
-                </p>
-                <ul>
-                    <li>Create and use multiple, customized workflows</li>
-                    <li>Implement a unit testing framework using GitHub Actions</li>
-                    <li>Use multiple jobs in a workflow and pass artifacts between jobs</li>
-                    <li>Configure a repository to work in conjunction with GitHub Actions workflows and your team's
-                        workflow
-                    </li>
-                </ul>
-                <div class="frame__wrapper frame__spacing">
-                    <iframe class="frame frame__youtube" scrolling="no"
-                            src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>
-                </div>
-                <h2>Organizers</h2>
-                <div class="workshop__organizers">
-                    <div class="workshop__person">
-                        <span>people</span>
-                        <span>first last</span>
-                    </div>
-                    <div class="workshop__person">
-                        <span>people</span>
-                        <span>first last</span>
-                    </div>
-                    <div class="workshop__person">
-                        <span>people</span>
-                        <span>first last</span>
-                    </div>
-                    <div class="workshop__person">
-                        <span>people</span>
-                        <span>first last</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="workshop" id="workshop4">
-            <header class="workshop__header"><a class="btn btn__open" href=""><i class="material-icons">open_in_new</i></a>
-                <button class="btn btn__close"><i class="material-icons">close</i></button>
-            </header>
-            <div class="workshop__body">
-                <h2 class="workshop__name">GraphQL Workshop</h2>
-                <div class="workshop__info">
-                    <span>Wednesday May 6, 10:00AM EST</span>
-                    <span>Difficulty: Advanced</span>
-                </div>
-                <p>
-                    GitHub Actions gives teams world-class CI capabilities, helping developers merge and deploy code
-                    many
-                    times in a single day. The silent power of GitHub Actions lies in its ability to programmatically
-                    define
-                    just about any workflow to mirror your team's processes. In this workshop, you'll learn how to:
-                </p>
-                <ul>
-                    <li>Create and use multiple, customized workflows</li>
-                    <li>Implement a unit testing framework using GitHub Actions</li>
-                    <li>Use multiple jobs in a workflow and pass artifacts between jobs</li>
-                    <li>Configure a repository to work in conjunction with GitHub Actions workflows and your team's
-                        workflow
-                    </li>
-                </ul>
-                <div class="frame__wrapper frame__spacing">
-                    <iframe class="frame frame__youtube" scrolling="no"
-                            src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>
-                </div>
-                <h2>Organizers</h2>
-                <div class="workshop__organizers">
-                    <div class="workshop__person">
-                        <span>people</span>
-                        <span>first last</span>
-                    </div>
-                    <div class="workshop__person">
-                        <span>people</span>
-                        <span>first last</span>
-                    </div>
-                    <div class="workshop__person">
-                        <span>people</span>
-                        <span>first last</span>
-                    </div>
-                    <div class="workshop__person">
-                        <span>people</span>
-                        <span>first last</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="workshop" id="workshop5">
-            <header class="workshop__header"><a class="btn btn__open" href=""><i class="material-icons">open_in_new</i></a>
-                <button class="btn btn__close"><i class="material-icons">close</i></button>
-            </header>
-            <div class="workshop__body">
-                <h2 class="workshop__name">Cybersecurity Workshops</h2>
-                <div class="workshop__info">
-                    <span>Wednesday May 6, 10:00AM EST</span>
-                    <span>Difficulty: Advanced</span>
-                </div>
-                <p>
-                    GitHub Actions gives teams world-class CI capabilities, helping developers merge and deploy code
-                    many
-                    times in a single day. The silent power of GitHub Actions lies in its ability to programmatically
-                    define
-                    just about any workflow to mirror your team's processes. In this workshop, you'll learn how to:
-                </p>
-                <ul>
-                    <li>Create and use multiple, customized workflows</li>
-                    <li>Implement a unit testing framework using GitHub Actions</li>
-                    <li>Use multiple jobs in a workflow and pass artifacts between jobs</li>
-                    <li>Configure a repository to work in conjunction with GitHub Actions workflows and your team's
-                        workflow
-                    </li>
-                </ul>
-                <div class="frame__wrapper frame__spacing">
-                    <iframe class="frame frame__youtube" scrolling="no"
-                            src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>
-                </div>
-                <h2>Organizers</h2>
-                <div class="workshop__organizers">
-                    <div class="workshop__person">
-                        <span>people</span>
-                        <span>first last</span>
-                    </div>
-                    <div class="workshop__person">
-                        <span>people</span>
-                        <span>first last</span>
-                    </div>
-                    <div class="workshop__person">
-                        <span>people</span>
-                        <span>first last</span>
-                    </div>
-                    <div class="workshop__person">
-                        <span>people</span>
-                        <span>first last</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="workshop" id="workshop6">
-            <header class="workshop__header"><a class="btn btn__open" href=""><i class="material-icons">open_in_new</i></a>
-                <button class="btn btn__close"><i class="material-icons">close</i></button>
-            </header>
-            <div class="workshop__body">
-                <h2 class="workshop__name">Animation / Maya Workshop</h2>
-                <div class="workshop__info">
-                    <span>Wednesday May 6, 10:00AM EST</span>
-                    <span>Difficulty: Advanced</span>
-                </div>
-                <p>
-                    GitHub Actions gives teams world-class CI capabilities, helping developers merge and deploy code
-                    many
-                    times in a single day. The silent power of GitHub Actions lies in its ability to programmatically
-                    define
-                    just about any workflow to mirror your team's processes. In this workshop, you'll learn how to:
-                </p>
-                <ul>
-                    <li>Create and use multiple, customized workflows</li>
-                    <li>Implement a unit testing framework using GitHub Actions</li>
-                    <li>Use multiple jobs in a workflow and pass artifacts between jobs</li>
-                    <li>Configure a repository to work in conjunction with GitHub Actions workflows and your team's
-                        workflow
-                    </li>
-                </ul>
-                <div class="frame__wrapper frame__spacing">
-                    <iframe class="frame frame__youtube" scrolling="no"
-                            src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>
-                </div>
-                <h2>Organizers</h2>
-                <div class="workshop__organizers">
-                    <div class="workshop__person">
-                        <span>people</span>
-                        <span>first last</span>
-                    </div>
-                    <div class="workshop__person">
-                        <span>people</span>
-                        <span>first last</span>
-                    </div>
-                    <div class="workshop__person">
-                        <span>people</span>
-                        <span>first last</span>
-                    </div>
-                    <div class="workshop__person">
-                        <span>people</span>
-                        <span>first last</span>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
 </section>
-<section class="pg pg__right">
+<!--<section class="pg pg__workshops">-->
+<!--    <div class="block__padded">-->
+<!--        <h1 class="r">learn</h1>-->
+<!--        <div class="block">-->
+<!--            <div class="block__buttons">-->
+<!--                <button id="btn1" class="btn btn__workshop r">-->
+<!--                    <h2>Git Workshop</h2>-->
+<!--                    <span class="underline" id="underline1"></span>-->
+<!--                </button>-->
+<!--                <button id="btn2" class="btn btn__workshop r">-->
+<!--                    <h2>HTML / CSS Workshop</h2>-->
+<!--                    <span class="underline" id="underline2"></span>-->
+<!--                </button>-->
+<!--                <button id="btn3" class="btn btn__workshop r">-->
+<!--                    <h2>SQL Workshop</h2>-->
+<!--                    <span class="underline" id="underline3"></span>-->
+<!--                </button>-->
+<!--                <button id="btn4" class="btn btn__workshop r">-->
+<!--                    <h2>GraphQL Workshop</h2>-->
+<!--                    <span class="underline" id="underline4"></span>-->
+<!--                </button>-->
+<!--                <button id="btn5" class="btn btn__workshop r">-->
+<!--                    <h2>Cybersecurity Workshops</h2>-->
+<!--                    <span class="underline" id="underline5"></span>-->
+<!--                </button>-->
+<!--                <button id="btn6" class="btn btn__workshop r">-->
+<!--                    <h2>Animation / Maya Workshop</h2>-->
+<!--                    <span class="underline" id="underline6"></span>-->
+<!--                </button>-->
+<!--            </div>-->
+<!--            <p class="block__blurb r">-->
+<!--                In gearing up for our big day, Hack@Home has put together a series of workshops to help you get ready to-->
+<!--                hack! Our workshops cover topics such as web development, databasing, security, and 3D modelling, and-->
+<!--                range in difficulty from beginner to intermediate. Workshops will be released in pairs on the Friday of-->
+<!--                every week, according to the attached schedule. If you have any questions about the workshops, please-->
+<!--                let us know at workshops@hackathome.org - happy hacking!-->
+<!--            </p>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="block__workshop">-->
+<!--        <div class="workshop" id="workshop1">-->
+<!--            <header class="workshop__header"><a class="btn btn__open" href=""><i class="material-icons">open_in_new</i></a>-->
+<!--                <button class="btn btn__close"><i class="material-icons">close</i></button>-->
+<!--            </header>-->
+<!--            <div class="workshop__body">-->
+<!--                <h2 class="workshop__name">Git Workshop</h2>-->
+<!--                <div class="workshop__info">-->
+<!--                    <span>Wednesday May 6, 10:00AM EST</span>-->
+<!--                    <span>Difficulty: Advanced</span>-->
+<!--                </div>-->
+<!--                <p>-->
+<!--                    GitHub Actions gives teams world-class CI capabilities, helping developers merge and deploy code-->
+<!--                    many-->
+<!--                    times in a single day. The silent power of GitHub Actions lies in its ability to programmatically-->
+<!--                    define-->
+<!--                    just about any workflow to mirror your team's processes. In this workshop, you'll learn how to:-->
+<!--                </p>-->
+<!--                <ul>-->
+<!--                    <li>Create and use multiple, customized workflows</li>-->
+<!--                    <li>Implement a unit testing framework using GitHub Actions</li>-->
+<!--                    <li>Use multiple jobs in a workflow and pass artifacts between jobs</li>-->
+<!--                    <li>Configure a repository to work in conjunction with GitHub Actions workflows and your team's-->
+<!--                        workflow-->
+<!--                    </li>-->
+<!--                </ul>-->
+<!--                <div class="frame__wrapper frame__spacing">-->
+<!--                    <iframe class="frame frame__youtube" scrolling="no"-->
+<!--                            src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>-->
+<!--                </div>-->
+<!--                <h2>Organizers</h2>-->
+<!--                <div class="workshop__organizers">-->
+<!--                    <div class="workshop__person">-->
+<!--                        <span>people</span>-->
+<!--                        <span>first last</span>-->
+<!--                    </div>-->
+<!--                    <div class="workshop__person">-->
+<!--                        <span>people</span>-->
+<!--                        <span>first last</span>-->
+<!--                    </div>-->
+<!--                    <div class="workshop__person">-->
+<!--                        <span>people</span>-->
+<!--                        <span>first last</span>-->
+<!--                    </div>-->
+<!--                    <div class="workshop__person">-->
+<!--                        <span>people</span>-->
+<!--                        <span>first last</span>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="workshop" id="workshop2">-->
+<!--            <header class="workshop__header"><a class="btn btn__open" href=""><i class="material-icons">open_in_new</i></a>-->
+<!--                <button class="btn btn__close"><i class="material-icons">close</i></button>-->
+<!--            </header>-->
+<!--            <div class="workshop__body">-->
+<!--                <h2 class="workshop__name">HTML / CSS Workshop</h2>-->
+<!--                <div class="workshop__info">-->
+<!--                    <span>Wednesday May 6, 10:00AM EST</span>-->
+<!--                    <span>Difficulty: Advanced</span>-->
+<!--                </div>-->
+<!--                <p>-->
+<!--                    GitHub Actions gives teams world-class CI capabilities, helping developers merge and deploy code-->
+<!--                    many-->
+<!--                    times in a single day. The silent power of GitHub Actions lies in its ability to programmatically-->
+<!--                    define-->
+<!--                    just about any workflow to mirror your team's processes. In this workshop, you'll learn how to:-->
+<!--                </p>-->
+<!--                <ul>-->
+<!--                    <li>Create and use multiple, customized workflows</li>-->
+<!--                    <li>Implement a unit testing framework using GitHub Actions</li>-->
+<!--                    <li>Use multiple jobs in a workflow and pass artifacts between jobs</li>-->
+<!--                    <li>Configure a repository to work in conjunction with GitHub Actions workflows and your team's-->
+<!--                        workflow-->
+<!--                    </li>-->
+<!--                </ul>-->
+<!--                <div class="frame__wrapper frame__spacing">-->
+<!--                    <iframe class="frame frame__youtube" scrolling="no"-->
+<!--                            src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>-->
+<!--                </div>-->
+<!--                <h2>Organizers</h2>-->
+<!--                <div class="workshop__organizers">-->
+<!--                    <div class="workshop__person">-->
+<!--                        <span>people</span>-->
+<!--                        <span>first last</span>-->
+<!--                    </div>-->
+<!--                    <div class="workshop__person">-->
+<!--                        <span>people</span>-->
+<!--                        <span>first last</span>-->
+<!--                    </div>-->
+<!--                    <div class="workshop__person">-->
+<!--                        <span>people</span>-->
+<!--                        <span>first last</span>-->
+<!--                    </div>-->
+<!--                    <div class="workshop__person">-->
+<!--                        <span>people</span>-->
+<!--                        <span>first last</span>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="workshop" id="workshop3">-->
+<!--            <header class="workshop__header"><a class="btn btn__open" href=""><i class="material-icons">open_in_new</i></a>-->
+<!--                <button class="btn btn__close"><i class="material-icons">close</i></button>-->
+<!--            </header>-->
+<!--            <div class="workshop__body">-->
+<!--                <h2 class="workshop__name">SQL Workshop</h2>-->
+<!--                <div class="workshop__info">-->
+<!--                    <span>Wednesday May 6, 10:00AM EST</span>-->
+<!--                    <span>Difficulty: Advanced</span>-->
+<!--                </div>-->
+<!--                <p>-->
+<!--                    GitHub Actions gives teams world-class CI capabilities, helping developers merge and deploy code-->
+<!--                    many-->
+<!--                    times in a single day. The silent power of GitHub Actions lies in its ability to programmatically-->
+<!--                    define-->
+<!--                    just about any workflow to mirror your team's processes. In this workshop, you'll learn how to:-->
+<!--                </p>-->
+<!--                <ul>-->
+<!--                    <li>Create and use multiple, customized workflows</li>-->
+<!--                    <li>Implement a unit testing framework using GitHub Actions</li>-->
+<!--                    <li>Use multiple jobs in a workflow and pass artifacts between jobs</li>-->
+<!--                    <li>Configure a repository to work in conjunction with GitHub Actions workflows and your team's-->
+<!--                        workflow-->
+<!--                    </li>-->
+<!--                </ul>-->
+<!--                <div class="frame__wrapper frame__spacing">-->
+<!--                    <iframe class="frame frame__youtube" scrolling="no"-->
+<!--                            src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>-->
+<!--                </div>-->
+<!--                <h2>Organizers</h2>-->
+<!--                <div class="workshop__organizers">-->
+<!--                    <div class="workshop__person">-->
+<!--                        <span>people</span>-->
+<!--                        <span>first last</span>-->
+<!--                    </div>-->
+<!--                    <div class="workshop__person">-->
+<!--                        <span>people</span>-->
+<!--                        <span>first last</span>-->
+<!--                    </div>-->
+<!--                    <div class="workshop__person">-->
+<!--                        <span>people</span>-->
+<!--                        <span>first last</span>-->
+<!--                    </div>-->
+<!--                    <div class="workshop__person">-->
+<!--                        <span>people</span>-->
+<!--                        <span>first last</span>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="workshop" id="workshop4">-->
+<!--            <header class="workshop__header"><a class="btn btn__open" href=""><i class="material-icons">open_in_new</i></a>-->
+<!--                <button class="btn btn__close"><i class="material-icons">close</i></button>-->
+<!--            </header>-->
+<!--            <div class="workshop__body">-->
+<!--                <h2 class="workshop__name">GraphQL Workshop</h2>-->
+<!--                <div class="workshop__info">-->
+<!--                    <span>Wednesday May 6, 10:00AM EST</span>-->
+<!--                    <span>Difficulty: Advanced</span>-->
+<!--                </div>-->
+<!--                <p>-->
+<!--                    GitHub Actions gives teams world-class CI capabilities, helping developers merge and deploy code-->
+<!--                    many-->
+<!--                    times in a single day. The silent power of GitHub Actions lies in its ability to programmatically-->
+<!--                    define-->
+<!--                    just about any workflow to mirror your team's processes. In this workshop, you'll learn how to:-->
+<!--                </p>-->
+<!--                <ul>-->
+<!--                    <li>Create and use multiple, customized workflows</li>-->
+<!--                    <li>Implement a unit testing framework using GitHub Actions</li>-->
+<!--                    <li>Use multiple jobs in a workflow and pass artifacts between jobs</li>-->
+<!--                    <li>Configure a repository to work in conjunction with GitHub Actions workflows and your team's-->
+<!--                        workflow-->
+<!--                    </li>-->
+<!--                </ul>-->
+<!--                <div class="frame__wrapper frame__spacing">-->
+<!--                    <iframe class="frame frame__youtube" scrolling="no"-->
+<!--                            src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>-->
+<!--                </div>-->
+<!--                <h2>Organizers</h2>-->
+<!--                <div class="workshop__organizers">-->
+<!--                    <div class="workshop__person">-->
+<!--                        <span>people</span>-->
+<!--                        <span>first last</span>-->
+<!--                    </div>-->
+<!--                    <div class="workshop__person">-->
+<!--                        <span>people</span>-->
+<!--                        <span>first last</span>-->
+<!--                    </div>-->
+<!--                    <div class="workshop__person">-->
+<!--                        <span>people</span>-->
+<!--                        <span>first last</span>-->
+<!--                    </div>-->
+<!--                    <div class="workshop__person">-->
+<!--                        <span>people</span>-->
+<!--                        <span>first last</span>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="workshop" id="workshop5">-->
+<!--            <header class="workshop__header"><a class="btn btn__open" href=""><i class="material-icons">open_in_new</i></a>-->
+<!--                <button class="btn btn__close"><i class="material-icons">close</i></button>-->
+<!--            </header>-->
+<!--            <div class="workshop__body">-->
+<!--                <h2 class="workshop__name">Cybersecurity Workshops</h2>-->
+<!--                <div class="workshop__info">-->
+<!--                    <span>Wednesday May 6, 10:00AM EST</span>-->
+<!--                    <span>Difficulty: Advanced</span>-->
+<!--                </div>-->
+<!--                <p>-->
+<!--                    GitHub Actions gives teams world-class CI capabilities, helping developers merge and deploy code-->
+<!--                    many-->
+<!--                    times in a single day. The silent power of GitHub Actions lies in its ability to programmatically-->
+<!--                    define-->
+<!--                    just about any workflow to mirror your team's processes. In this workshop, you'll learn how to:-->
+<!--                </p>-->
+<!--                <ul>-->
+<!--                    <li>Create and use multiple, customized workflows</li>-->
+<!--                    <li>Implement a unit testing framework using GitHub Actions</li>-->
+<!--                    <li>Use multiple jobs in a workflow and pass artifacts between jobs</li>-->
+<!--                    <li>Configure a repository to work in conjunction with GitHub Actions workflows and your team's-->
+<!--                        workflow-->
+<!--                    </li>-->
+<!--                </ul>-->
+<!--                <div class="frame__wrapper frame__spacing">-->
+<!--                    <iframe class="frame frame__youtube" scrolling="no"-->
+<!--                            src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>-->
+<!--                </div>-->
+<!--                <h2>Organizers</h2>-->
+<!--                <div class="workshop__organizers">-->
+<!--                    <div class="workshop__person">-->
+<!--                        <span>people</span>-->
+<!--                        <span>first last</span>-->
+<!--                    </div>-->
+<!--                    <div class="workshop__person">-->
+<!--                        <span>people</span>-->
+<!--                        <span>first last</span>-->
+<!--                    </div>-->
+<!--                    <div class="workshop__person">-->
+<!--                        <span>people</span>-->
+<!--                        <span>first last</span>-->
+<!--                    </div>-->
+<!--                    <div class="workshop__person">-->
+<!--                        <span>people</span>-->
+<!--                        <span>first last</span>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="workshop" id="workshop6">-->
+<!--            <header class="workshop__header"><a class="btn btn__open" href=""><i class="material-icons">open_in_new</i></a>-->
+<!--                <button class="btn btn__close"><i class="material-icons">close</i></button>-->
+<!--            </header>-->
+<!--            <div class="workshop__body">-->
+<!--                <h2 class="workshop__name">Animation / Maya Workshop</h2>-->
+<!--                <div class="workshop__info">-->
+<!--                    <span>Wednesday May 6, 10:00AM EST</span>-->
+<!--                    <span>Difficulty: Advanced</span>-->
+<!--                </div>-->
+<!--                <p>-->
+<!--                    GitHub Actions gives teams world-class CI capabilities, helping developers merge and deploy code-->
+<!--                    many-->
+<!--                    times in a single day. The silent power of GitHub Actions lies in its ability to programmatically-->
+<!--                    define-->
+<!--                    just about any workflow to mirror your team's processes. In this workshop, you'll learn how to:-->
+<!--                </p>-->
+<!--                <ul>-->
+<!--                    <li>Create and use multiple, customized workflows</li>-->
+<!--                    <li>Implement a unit testing framework using GitHub Actions</li>-->
+<!--                    <li>Use multiple jobs in a workflow and pass artifacts between jobs</li>-->
+<!--                    <li>Configure a repository to work in conjunction with GitHub Actions workflows and your team's-->
+<!--                        workflow-->
+<!--                    </li>-->
+<!--                </ul>-->
+<!--                <div class="frame__wrapper frame__spacing">-->
+<!--                    <iframe class="frame frame__youtube" scrolling="no"-->
+<!--                            src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>-->
+<!--                </div>-->
+<!--                <h2>Organizers</h2>-->
+<!--                <div class="workshop__organizers">-->
+<!--                    <div class="workshop__person">-->
+<!--                        <span>people</span>-->
+<!--                        <span>first last</span>-->
+<!--                    </div>-->
+<!--                    <div class="workshop__person">-->
+<!--                        <span>people</span>-->
+<!--                        <span>first last</span>-->
+<!--                    </div>-->
+<!--                    <div class="workshop__person">-->
+<!--                        <span>people</span>-->
+<!--                        <span>first last</span>-->
+<!--                    </div>-->
+<!--                    <div class="workshop__person">-->
+<!--                        <span>people</span>-->
+<!--                        <span>first last</span>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</section>-->
+<section class="pg pg__bg_3">
+    <h1 class="r">
+        FAQ
+    </h1>
+    <div class="block">
+        <div>
+            <div class="block__chunk">
+                <h2 class="r">Who can attend?</h2>
+                <p class="r">
+                    All high school students and undergraduate students are welcome!
+                </p>
+            </div>
+            <div class="block__chunk">
+                <h2 class="r">Will there be swag and/or prizes?</h2>
+                <p class="r">
+                    Yes! Our prizes will be non-monetary, and we can ship swag and prizes to wherever you are (including
+                    outside of the US).
+                </p>
+            </div>
+            <div class="block__chunk">
+                <h2 class="r">I don't have a team. Can I still participate?</h2>
+                <p class="r">
+                    Of course! We have both independent and team-based challenges. If you want a team but don't have
+                    one,
+                    we'll also have some fun team-forming sessions where you can find an awesome group of people to work
+                    with. You're welcome to have up to four people on a team.
+                </p>
+            </div>
+            <div class="block__chunk">
+                <h2 class="r">I am interested in sponsoring Hack@Home, who can I reach out to?</h2>
+                <p class="r">
+                    We're so excited to hear that you're interested! Please email us at <a
+                        href="mailto:sponsors@hackathome.org" class="btn btn__link">sponsors@hackathome.org</a> and
+                    we'll get back to you
+                    ASAP.
+                </p>
+            </div>
+        </div>
+        <div>
+            <div class="block__chunk">
+                <h2 class="r">When and where is Hack@Home?</h2>
+                <p class="r">
+                    Hack@Home will be completely virtual - but we have a LOT of fun activities planned, like searching
+                    for easter eggs in the Brown Minecraft Campus! The event will run Oct. 9-12. Stay tuned for the
+                    schedule to be revealed.
+                </p>
+            </div>
+            <div class="block__chunk">
+                <h2 class="r">Why should I come to Hack@Home?</h2>
+                <p class="r">
+                    Hack@Home was made by FSAB to try to create a place to explore the world of computer science from
+                    the comfort of home. Whether it's choosing to learn from our pre-released workshops to compete for
+                    prizes, navigating the tech industry through our career opportunities, listening to our diverse
+                    array speakers, or playing minecraft with your friends, we hope we've created a space for you.
+                </p>
+            </div>
+            <div class="block__chunk">
+                <h2 class="r">What about hardware hacks?</h2>
+                <p class="r">
+                    Unfortunately, we will not be able to supply hardware for your projects.
+                </p>
+            </div>
+            <div class="block__chunk">
+                <h2 class="r">I have a question that's not answered here!</h2>
+                <p class="r">
+                    We're here for you! Send us an email at <a
+                        href="mailto:hello@hackathome.org" class="btn btn__link">hello@hackathome.org</a> and we'll get
+                    back to you as soon as
+                    possible.
+                </p>
+            </div>
+        </div>
+    </div>
 </section>
-<script type="text/javascript" src="./assets/js/workshops.js"></script>
+<!--<script type="text/javascript" src="./assets/js/workshops.js"></script>-->
 <script type="text/javascript" src="./assets/js/header.js"></script>
 <script type="text/javascript" src="./assets/js/reveal.js"></script>
 

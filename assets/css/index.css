@@ -1,5 +1,5 @@
-html, body {
-    overflow-x:hidden
+html {
+    overflow-x: hidden
 }
 
 body {
@@ -32,10 +32,22 @@ h2 {
 p {
     font-weight: 200;
     line-height: 1.4;
+    margin: 0px;
+}
+
+ul {
+    font-weight: 200;
+    padding-left: 16px;
+    margin: 0px;
+    /*list-style-type: none;*/
+}
+
+li {
+    line-height: 1.4;
+    margin-bottom: 14px;
 }
 
 .pg {
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.0) 100%);
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
@@ -53,12 +65,37 @@ p {
     min-height: 500px;
 }
 
+.pg__center_shift {
+    align-items: flex-start;
+    padding-bottom: 24vw;
+    padding-left: 20vw;
+}
+
 .pg__workshops {
     padding: 0px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     position: relative;
+}
+
+.pg__bg_1 {
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: contain;
+    background-image: url("../images/landscape.png");
+}
+
+.pg__bg_2 {
+    background-color: #B7D7D0;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: contain;
+    background-image: url("../images/entryway.png");
+}
+
+.pg__bg_3 {
+    background-color: #94b870;
 }
 
 .btn {
@@ -75,7 +112,14 @@ p {
 
 .btn__box {
     padding: 10px 20px;
-    background-color: yellow;
+    background-color: #F4DE77;
+    border-radius: 10px;
+}
+
+.btn__link {
+    color: darkblue;
+    display: inline-block;
+    text-decoration: none;
 }
 
 .btn__header {
@@ -110,15 +154,28 @@ p {
 
 }
 
+.mlh-badge {
+    display: block;
+    position: absolute;
+    right: 50px;
+    top: 0;
+    width: 80px;
+    z-index: 10000;
+}
+
 .at-span {
     margin: 0px 6px;
 }
 
 .block {
-    margin-top: 80px;
+    margin-top: 30px;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-gap: 50px 100px;
+    grid-gap: 0px 100px;
+}
+
+.block__chunk {
+    margin-top: 50px;
 }
 
 .block__padded {
@@ -243,6 +300,27 @@ p {
 }
 
 @media only screen and (max-width: 600px) {
+    /* font size changes */
+    body {
+        font-size: 16px;
+    }
+
+    h1 {
+        font-size: 45px;
+    }
+
+    h2 {
+        font-size: 24px;
+    }
+
+    .pg {
+        padding: 140px 36px;
+    }
+
+    .block__padded {
+        padding: 140px 36px;
+    }
+
     .block {
         grid-template-columns: 1fr;
     }

@@ -101,7 +101,7 @@ var Controls = function () {
 var scene = new THREE.Scene();
 scene.background = new THREE.Color(0xffffff);
 
-var camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 100);
+var camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 100);
 camera.position.set(0, 0, 0);
 camera.target = new THREE.Vector3(0, 0, 0);
 
@@ -174,7 +174,7 @@ loader.setDRACOLoader(dracoLoader);
 loader.load('assets/models/room.glb', function (gltf) {
     var model = gltf.scene;
     model.position.set(0, -4, 0);
-    model.scale.set(3, 3, 3);
+    model.scale.set(4, 4, 4);
     model.matrixAutoUpdate = false
     model.updateMatrix()
     scene.add(model);
@@ -183,7 +183,7 @@ loader.load('assets/models/room.glb', function (gltf) {
 });
 loader.load('assets/models/cubby.glb', function (gltf) {
     var model = gltf.scene;
-    model.position.set(7, -2.2, 1);
+    model.position.set(10, -2.2, 1);
     model.scale.set(1, 1, 1);
     model.rotateY(THREE.MathUtils.degToRad(180))
     model.matrixAutoUpdate = false

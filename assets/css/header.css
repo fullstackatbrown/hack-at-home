@@ -1,9 +1,12 @@
 header {
     background-color: rgba(255, 255, 255, 0.3);
     width: 100%;
+    height: 80px;
     position: fixed;
     backdrop-filter: blur(3px);
     padding: 20px 12%;
+    display: flex;
+    justify-content: flex-start;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
@@ -12,8 +15,40 @@ header {
 
 .header__full {
     display: flex;
+    width: 800px;
+    max-width: 80%;
     justify-content: space-between;
     align-items: center;
+}
+
+.header__vertical {
+    background-color: black;
+    color: white;
+    position: fixed;
+    right: -180px;
+    top: 0px;
+    height: 100vh;
+    width: 180px;
+    padding-top: 100px;
+    padding-left: 20px;
+    transition: 0.2s;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    display: none;
+}
+
+.header__vertical.open {
+    right: 0px;
+}
+
+.header__vertical a {
+    margin-bottom: 20px;
+}
+
+.header__logo {
+    height: 16px;
+    margin-bottom: 2px;
 }
 
 .header__hamburger {
@@ -70,7 +105,6 @@ header {
     top: 12px;
 }
 
-
 /* open styles */
 .header__hamburger.open span {
     background-color: white;
@@ -116,5 +150,9 @@ header {
     .header__full div:not(:last-child) {display: none;}
     .header__hamburger {
         display: block;
+    }
+    .header__vertical {display: block}
+    header {
+        padding: 20px 36px;
     }
 }

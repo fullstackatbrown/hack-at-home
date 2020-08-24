@@ -8,5 +8,7 @@ $('.header__hamburger').on("click", function () {
             ready = true;
         }, 500);
         $(".header__hamburger").toggleClass('open');
+        $(".header__vertical").toggleClass('open');
+
     }
 });
