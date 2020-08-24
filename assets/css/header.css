@@ -21,10 +21,15 @@ header {
     align-items: center;
 }
 
+.header__absolute {
+    position: absolute;
+    width: 100vw;
+}
+
 .header__vertical {
     background-color: black;
     color: white;
-    position: fixed;
+    position: absolute;
     right: -180px;
     top: 0px;
     height: 100vh;
@@ -50,6 +55,12 @@ header {
 .header__logo {
     height: 16px;
     margin-bottom: 2px;
+}
+
+.header__hamburger-menu {
+    position: absolute;
+    right: 25px;
+    top: 25px;
 }
 
 .header__hamburger {
