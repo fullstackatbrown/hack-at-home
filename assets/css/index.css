@@ -156,7 +156,7 @@ li {
 
 .mlh-badge {
     display: block;
-    position: fixed;
+    position: absolute;
     right: 50px;
     top: 0;
     width: 80px;
