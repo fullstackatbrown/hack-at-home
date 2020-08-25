@@ -475,3 +475,7 @@ footer {
         display: none;
     }
 }
+
+#s1 {
+    opacity: 0;
+}

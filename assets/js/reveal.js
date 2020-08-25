@@ -6,3 +6,7 @@ sr.reveal('.r', {
     duration: 1000,
     scale: 1,
 });
+$("<img/>").attr('src', 'assets/images/landscape.png').on('load', function() {
+    $("#s1").animate({opacity: 1}, 400)
+})
+
