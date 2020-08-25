@@ -14,10 +14,10 @@ $('.header__hamburger').on("click", function () {
 
 $(window).on("scroll", function (e) {
     if ($("#s3").offset().top - $(window).scrollTop() <= 0 ) {
-        $("header").css({backgroundColor: "rgb(248,221,100)"})
+        $("header").css({backgroundColor: "rgb(248,221,100,1)"})
     } else if ($("#s2").offset().top - $(window).scrollTop() <= 0 ) {
-        $("header").css({backgroundColor: "rgb(175,216,208,0.5)"})
+        $("header").css({backgroundColor: "rgb(175,216,208,1)"})
     } else {
-        $("header").css({backgroundColor: "rgb(255,255,255,0.5)"})
+        $("header").css({backgroundColor: "rgb(255,255,255,1)"})
     }
 })
