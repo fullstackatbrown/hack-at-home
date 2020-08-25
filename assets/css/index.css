@@ -146,6 +146,11 @@ footer {
     opacity: 0.5;
 }
 
+.btn__clear {
+    text-decoration: none;
+    color: black
+}
+
 .btn__box {
     padding: 10px 20px;
     background-color: #F4DE77;
