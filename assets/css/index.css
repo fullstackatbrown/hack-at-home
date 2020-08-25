@@ -47,6 +47,34 @@ li {
     margin-bottom: 14px;
 }
 
+footer {
+    background-color: #2A4291;
+    color: white;
+    padding: 100px 12%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.footer__contacts div {
+    margin-top: 10px;
+}
+
+.footer__right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.footer__right div {
+    margin-top: 10px;
+}
+
+.footer__socials a {
+    margin-left: 10px;
+}
+
 .pg {
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -87,7 +115,7 @@ li {
 }
 
 .pg__bg_2 {
-    background-color: #B7D7D0;
+    background-color: #AFD8D0;
     background-repeat: no-repeat;
     background-position: bottom;
     background-size: contain;
@@ -95,7 +123,12 @@ li {
 }
 
 .pg__bg_3 {
-    background-color: #F5DF77;
+    padding-bottom: 25vw;
+    background-color: #F8DD64;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: contain;
+    background-image: url("../images/kitchen.png");
 }
 
 .btn {
@@ -117,7 +150,14 @@ li {
 }
 
 .btn__link {
-    color: darkblue;
+    color: #254092;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.btn__link_white {
+    font-weight: 200;
+    color: white;
     display: inline-block;
     text-decoration: none;
 }
@@ -151,7 +191,13 @@ li {
     padding: 0px;
     background-color: transparent;
     border: none;
+}
 
+.btn__social_white {
+    font-size: 24px;
+    color: white;
+    display: inline-block;
+    text-decoration: none;
 }
 
 .mlh-badge {
@@ -299,10 +345,25 @@ li {
     height: 100%;
 }
 
+.fsab {
+    margin-top: 10px;
+    font-weight: 200;
+    display: flex;
+    align-items: flex-end;
+}
+
+.fsab img {
+    margin-left: 10px;
+    height: 20px;
+    border: 1px solid white;
+}
+
 @media only screen and (max-width: 600px) {
     .mlh-badge {
         right: 100px;
+        width: 60px;
     }
+
     /* font size changes */
     body {
         font-size: 16px;
@@ -316,12 +377,20 @@ li {
         font-size: 24px;
     }
 
+    footer {
+        padding: 140px 36px;
+    }
+
     .pg {
         padding: 140px 36px;
     }
 
     .block__padded {
         padding: 140px 36px;
+    }
+
+    .pg__bg_3 {
+        padding-bottom: 40vw;
     }
 
     .block {

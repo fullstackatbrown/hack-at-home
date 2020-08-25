@@ -9,11 +9,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="https://kit.fontawesome.com/982a873d88.js" crossorigin="anonymous"></script>
 </head>
 <body>
 <header>
     <div class="header__full">
-        <a class="btn" href="/"><img class="header__logo" src="assets/images/logo.png"></a>
+        <a class="btn" href="#"><img class="header__logo" src="assets/images/logo.png"></a>
         <a class="btn btn__header">About</a>
         <!--        <div class="dropdown"><a class="btn btn__header">Hack&nbsp<i class="material-icons">expand_more</i></a>-->
         <!--            <div class="dropdown__content">-->
@@ -57,7 +58,7 @@
 </div>
 
 </div>
-<section class="pg pg__center pg__center_shift pg__bg_1">
+<section id="s1" class="pg pg__center pg__center_shift pg__bg_1">
     <a id="mlh-trust-badge"
        class="mlh-badge"
        href="https://mlh.io/seasons/na-2021/events?utm_source=na-hackathon&utm_medium=TrustBadge&utm_campaign=2021-season&utm_content=white"
@@ -67,9 +68,9 @@
     <h2>10.9 - 10.12, 2020</h2>
     <div class="btn btn__box"><a>Apply</a></div>
 </section>
-<section class="pg pg__bg_2">
+<section id="s2" class="pg pg__bg_2">
     <h1 class="r">
-        two codes six feet apart
+        welcome home
     </h1>
     <div class="block">
         <div class="block__chunk">
@@ -446,44 +447,11 @@
 <!--        </div>-->
 <!--    </div>-->
 <!--</section>-->
-<section class="pg pg__bg_3">
+<section id="s3" class="pg pg__bg_3">
     <h1 class="r">
         FAQ
     </h1>
     <div class="block">
-        <div>
-            <div class="block__chunk">
-                <h2 class="r">Who can attend?</h2>
-                <p class="r">
-                    All high school students and undergraduate students are welcome!
-                </p>
-            </div>
-            <div class="block__chunk">
-                <h2 class="r">Will there be swag and/or prizes?</h2>
-                <p class="r">
-                    Yes! Our prizes will be non-monetary, and we can ship swag and prizes to wherever you are (including
-                    outside of the US).
-                </p>
-            </div>
-            <div class="block__chunk">
-                <h2 class="r">I don't have a team. Can I still participate?</h2>
-                <p class="r">
-                    Of course! We have both independent and team-based challenges. If you want a team but don't have
-                    one,
-                    we'll also have some fun team-forming sessions where you can find an awesome group of people to work
-                    with. You're welcome to have up to four people on a team.
-                </p>
-            </div>
-            <div class="block__chunk">
-                <h2 class="r">I am interested in sponsoring Hack@Home, who can I reach out to?</h2>
-                <p class="r">
-                    We're so excited to hear that you're interested! Please email us at <a
-                        href="mailto:sponsors@hackathome.org" class="btn btn__link">sponsors@hackathome.org</a> and
-                    we'll get back to you
-                    ASAP.
-                </p>
-            </div>
-        </div>
         <div>
             <div class="block__chunk">
                 <h2 class="r">When and where is Hack@Home?</h2>
@@ -518,8 +486,60 @@
                 </p>
             </div>
         </div>
+        <div>
+            <div class="block__chunk">
+                <h2 class="r">Who can attend?</h2>
+                <p class="r">
+                    All high school students and undergraduate students are welcome!
+                </p>
+            </div>
+            <div class="block__chunk">
+                <h2 class="r">Will there be swag and/or prizes?</h2>
+                <p class="r">
+                    Yes! Our prizes will be non-monetary, and we can ship swag and prizes to wherever you are (including
+                    outside of the US).
+                </p>
+            </div>
+            <div class="block__chunk">
+                <h2 class="r">I don't have a team. Can I still participate?</h2>
+                <p class="r">
+                    Of course! We have both independent and team-based challenges. If you want a team but don't have
+                    one,
+                    we'll also have some fun team-forming sessions where you can find an awesome group of people to work
+                    with. You're welcome to have up to four people on a team.
+                </p>
+            </div>
+            <div class="block__chunk">
+                <h2 class="r">I am interested in sponsoring Hack@Home, who can I reach out to?</h2>
+                <p class="r">
+                    We're so excited to hear that you're interested! Please email us at <a
+                        href="mailto:sponsors@hackathome.org" class="btn btn__link">sponsors@hackathome.org</a> and
+                    we'll get back to you
+                    ASAP.
+                </p>
+            </div>
+        </div>
     </div>
 </section>
+<footer>
+    <div class="footer__contacts">
+        <h2>Contact us</h2>
+        <div>Publicity: <a class="btn btn__link_white" href="mailto:publicity@hackathome.org">publicity@hackathome.org</a></div>
+        <div>Questions: <a class="btn btn__link_white" href="mailto:help@hackathome.org">help@hackathome.org</a></div>
+        <div>Sponsorships: <a class="btn btn__link_white" href="mailto:publicity@hackathome.org">sponsorships@hackathome.org</a></div>
+    </div>
+    <div class="footer__right">
+        <div class="footer__socials">
+            <a href="#" class="fab fa-facebook btn btn__social_white"></a>
+            <a href="#" class="fab fa-instagram btn btn__social_white"></a>
+            <a href="#" class="fab fa-twitter btn btn__social_white"></a>
+            <a href="#" class="fab fa-linkedin btn btn__social_white"></a>
+        </div>
+        <a href="https://www.fullstackatbrown.com/" class="btn btn__link_white fsab">
+            Created by <img src="assets/images/fsab.png">
+        </a>
+    </div>
+</footer>
 <!--<script type="text/javascript" src="./assets/js/workshops.js"></script>-->
 <script type="text/javascript" src="./assets/js/header.js"></script>
 <script type="text/javascript" src="./assets/js/reveal.js"></script>

@@ -1,10 +1,9 @@
 header {
-    font-family: 'Cutive Mono', monospace;
-    background-color: rgba(255, 255, 255, 0.3);
+    background-color: rgba(255, 255, 255, 0.5);
+    transition: background-color 0.4s;
     width: 100%;
     height: 80px;
     position: fixed;
-    backdrop-filter: blur(3px);
     padding: 20px 12%;
     display: flex;
     justify-content: flex-start;
@@ -29,7 +28,6 @@ header {
 }
 
 .header__vertical {
-    font-family: 'Cutive Mono', monospace;
     background-color: black;
     color: white;
     position: absolute;
@@ -56,7 +54,7 @@ header {
 }
 
 .header__logo {
-    height: 15px;
+    height: 17px;
     margin-bottom: 2px;
 }
 
