@@ -143,6 +143,7 @@ footer {
     width: 8vw;
     left: 80.5vw;
     bottom: 30vw;
+    transition: opacity 0.01s;
 }
 
 .btn {
@@ -440,6 +441,13 @@ footer {
         grid-template-columns: 1fr;
     }
 }
+
+@media only screen and (max-height: 500px) {
+    .smoke {
+        opacity: 0;
+    }
+}
+
 
 @media only screen and (max-width: 800px) {
 
