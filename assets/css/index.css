@@ -3,6 +3,10 @@ html {
     scroll-behavior: smooth;
 }
 
+strong {
+    font-weight: 300;
+    /*color: #C2332F;*/
+}
 
 body {
     width: 100vw;
@@ -134,6 +138,13 @@ footer {
     background-image: url("../images/kitchen.png");
 }
 
+.smoke {
+    position: absolute;
+    width: 8vw;
+    left: 80.5vw;
+    bottom: 30vw;
+}
+
 .btn {
     transition: 0.05s;
     cursor: pointer;
@@ -146,9 +157,14 @@ footer {
     opacity: 0.5;
 }
 
+.btn:active {
+    opacity: 0.2;
+}
+
 .btn__clear {
     text-decoration: none;
-    color: black
+    color: black;
+    font-weight: 300;
 }
 
 .btn__box {
@@ -159,6 +175,7 @@ footer {
 
 .btn__link {
     color: #254092;
+    font-weight: 300;
     display: inline-block;
     text-decoration: none;
 }
