@@ -378,7 +378,6 @@ footer {
     font-weight: 200;
     display: flex;
     align-items: flex-end;
-    align-self: flex-end;
 }
 
 .fsab img {
@@ -413,6 +412,7 @@ footer {
     }
 
     .footer__right {
+        align-items: flex-start;
         margin-top: 20px;
     }
 
