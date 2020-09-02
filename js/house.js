@@ -74,6 +74,17 @@ var Controls = function () {
         onMouseDownMouseY = clientY;
         onMouseDownLon = lon;
         onMouseDownLat = lat;
+
+        //calculates device coordinates
+        mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
+        mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
+
+        //update picking ray based off mouse and camera position
+        raycaster.setFromCamera(mouse, camera);
+        const intersects = raycaster.intersectObjects(clickable.children, true );
+        for ( var i = 0; i < intersects.length; i++ ) {
+            console.log(intersects[i].object);
+        };
     }
 
     function onPointerMove(event) {
@@ -104,9 +115,18 @@ scene.background = new THREE.Color(0xffffff);
 var camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 100);
 camera.position.set(0, 0, 0);
 camera.target = new THREE.Vector3(0, 0, 0);
+camera.layers.enable(1);
 
 var light = new THREE.AmbientLight(0xffffff); // soft white light
 scene.add(light);
+
+var raycaster = new THREE.Raycaster();
+raycaster.layers.set(0);
+var mouse = new THREE.Vector2();
+
+//create local space that keeps track of clickable items
+var clickable = new THREE.Object3D();
+scene.add(clickable);
 
 function animate() {
     // TODO: remove unneeded animation frame requests
@@ -175,7 +195,7 @@ loader.load('assets/models/room.glb', function (gltf) {
     var model = gltf.scene;
     model.position.set(0, -4, 0);
     model.scale.set(4, 4, 4);
-    model.matrixAutoUpdate = false
+    model.matrixAutoUpdate = false;
     model.updateMatrix()
     scene.add(model);
 }, undefined, function (e) {
@@ -186,9 +206,9 @@ loader.load('assets/models/cubby.glb', function (gltf) {
     model.position.set(10, -2.2, 1);
     model.scale.set(1, 1, 1);
     model.rotateY(THREE.MathUtils.degToRad(180))
-    model.matrixAutoUpdate = false
+    model.matrixAutoUpdate = false;
     model.updateMatrix()
-    scene.add(model);
+    clickable.add(model);
 }, undefined, function (e) {
     console.error(e);
 });
