@@ -9,7 +9,9 @@ var isUserInteracting = false, shouldAnimate = false, animateTimeout = null,
     onMouseDownMouseX = 0, onMouseDownMouseY = 0,
     lon = 0, onMouseDownLon = 0,
     lat = 0, onMouseDownLat = 0,
-    phi = 0, theta = 0;
+    phi = 0, theta = 0,
+    tiltX = 0, tiltY = 0;
+
 
 var container = document.body;
 
@@ -22,12 +24,12 @@ renderer.outputEncoding = THREE.sRGBEncoding;
 renderer.setClearColor(0xffffff, 1);
 container.appendChild(renderer.domElement);
 
-var labelRenderer = new CSS3DRenderer();
-labelRenderer.setSize(window.innerWidth, window.innerHeight);
-labelRenderer.domElement.style.position = 'absolute';
-labelRenderer.domElement.style.top = '0px';
+var renderercss = new CSS3DRenderer();
+renderercss.setSize(window.innerWidth, window.innerHeight);
+renderercss.domElement.style.position = 'absolute';
+renderercss.domElement.style.top = '0px';
 
-container.appendChild(labelRenderer.domElement);
+container.appendChild(renderercss.domElement);
 
 var Controls = function () {
     window.addEventListener('mousedown', onPointerStart, false);
@@ -62,11 +64,8 @@ var Controls = function () {
     }, false);
 
     function onPointerStart(event) {
-        // POWER SAVE
-        clearTimeout(animateTimeout)
         // for disable interaction on drag
         iframe.style.pointerEvents = 'none';
-        shouldAnimate = true;
         isUserInteracting = true;
         var clientX = event.clientX || event.touches[0].clientX;
         var clientY = event.clientY || event.touches[0].clientY;
@@ -88,20 +87,27 @@ var Controls = function () {
     }
 
     function onPointerMove(event) {
+        // Disable animations after mouse is stationary
+        clearTimeout(animateTimeout)
+        shouldAnimate = true;
+        animateTimeout = setTimeout(function () {
+            shouldAnimate = false
+        }, 600);
         if (isUserInteracting === true) {
             var clientX = event.clientX || event.touches[0].clientX;
             var clientY = event.clientY || event.touches[0].clientY;
             lon = (onMouseDownMouseX - clientX) * 0.1 + onMouseDownLon;
             lat = (clientY - onMouseDownMouseY) * 0.1 + onMouseDownLat;
         }
+        // jiggle screen
+        tiltX = tiltX - (tiltX + (((window.innerWidth / 2) - event.clientX) / (window.innerWidth / 2)) / 30) / 3
+        tiltY = tiltY - (tiltY + (((window.innerHeight / 2) - event.clientY) / (window.innerHeight / 2)) / 30) / 3
+
+        // tiltX = window.innerWidth
+
     }
 
     function onPointerUp() {
-        // POWER SAVE
-        animateTimeout = setTimeout(function () {
-            shouldAnimate = false
-        }, 400);
-
         // for disable interaction on drag
         iframe.style.pointerEvents = 'auto';
         isUserInteracting = false;
@@ -149,12 +155,13 @@ function update() {
         lon = lon + (diff * speed)
     }
     theta = THREE.MathUtils.degToRad(lon);
+    phi += tiltY; theta += tiltX;
     camera.target.x = 500 * Math.sin(phi) * Math.cos(theta);
     camera.target.y = 500 * Math.cos(phi);
     camera.target.z = 500 * Math.sin(phi) * Math.sin(theta);
     camera.lookAt(camera.target);
     renderer.render(scene, camera);
-    labelRenderer.render(scene, camera);
+    renderercss.render(scene, camera);
 }
 
 
@@ -165,7 +172,7 @@ function init() {
 function onWindowResize() {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
-    labelRenderer.setSize(window.innerWidth, window.innerHeight);
+    renderercss.setSize(window.innerWidth, window.innerHeight);
     renderer.setSize(window.innerWidth, window.innerHeight);
     // if we are not animating frames, update manually
     if (!shouldAnimate) {
@@ -222,6 +229,7 @@ var Stream = function (x, y, z, ry) {
     iframe.style.width = '480px';
     iframe.style.height = '320px';
     iframe.style.border = '0px';
+    iframe.id = 'stream'
     // iframe.style.pointerEvents = 'none';
     iframe.src = 'https://player.twitch.tv/?channel=starlitedrivein&parent=localhost';
     div.appendChild(iframe);
@@ -234,8 +242,8 @@ var Stream = function (x, y, z, ry) {
 // TODO: bind horizontal scroll to room change
 
 // TODO: fix stream overlapping with drag
-var twitch = new Stream(800, 100, 0, -Math.PI / 2)
-scene.add(twitch);
+var stream = new Stream(800, 100, 0, -Math.PI / 2)
+scene.add(stream);
 
 var controls = new Controls()
 
