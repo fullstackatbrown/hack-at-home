@@ -64,6 +64,7 @@ var Controls = function () {
     }, false);
 
     function onPointerStart(event) {
+        document.getElementsByTagName("body")[0].style.cursor = 'grabbing';
         // for disable interaction on drag
         iframe.style.pointerEvents = 'none';
         isUserInteracting = true;
@@ -75,13 +76,13 @@ var Controls = function () {
         onMouseDownLat = lat;
 
         //calculates device coordinates
-        mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
-        mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
+        mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+        mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
 
         //update picking ray based off mouse and camera position
         raycaster.setFromCamera(mouse, camera);
-        const intersects = raycaster.intersectObjects(clickable.children, true );
-        for ( var i = 0; i < intersects.length; i++ ) {
+        const intersects = raycaster.intersectObjects(clickable.children, true);
+        for (var i = 0; i < intersects.length; i++) {
             console.log(intersects[i].object);
         };
     }
@@ -100,14 +101,15 @@ var Controls = function () {
             lat = (clientY - onMouseDownMouseY) * 0.1 + onMouseDownLat;
         }
         // jiggle screen
-        tiltX = tiltX - (tiltX + (((window.innerWidth / 2) - event.clientX) / (window.innerWidth / 2)) / 30) / 3
-        tiltY = tiltY - (tiltY + (((window.innerHeight / 2) - event.clientY) / (window.innerHeight / 2)) / 30) / 3
+        tiltX = tiltX - ((tiltX + (((window.innerWidth / 2) - event.clientX) / (window.innerWidth / 2)) / 25) / 4)
+        tiltY = tiltY - ((tiltY + (((window.innerHeight / 2) - event.clientY) / (window.innerHeight / 2)) / 25) / 4)
 
         // tiltX = window.innerWidth
 
     }
 
     function onPointerUp() {
+        document.getElementsByTagName("body")[0].style.cursor = 'default';
         // for disable interaction on drag
         iframe.style.pointerEvents = 'auto';
         isUserInteracting = false;
@@ -155,7 +157,8 @@ function update() {
         lon = lon + (diff * speed)
     }
     theta = THREE.MathUtils.degToRad(lon);
-    phi += tiltY; theta += tiltX;
+    phi += tiltY;
+    theta += tiltX;
     camera.target.x = 500 * Math.sin(phi) * Math.cos(theta);
     camera.target.y = 500 * Math.cos(phi);
     camera.target.z = 500 * Math.sin(phi) * Math.sin(theta);
@@ -184,12 +187,12 @@ init()
 
 var manager = new THREE.LoadingManager();
 
-manager.onStart = function ( url, itemsLoaded, itemsTotal ) {
-    console.log( 'Started loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.' );
+manager.onStart = function (url, itemsLoaded, itemsTotal) {
+    console.log('Started loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.');
 };
 
-manager.onLoad = function ( ) {
-    console.log( 'Loading complete!');
+manager.onLoad = function () {
+    console.log('Loading complete!');
     update()
 };
 
