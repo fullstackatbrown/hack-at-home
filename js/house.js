@@ -12,6 +12,8 @@ var isUserInteracting = false, shouldAnimate = false, animateTimeout = null,
     phi = 0, theta = 0,
     tiltX = 0, tiltY = 0;
 
+// hover/click control
+var INTERSECTED;
 
 var container = document.body;
 
@@ -78,10 +80,9 @@ var Controls = function () {
         //calculates device coordinates
         mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
         mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
-
         //update picking ray based off mouse and camera position
         raycaster.setFromCamera(mouse, camera);
-        const intersects = raycaster.intersectObjects(clickable.children, true);
+        const intersects = raycaster.intersectObjects(clickable, true);
         for (var i = 0; i < intersects.length; i++) {
             console.log(intersects[i].object);
         };
@@ -106,6 +107,39 @@ var Controls = function () {
 
         // tiltX = window.innerWidth
 
+        //calculates device coordinates
+        mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+        mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+
+        //update picking ray based off mouse and camera position
+        raycaster.setFromCamera(mouse, camera);
+        const intersects = raycaster.intersectObjects(clickable, true);
+        // if the mouse intersects with an object in clickable
+        if (intersects.length > 0){
+            if (!INTERSECTED) {
+                // search through clickable to see if the intersection is of a clickable model
+                for (var i = 0; i < clickable.length; i++){
+                    if (clickable[i].children.includes(intersects[0].object)){
+                        // redefine INTERSECTED as the array of objects in the model
+                        INTERSECTED = clickable[i].children;
+                        // for each object in the model, store the current hex and then highlight the model
+                        for (var j = 0; j < INTERSECTED.length; j++) {
+                            INTERSECTED[j].currentHex = INTERSECTED[j].material.color.getHex();
+                            INTERSECTED[j].material.color.offsetHSL(0,0.05,0.035);
+                        }
+                    }
+                }
+            }
+        // if mouse hovers off a clickable object (no intersections)
+        } else {
+            // if a model's color was changed/highlighted, revert to original and set INTERSECTED to null
+            if (INTERSECTED) {
+                for (var j = 0; j < INTERSECTED.length; j++) {
+                    INTERSECTED[j].material.color.setHex(INTERSECTED[j].currentHex);
+                }
+                INTERSECTED = null;
+            }    
+        }
     }
 
     function onPointerUp() {
@@ -132,9 +166,8 @@ var raycaster = new THREE.Raycaster();
 raycaster.layers.set(0);
 var mouse = new THREE.Vector2();
 
-//create local space that keeps track of clickable items
-var clickable = new THREE.Object3D();
-scene.add(clickable);
+//array that keeps track of clickable items
+var clickable = [];
 
 function animate() {
     // TODO: remove unneeded animation frame requests
@@ -218,7 +251,9 @@ loader.load('assets/models/cubby.glb', function (gltf) {
     model.rotateY(THREE.MathUtils.degToRad(180))
     model.matrixAutoUpdate = false;
     model.updateMatrix()
-    clickable.add(model);
+    model.name = "cubby";
+    clickable.push(model.children[2]);
+    scene.add(model);
 }, undefined, function (e) {
     console.error(e);
 });
