@@ -73,9 +73,11 @@ function navWorkshop(n) {
     if ($(window).width() >= 800) {
         $(".block__workshop").scrollTop($("#workshop" + n).offset().top - $(".block__workshop").offset().top + $(".block__workshop").scrollTop())
     } else {
-        $("#workshop" + n).css({display: "block"})
-        $("#workshop" + n).animate({opacity: 1})
-        $("body").css({overflow: "hidden"})
+        if (n === 1) {
+
+        } else if (n === 2) {
+
+        }
     }
     checkUnderline()
 }
