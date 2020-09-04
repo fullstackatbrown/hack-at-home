@@ -24,11 +24,12 @@ body {
 }
 
 .workshop__links {
-    margin-top: 15px;
     display: flex;
     flex-direction: row;
-    width: 15%;
+    width: 20%;
+    min-width: 15px;
     justify-content: space-between;
+    margin-bottom: 20%;
 }
 
 h1 {
@@ -38,29 +39,32 @@ h1 {
     font-weight: 400;
 }
 
-/* .workshop {
-    background-color: #92B770;
-    color: white;
-} */
+.workshop {
+    height: 100%;
+}
 
 .workshop__body {
     box-sizing: border-box;
     padding-top: 40px;
     padding-right: 8%;
-    padding-bottom: 140px;
+    padding-bottom: 40px;
     padding-left: 8%;
 }
 
 .columns {
     display:flex;
     flex-direction: row;
+    min-height: 40%;
 }
 
 .info__column{
-    width: 65%;
-    padding-right: 12%;
+    width: 50%;
+    padding-right: 5%;
 }
 
+.video__column{
+    width: 50%;
+}
 
 .btn {
     transition: 0.05s;
@@ -85,13 +89,31 @@ h1 {
 }
 
 .workshop__links .btn {
+    margin-top: 2em;
     color: white;
     height: 17px;
-    padding: 0px;
+    padding: 10px;
     background-color: transparent;
     border: none;
 }
 
 .fab {
-    font-size: 27px;
+    font-size: 50px;
+}
+
+/* .frame__wrapper {
+    width: 100;
+} */
+.frame__youtube {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.workshop__organizers {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
