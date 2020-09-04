@@ -1,10 +1,10 @@
 let sections = {
     1: false,
     2: false,
-    3: false,
-    4: false,
-    5: false,
-    6: false
+    // 3: false,
+    // 4: false,
+    // 5: false,
+    // 6: false
 }
 
 let numSections = Object.keys(sections).length
@@ -39,7 +39,7 @@ function closeAll(animate) {
     for (const [n, _] of Object.entries(sections)) {
         sections[n] = false
         if (animate) {
-            $("#underline" + (n)).stop(true, false).animate({left: $("#workshop" + (n)).width()}, {
+            $("#underline" + (n)).stop(true, false).animate({left: "100%"}, {
                 duration: 250,
                 queue: false
             })
@@ -50,15 +50,16 @@ function closeAll(animate) {
 }
 
 function checkUnderline() {
-    if ($("#workshop6").offset().top - $(".block__workshop").offset().top <= 10) {
-        triggerMenu(6)
-    } else if ($("#workshop5").offset().top - $(".block__workshop").offset().top <= 10) {
-        triggerMenu(5)
-    } else if ($("#workshop4").offset().top - $(".block__workshop").offset().top <= 10) {
-        triggerMenu(4)
-    } else if ($("#workshop3").offset().top - $(".block__workshop").offset().top <= 10) {
-        triggerMenu(3)
-    } else if ($("#workshop2").offset().top - $(".block__workshop").offset().top <= 10) {
+    // if ($("#workshop6").offset().top - $(".block__workshop").offset().top <= 10) {
+    //     triggerMenu(6)
+    // } else if ($("#workshop5").offset().top - $(".block__workshop").offset().top <= 10) {
+    //     triggerMenu(5)
+    // } else if ($("#workshop4").offset().top - $(".block__workshop").offset().top <= 10) {
+    //     triggerMenu(4)
+    // } else if ($("#workshop3").offset().top - $(".block__workshop").offset().top <= 10) {
+    //     triggerMenu(3)
+    // } else
+    if ($("#workshop2").offset().top - $(".block__workshop").offset().top <= 10) {
         triggerMenu(2)
     } else if ($("#workshop1").offset().top - $(".block__workshop").offset().top <= 10) {
         triggerMenu(1)
@@ -88,18 +89,18 @@ $("#btn1").on("click", () => {
 $("#btn2").on("click", () => {
     navWorkshop(2)
 })
-$("#btn3").on("click", () => {
-    navWorkshop(3)
-})
-$("#btn4").on("click", () => {
-    navWorkshop(4)
-})
-$("#btn5").on("click", () => {
-    navWorkshop(5)
-})
-$("#btn6").on("click", () => {
-    navWorkshop(6)
-})
+// $("#btn3").on("click", () => {
+//     navWorkshop(3)
+// })
+// $("#btn4").on("click", () => {
+//     navWorkshop(4)
+// })
+// $("#btn5").on("click", () => {
+//     navWorkshop(5)
+// })
+// $("#btn6").on("click", () => {
+//     navWorkshop(6)
+// })
 
 $(".btn__close").on("click", () => {
     if (largeMode) {

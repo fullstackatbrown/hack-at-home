@@ -12,7 +12,7 @@ body {
     width: 100vw;
     margin: 0;
     font-family: tenon, sans-serif;
-    font-size: 18px;
+    font-size: 16px;
 }
 
 canvas {
@@ -24,14 +24,14 @@ section {
 
 h1 {
     font-family: 'Cutive Mono', monospace;
-    margin: 0px 0px 20px;
+    margin: 0px 0px 18px;
     font-size: 50px;
     font-weight: 400;
 }
 
 h2 {
     font-family: tenon, sans-serif;
-    margin: 0px 0px 30px;
+    margin: 0px 0px 26px;
     font-size: 26px;
     font-weight: 300;
 }
@@ -108,10 +108,16 @@ footer {
 
 .pg__workshops {
     padding: 0px;
+    padding-bottom: 26vw;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     position: relative;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: contain;
+    background-color: #92B770;
+    background-image: url("../images/bedroom.png");
 }
 
 .pg__bg_1 {
@@ -122,6 +128,7 @@ footer {
 }
 
 .pg__bg_2 {
+    padding-bottom: 10vw;
     background-color: #AFD8D0;
     background-repeat: no-repeat;
     background-position: bottom;
@@ -264,9 +271,9 @@ footer {
     -ms-overflow-style: none;
     scrollbar-width: none;
     width: 50%;
-    height: 100%;
+    height: calc(100vh - 80px);
     right: -50vw;
-    background-color: gray;
+    background-color: #3B563F;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
@@ -318,11 +325,13 @@ footer {
     width: 100%;
     position: -webkit-sticky;
     top: 0;
-    margin-top: 40px;
     padding: 20px 60px;
     display: flex;
     justify-content: space-between;
-    background-color: transparent;
+    background-color: #3B563F;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 .workshop__info {
@@ -386,23 +395,46 @@ footer {
     border: 1px solid white;
 }
 
+.clouds {
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    pointer-events: none;
+    z-index: 1000;
+    overflow: hidden;
+}
+
+.clouds__left {
+    position: fixed;
+    height: 100vh;
+    right: 100%;
+    object-fit: cover;
+    transition: right 2s;
+}
+
+.clouds__left_active {
+    right: -100%;
+}
+
+.clouds__right {
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    position: fixed;
+    height: 100vh;
+    left: 100%;
+    width: auto;
+    object-fit: cover;
+    transition: left 2s;
+}
+
+.clouds__right_active {
+    left: -100%;
+}
+
 @media only screen and (max-width: 600px) {
     .mlh-badge {
         right: 100px;
         width: 60px;
-    }
-
-    /* font size changes */
-    body {
-        font-size: 16px;
-    }
-
-    h1 {
-        font-size: 45px;
-    }
-
-    h2 {
-        font-size: 24px;
     }
 
     footer {

@@ -138,7 +138,7 @@ var Controls = function () {
                     INTERSECTED[j].material.color.setHex(INTERSECTED[j].currentHex);
                 }
                 INTERSECTED = null;
-            }    
+            }
         }
     }
 
@@ -226,7 +226,9 @@ manager.onStart = function (url, itemsLoaded, itemsTotal) {
 
 manager.onLoad = function () {
     console.log('Loading complete!');
-    update()
+    update();
+    $(".clouds__right").removeClass("clouds__right_active")
+    $(".clouds__left").removeClass("clouds__left_active")
 };
 
 // consider compressing with draco
@@ -279,7 +281,6 @@ var Stream = function (x, y, z, ry) {
 
 // TODO: bind horizontal scroll to room change
 
-// TODO: fix stream overlapping with drag
 var stream = new Stream(800, 100, 0, -Math.PI / 2)
 scene.add(stream);
 
