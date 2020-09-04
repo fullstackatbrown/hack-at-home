@@ -1,0 +1,97 @@
+
+body {
+    width: 100vw;
+    margin: 0;
+    font-family: tenon, sans-serif;
+    font-size: 16px;
+    background-color: #92B770;
+    color: white;
+}
+
+.workshop__header {
+    z-index: 1;
+    position: sticky;
+    width: 100%;
+    position: -webkit-sticky;
+    top: 0;
+    padding: 20px 60px;
+    display: flex;
+    justify-content: space-between;
+    background-color: #92B770;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.workshop__links {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: row;
+    width: 15%;
+    justify-content: space-between;
+}
+
+h1 {
+    font-family: tenon, sans-serif;
+    margin: 0px 0px 18px;
+    font-size: 60px;
+    font-weight: 400;
+}
+
+/* .workshop {
+    background-color: #92B770;
+    color: white;
+} */
+
+.workshop__body {
+    box-sizing: border-box;
+    padding-top: 40px;
+    padding-right: 8%;
+    padding-bottom: 140px;
+    padding-left: 8%;
+}
+
+.columns {
+    display:flex;
+    flex-direction: row;
+}
+
+.info__column{
+    width: 65%;
+    padding-right: 12%;
+}
+
+
+.btn {
+    transition: 0.05s;
+    cursor: pointer;
+    display: flex;
+    outline: none;
+    text-decoration: none;
+    /*justify-content: center;*/
+}
+
+.btn:hover {
+    opacity: 0.5;
+}
+
+.btn:active {
+    opacity: 0.2;
+}
+
+.header__logo {
+    height: 17px;
+    color: white;
+}
+
+.workshop__links .btn {
+    color: white;
+    height: 17px;
+    padding: 0px;
+    background-color: transparent;
+    border: none;
+}
+
+.fab {
+    font-size: 27px;
+}
