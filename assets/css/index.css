@@ -270,6 +270,8 @@ footer {
 }
 
 .block__workshop {
+    margin-top: 0;
+    padding-top: 0;
     -ms-overflow-style: none;
     scrollbar-width: none;
     width: 50%;
@@ -347,6 +349,7 @@ footer {
     width: 100%;
     display: flex;
     justify-content: space-between;
+    margin-bottom: 20px;
 }
 
 .workshop__organizers {
