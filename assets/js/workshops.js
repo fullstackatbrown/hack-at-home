@@ -59,9 +59,10 @@ function checkUnderline() {
     // } else if ($("#workshop3").offset().top - $(".block__workshop").offset().top <= 10) {
     //     triggerMenu(3)
     // } else
-    if ($("#workshop2").offset().top - $(".block__workshop").offset().top <= 10) {
+    console.log($("#workshop2").offset().top - $(".block__workshop").offset().top)
+    if ($("#workshop2").offset().top - $(".block__workshop").offset().top <= 2) {
         triggerMenu(2)
-    } else if ($("#workshop1").offset().top - $(".block__workshop").offset().top <= 10) {
+    } else if ($("#workshop1").offset().top - $(".block__workshop").offset().top <= 2) {
         triggerMenu(1)
     }
 }
@@ -77,6 +78,7 @@ function navWorkshop(n) {
         $("#workshop" + n).animate({opacity: 1})
         $("body").css({overflow: "hidden"})
     }
+    checkUnderline()
 }
 
 $(".block__workshop")[0].onscroll = function () {

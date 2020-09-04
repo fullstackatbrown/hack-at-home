@@ -109,6 +109,7 @@ footer {
 .pg__workshops {
     padding: 0px;
     padding-bottom: 26vw;
+    overflow-x: hidden;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -206,7 +207,7 @@ footer {
 .btn__workshop {
     color: inherit;
     text-align: left;
-    margin: 30px 0px;
+    margin-bottom: 30px;
     border: none;
     padding: 6px 0px;
     position: relative;
@@ -294,7 +295,11 @@ footer {
 }
 
 .block__blurb {
-    margin-top: 70px;
+    margin-top: 50px;
+}
+
+.block__buttons {
+    padding-top: 50px;
 }
 
 .dropdown {
@@ -462,7 +467,11 @@ footer {
     }
 
     .block__padded {
-        padding: 140px 36px;
+        padding: 0px 0px 140px;
+    }
+
+    .block__blurb {
+        margin-top: 20px;
     }
 
     .pg__bg_1 {
@@ -486,7 +495,6 @@ footer {
 
 
 @media only screen and (max-width: 800px) {
-
     .block__workshop {
         width: 0%;
     }
