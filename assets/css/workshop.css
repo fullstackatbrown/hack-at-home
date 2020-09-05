@@ -23,15 +23,32 @@ body {
     width: 65%;
 }
 
-.fab {
-    font-size: 27px;
-}
-
 .frame__youtube {
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
+}
+
+.github__container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+    align-items: center;
+}
+
+.github__button {
+    color: white;
+    text-decoration: none;
+}
+
+.workshop__organizers-full {
+    display: flex;
+    flex-direction: row;
+}
+
+.workshop__organizers-full div {
+    margin-right: 20px;
 }
 
 @media only screen and (max-width: 800px) {
