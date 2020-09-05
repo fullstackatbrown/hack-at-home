@@ -83,9 +83,11 @@ var Controls = function () {
         //update picking ray based off mouse and camera position
         raycaster.setFromCamera(mouse, camera);
         const intersects = raycaster.intersectObjects(clickable, true);
-        for (var i = 0; i < intersects.length; i++) {
-            console.log(intersects[i].object);
-        };
+        if (intersects.length > 0) {
+            zoomOnObject(intersects[0].object);
+        } else {
+            camera.position.set(0,0,0);
+        }
     }
 
     function onPointerMove(event) {
@@ -214,6 +216,67 @@ function onWindowResize() {
     if (!shouldAnimate) {
         update();
     }
+}
+
+function zoomOnObject(object, offset) {
+    let center = new THREE.Vector3();
+    let size = new THREE.Vector3();
+    let cameraDist;
+    //increase cameraDist so object isn't the entire screen
+    offset = offset || 1.75;
+
+    // create bounding box from object and get center and dimensions of object
+    let boundingBox = new THREE.Box3();
+
+    boundingBox.setFromObject(object);
+    boundingBox.getCenter(center);
+    boundingBox.getSize(size);
+
+    camera.lookAt(center);
+    // update y position of camera to level with the object
+    camera.position.y = center.y;
+    // move the camera closer to the object (change x or z to move closer to object)
+    // adjust the other axis position to the center of the object
+    if (Math.abs(center.x) == Math.max(Math.abs(center.x), Math.abs(center.z))) {
+        camera.position.z = center.z;
+        let maxDim = Math.max(size.y, size.z); //check which dimension you have to fit view to
+        if (maxDim === size.y) {
+            cameraDist = maxDim/(2*Math.tan(fov/2));
+            cameraDist += size.x/2;
+            cameraDist *= offset;
+        } else { //do the same calculations but with horizontal field of view
+            const aspect = camera.aspect;
+            const hFOV = 2 * Math.atan( Math.tan(camera.fov / 2 ) * aspect );
+            cameraDist = maxDim/(2*Math.tan(hFOV/2));
+            cameraDist += size.x/2;
+            cameraDist *= offset;
+        }
+        if (center.x > 0) {
+            camera.position.x = center.x - cameraDist;
+        } else {
+            camera.position.x = center.x + cameraDist;
+        }
+    } else { //set x, zoom on z axis
+        camera.position.x = center.x;
+        let maxDim = Math.max(size.y, size.x);
+        if (maxDim === size.y) {
+            cameraDist = maxDim/(2*Math.tan(fov/2));
+            cameraDist += size.z/2;
+            cameraDist *= offset;
+        } else {
+            const aspect = camera.aspect;
+            const hFOV = 2 * Math.atan( Math.tan(camera.fov / 2 ) * aspect );
+            cameraDist = maxDim/(2*Math.tan(hFOV/2));
+            cameraDist += size.z/2;
+            cameraDist *= offset;
+        }
+        if (center.z > 0) {
+            camera.position.z = center.z - cameraDist;
+        } else {
+            camera.position.z = center.z + cameraDist;
+        }
+    }
+    camera.updateProjectionMatrix();
 }
 
 init()
