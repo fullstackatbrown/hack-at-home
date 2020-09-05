@@ -47,10 +47,6 @@ body {
     flex-direction: row;
 }
 
-.workshop__organizers-full div {
-    margin-right: 20px;
-}
-
 @media only screen and (max-width: 800px) {
     .columns {
         flex-direction: column;
