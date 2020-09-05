@@ -69,7 +69,7 @@ function checkUnderline() {
 function navWorkshop(n) {
     closeAll(true)
     // checkUnderline()
-    $(".block__workshop").animate({right: "0px"}, {duration: 300, queue: false})
+    $(".block__workshop").animate({right: "0px"}, {duration: 300, queue: false, easing: "swing"})
     if ($(window).width() >= 800) {
         $(".block__workshop").scrollTop($("#workshop" + n).offset().top - $(".block__workshop").offset().top + $(".block__workshop").scrollTop())
     } else {
@@ -107,7 +107,7 @@ $("#btn2").on("click", () => {
 
 $(".btn__close").on("click", () => {
     if (largeMode) {
-        $(".block__workshop").animate({right: "-50vw"}, {duration: 300, queue: false})
+        $(".block__workshop").animate({right: "-50vw"}, {duration: 300, queue: false, easing: "swing"})
         closeAll(true)
     } else {
         for (const [n, _] of Object.entries(sections)) {
