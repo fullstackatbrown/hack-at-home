@@ -74,9 +74,9 @@ function navWorkshop(n) {
         $(".block__workshop").scrollTop($("#workshop" + n).offset().top - $(".block__workshop").offset().top + $(".block__workshop").scrollTop())
     } else {
         if (n === 1) {
-
+            window.location.href = "workshops/git.html";
         } else if (n === 2) {
-
+            window.location.href = "workshops/htmlcss.html";
         }
     }
     checkUnderline()

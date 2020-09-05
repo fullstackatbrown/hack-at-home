@@ -12,7 +12,7 @@ $('.header__hamburger').on("click", function () {
     }
 });
 
-$(window).on('scroll', function (e) {
+function adaptHeader() {
     if ($("#s4").offset().top - $(window).scrollTop() <= 0 ) {
         $("header").css({backgroundColor: "rgb(248,221,100,1)"})
     } else if ($("#s3").offset().top - $(window).scrollTop() <= 0 ) {
@@ -22,14 +22,18 @@ $(window).on('scroll', function (e) {
     } else {
         $("header").css({backgroundColor: "rgb(255,255,255,1)"})
     }
+}
+
+$(window).on('scroll', function (e) {
+  adaptHeader()
 })
 
 $('#house').on("click", function () {
     $('.clouds__left').addClass("clouds__left_active")
     $('.clouds__right').addClass("clouds__right_active")
     setTimeout(() => {
-        console.log("WOW")
-        console.log($("#house-link"))
         document.getElementById("house-link").click();
     }, 2000)
 })
+
+adaptHeader()
