@@ -1,4 +1,5 @@
 import * as THREE from 'https://unpkg.com/three@0.119.1/build/three.module.js';
+import Camera from './camera.js'
 
 import {GLTFLoader} from "https://unpkg.com/three@0.119.1/examples/jsm/loaders/GLTFLoader.js";
 import {DRACOLoader} from 'https://unpkg.com/three@0.119.1/examples/jsm/loaders/DRACOLoader.js';
@@ -7,10 +8,7 @@ import {CSS3DRenderer, CSS3DObject} from 'https://unpkg.com/three@0.119.1/exampl
 // camera control vars
 var isUserInteracting = false, shouldAnimate = false, animateTimeout = null,
     onMouseDownMouseX = 0, onMouseDownMouseY = 0,
-    lon = 0, onMouseDownLon = 0,
-    lat = 0, onMouseDownLat = 0,
-    phi = 0, theta = 0,
-    tiltX = 0, tiltY = 0;
+    onMouseDownLon = 0, onMouseDownLat = 0;
 
 // hover/click control
 var INTERSECTED;
@@ -30,7 +28,6 @@ var renderercss = new CSS3DRenderer();
 renderercss.setSize(window.innerWidth, window.innerHeight);
 renderercss.domElement.style.position = 'absolute';
 renderercss.domElement.style.top = '0px';
-
 container.appendChild(renderercss.domElement);
 
 var Controls = function () {
@@ -74,19 +71,21 @@ var Controls = function () {
         var clientY = event.clientY || event.touches[0].clientY;
         onMouseDownMouseX = clientX;
         onMouseDownMouseY = clientY;
-        onMouseDownLon = lon;
-        onMouseDownLat = lat;
+        onMouseDownLon = camera.lon;
+        onMouseDownLat = camera.lat;
 
         //calculates device coordinates
         mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
         mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
         //update picking ray based off mouse and camera position
-        raycaster.setFromCamera(mouse, camera);
+        raycaster.setFromCamera(mouse, camera.camera);
         const intersects = raycaster.intersectObjects(clickable, true);
         if (intersects.length > 0) {
             zoomOnObject(intersects[0].object);
         } else {
-            camera.position.set(0,0,0);
+            camera.camX = 0;
+            camera.camY = 0;
+            camera.camZ = 0;
         }
         // let zoomedIn;
         // if (zoomedIn) {
@@ -96,11 +95,9 @@ var Controls = function () {
         //         if ( raycaster.ray.intersectsBox(clickable[i]) === true ) {
         //             zoomOnObject(clickable[i]);
         //             zoomedIn = true;
-        //         } 
+        //         }
         //     }
         // }
-
-        
     }
 
     function onPointerMove(event) {
@@ -113,12 +110,12 @@ var Controls = function () {
         if (isUserInteracting === true) {
             var clientX = event.clientX || event.touches[0].clientX;
             var clientY = event.clientY || event.touches[0].clientY;
-            lon = (onMouseDownMouseX - clientX) * 0.1 + onMouseDownLon;
-            lat = (clientY - onMouseDownMouseY) * 0.1 + onMouseDownLat;
+            camera.lon = (onMouseDownMouseX - clientX) * 0.1 + onMouseDownLon;
+            camera.lat = (clientY - onMouseDownMouseY) * 0.1 + onMouseDownLat;
         }
         // jiggle screen
-        tiltX = tiltX - ((tiltX + (((window.innerWidth / 2) - event.clientX) / (window.innerWidth / 2)) / 25) / 4)
-        tiltY = tiltY - ((tiltY + (((window.innerHeight / 2) - event.clientY) / (window.innerHeight / 2)) / 25) / 4)
+        camera.tiltX = camera.tiltX - ((camera.tiltX + (((window.innerWidth / 2) - event.clientX) / (window.innerWidth / 2)) / 25) / 4)
+        camera.tiltY = camera.tiltY - ((camera.tiltY + (((window.innerHeight / 2) - event.clientY) / (window.innerHeight / 2)) / 25) / 4)
 
         // tiltX = window.innerWidth
 
@@ -127,25 +124,25 @@ var Controls = function () {
         mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
 
         //update picking ray based off mouse and camera position
-        raycaster.setFromCamera(mouse, camera);
+        raycaster.setFromCamera(mouse, camera.camera);
         const intersects = raycaster.intersectObjects(hoverable, true);
         // if the mouse intersects with an object in hoverable
-        if (intersects.length > 0){
+        if (intersects.length > 0) {
             if (!INTERSECTED) {
                 // search through hoverable to see if the intersection is of a hoverable model
-                for (var i = 0; i < hoverable.length; i++){
-                    if (hoverable[i].children.includes(intersects[0].object)){
+                for (var i = 0; i < hoverable.length; i++) {
+                    if (hoverable[i].children.includes(intersects[0].object)) {
                         // redefine INTERSECTED as the array of objects in the model
                         INTERSECTED = hoverable[i].children;
                         // for each object in the model, store the current hex and then highlight the model
                         for (var j = 0; j < INTERSECTED.length; j++) {
                             INTERSECTED[j].currentHex = INTERSECTED[j].material.color.getHex();
-                            INTERSECTED[j].material.color.offsetHSL(0,0.05,0.035);
+                            INTERSECTED[j].material.color.offsetHSL(0, 0.05, 0.035);
                         }
                     }
                 }
             }
-        // if mouse hovers off a hoverable object (no intersections)
+            // if mouse hovers off a hoverable object (no intersections)
         } else {
             // if a model's color was changed/highlighted, revert to original and set INTERSECTED to null
             if (INTERSECTED) {
@@ -169,10 +166,7 @@ var Controls = function () {
 var scene = new THREE.Scene();
 scene.background = new THREE.Color(0xffffff);
 
-var camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 100);
-camera.position.set(0, 0, 0);
-camera.target = new THREE.Vector3(0, 0, 0);
-camera.layers.enable(1);
+const camera = new Camera();
 
 var light = new THREE.AmbientLight(0xffffff); // soft white light
 scene.add(light);
@@ -189,32 +183,20 @@ var hoverable = [];
 function animate() {
     // TODO: remove unneeded animation frame requests
     requestAnimationFrame(animate);
-
+    camera.update()
     // POWER SAVE
     if (shouldAnimate) {
         update();
     }
 }
 
-let speed = 0.2 // snap speed
 function update() {
-    lat = Math.max(-85, Math.min(85, lat));
-    // phi = THREE.MathUtils.degToRad( 90 - lat );
-    phi = THREE.MathUtils.degToRad(90)
     if (isUserInteracting === false) {
         // snap to grid
-        let diff = Math.round(lon / 60.0) * 60 - lon;
-        lon = lon + (diff * speed)
+        // TODO: Camera movement
     }
-    theta = THREE.MathUtils.degToRad(lon);
-    phi += tiltY;
-    theta += tiltX;
-    camera.target.x = 500 * Math.sin(phi) * Math.cos(theta);
-    camera.target.y = 500 * Math.cos(phi);
-    camera.target.z = 500 * Math.sin(phi) * Math.sin(theta);
-    camera.lookAt(camera.target);
-    renderer.render(scene, camera);
-    renderercss.render(scene, camera);
+    renderer.render(scene, camera.camera);
+    renderercss.render(scene, camera.camera);
 }
 
 
@@ -223,8 +205,7 @@ function init() {
 }
 
 function onWindowResize() {
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
+    camera.onResize()
     renderercss.setSize(window.innerWidth, window.innerHeight);
     renderer.setSize(window.innerWidth, window.innerHeight);
     // if we are not animating frames, update manually
@@ -246,62 +227,51 @@ function zoomOnObject(box, offset) {
     boundingBox.getCenter(center);
     boundingBox.getSize(size);
 
-    camera.lookAt(center);
+    camera.camera.lookAt(center);
     // update y position of camera to level with the object
-    camera.position.y = center.y;
+    camera.camY = center.y;
     // move the camera closer to the object (change x or z to move closer to object)
     // adjust the other axis position to the center of the object
     if (Math.abs(center.x) == Math.max(Math.abs(center.x), Math.abs(center.z))) {
-        camera.position.z = center.z;
+        camera.camZ = center.z;
         let maxDim = Math.max(size.y, size.z); //check which dimension you have to fit view to
         if (maxDim === size.y) {
-            cameraDist = maxDim/(2*Math.tan(fov/2));
-            cameraDist += size.x/2;
+            cameraDist = maxDim / (2 * Math.tan(fov / 2));
+            cameraDist += size.x / 2;
             cameraDist *= offset;
         } else { //do the same calculations but with horizontal field of view
-            const aspect = camera.aspect;
-            const hFOV = 2 * Math.atan( Math.tan(camera.fov / 2 ) * aspect );
-            cameraDist = maxDim/(2*Math.tan(hFOV/2));
-            cameraDist += size.x/2;
+            const aspect = camera.camera.aspect;
+            const hFOV = 2 * Math.atan(Math.tan(camera.camera.fov / 2) * aspect);
+            cameraDist = maxDim / (2 * Math.tan(hFOV / 2));
+            cameraDist += size.x / 2;
             cameraDist *= offset;
         }
         if (center.x > 0) {
-            camera.position.x = center.x - cameraDist;
+            camera.camX = center.x - cameraDist;
         } else {
-            camera.position.x = center.x + cameraDist;
+            camera.camX = center.x + cameraDist;
         }
     } else { //set x, zoom on z axis
-        camera.position.x = center.x;
+        camera.camX = center.x;
         let maxDim = Math.max(size.y, size.x);
         if (maxDim === size.y) {
-            cameraDist = maxDim/(2*Math.tan(fov/2));
-            cameraDist += size.z/2;
+            cameraDist = maxDim / (2 * Math.tan(fov / 2));
+            cameraDist += size.z / 2;
             cameraDist *= offset;
         } else {
-            const aspect = camera.aspect;
-            const hFOV = 2 * Math.atan( Math.tan(camera.fov / 2 ) * aspect );
-            cameraDist = maxDim/(2*Math.tan(hFOV/2));
-            cameraDist += size.z/2;
+            const aspect = camera.camera.aspect;
+            const hFOV = 2 * Math.atan(Math.tan(camera.camera.fov / 2) * aspect);
+            cameraDist = maxDim / (2 * Math.tan(hFOV / 2));
+            cameraDist += size.z / 2;
             cameraDist *= offset;
         }
         if (center.z > 0) {
-            camera.position.z = center.z - cameraDist;
+            camera.camZ = center.z - cameraDist;
         } else {
-            camera.position.z = center.z + cameraDist;
+            camera.camZ = center.z + cameraDist;
         }
     }
-    camera.updateProjectionMatrix();
-
-    // EX CODE FOR USING ANIMEJS FOR EASING
-    // anime({
-    //     targets: camera.position,
-    //     x: targetX,
-    //     y: targetY,
-    //     z: targetZ,
-    //     duration: cameraDist*some_multiplier,
-    //     update: camera.updateProjectionMatrix()
-    //     easing: eastOutSine
-    // });
+    camera.camera.updateProjectionMatrix();
 }
 
 init()
@@ -328,18 +298,6 @@ loader.load('assets/models/room.glb', function (gltf) {
     var model = gltf.scene;
     model.position.set(0, -4, 0);
     model.scale.set(4, 4, 4);
-    model.matrixAutoUpdate = false;
-    model.updateMatrix()
-    scene.add(model);
-}, undefined, function (e) {
-    console.error(e);
-});
-
-loader.load('assets/models/h@h_bedroom_revised.gltf', function (gltf) {
-    var model = gltf.scene;
-    model.position.set(10, -2, 7);
-    model.rotateY(THREE.MathUtils.degToRad(120))
-    model.scale.set(1, 1, 1);
     model.matrixAutoUpdate = false;
     model.updateMatrix()
     scene.add(model);
