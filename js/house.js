@@ -88,6 +88,19 @@ var Controls = function () {
         } else {
             camera.position.set(0,0,0);
         }
+        // let zoomedIn;
+        // if (zoomedIn) {
+        //     camera.position.set(0,0,0);
+        // } else {
+        //     for (var i = 0; i <clickable.length; i++) {
+        //         if ( raycaster.ray.intersectsBox(clickable[i]) === true ) {
+        //             zoomOnObject(clickable[i]);
+        //             zoomedIn = true;
+        //         } 
+        //     }
+        // }
+
+        
     }
 
     function onPointerMove(event) {
@@ -115,15 +128,15 @@ var Controls = function () {
 
         //update picking ray based off mouse and camera position
         raycaster.setFromCamera(mouse, camera);
-        const intersects = raycaster.intersectObjects(clickable, true);
-        // if the mouse intersects with an object in clickable
+        const intersects = raycaster.intersectObjects(hoverable, true);
+        // if the mouse intersects with an object in hoverable
         if (intersects.length > 0){
             if (!INTERSECTED) {
-                // search through clickable to see if the intersection is of a clickable model
-                for (var i = 0; i < clickable.length; i++){
-                    if (clickable[i].children.includes(intersects[0].object)){
+                // search through hoverable to see if the intersection is of a hoverable model
+                for (var i = 0; i < hoverable.length; i++){
+                    if (hoverable[i].children.includes(intersects[0].object)){
                         // redefine INTERSECTED as the array of objects in the model
-                        INTERSECTED = clickable[i].children;
+                        INTERSECTED = hoverable[i].children;
                         // for each object in the model, store the current hex and then highlight the model
                         for (var j = 0; j < INTERSECTED.length; j++) {
                             INTERSECTED[j].currentHex = INTERSECTED[j].material.color.getHex();
@@ -132,7 +145,7 @@ var Controls = function () {
                     }
                 }
             }
-        // if mouse hovers off a clickable object (no intersections)
+        // if mouse hovers off a hoverable object (no intersections)
         } else {
             // if a model's color was changed/highlighted, revert to original and set INTERSECTED to null
             if (INTERSECTED) {
@@ -168,8 +181,10 @@ var raycaster = new THREE.Raycaster();
 raycaster.layers.set(0);
 var mouse = new THREE.Vector2();
 
-//array that keeps track of clickable items
+//array that keeps track of zoomable items
 var clickable = [];
+//array that keeps track of hoverable items
+var hoverable = [];
 
 function animate() {
     // TODO: remove unneeded animation frame requests
@@ -218,7 +233,7 @@ function onWindowResize() {
     }
 }
 
-function zoomOnObject(object, offset) {
+function zoomOnObject(box, offset) {
     let center = new THREE.Vector3();
     let size = new THREE.Vector3();
     let cameraDist;
@@ -227,8 +242,7 @@ function zoomOnObject(object, offset) {
 
     // create bounding box from object and get center and dimensions of object
     let boundingBox = new THREE.Box3();
-
-    boundingBox.setFromObject(object);
+    boundingBox.setFromObject(box);
     boundingBox.getCenter(center);
     boundingBox.getSize(size);
 
@@ -277,6 +291,17 @@ function zoomOnObject(object, offset) {
         }
     }
     camera.updateProjectionMatrix();
+
+    // EX CODE FOR USING ANIMEJS FOR EASING
+    // anime({
+    //     targets: camera.position,
+    //     x: targetX,
+    //     y: targetY,
+    //     z: targetZ,
+    //     duration: cameraDist*some_multiplier,
+    //     update: camera.updateProjectionMatrix()
+    //     easing: eastOutSine
+    // });
 }
 
 init()
@@ -312,8 +337,9 @@ loader.load('assets/models/room.glb', function (gltf) {
 
 loader.load('assets/models/h@h_bedroom_revised.gltf', function (gltf) {
     var model = gltf.scene;
-    model.position.set(10, -2, 0);
-    model.scale.set(0.5, 0.5, 0.5);
+    model.position.set(10, -2, 7);
+    model.rotateY(THREE.MathUtils.degToRad(120))
+    model.scale.set(1, 1, 1);
     model.matrixAutoUpdate = false;
     model.updateMatrix()
     scene.add(model);
@@ -329,8 +355,18 @@ loader.load('assets/models/cubby.glb', function (gltf) {
     model.matrixAutoUpdate = false;
     model.updateMatrix()
     model.name = "cubby";
-    clickable.push(model.children[2]);
+    // let zoomable = model.children[2].children[0].clone();
+    // zoomable.position.set(10, -2.2, 1);
+    // zoomable.rotateY(THREE.MathUtils.degToRad(180));
+    // zoomable.scale.set(0.5,0.5,0.5)
+    // var box = new THREE.BoxHelper();
+    // box.setFromObject(zoomable);
+    // clickable.push(box);
+    clickable.push(model.children[2].children[0]);
+    hoverable.push(model.children[2]);
     scene.add(model);
+    // scene.add(box);
+    // scene.add(zoomable);
 }, undefined, function (e) {
     console.error(e);
 });
