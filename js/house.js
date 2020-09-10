@@ -291,6 +291,17 @@ function zoomOnObject(box, offset) {
         }
     }
     camera.updateProjectionMatrix();
+
+    // EX CODE FOR USING ANIMEJS FOR EASING
+    // anime({
+    //     targets: camera.position,
+    //     x: targetX,
+    //     y: targetY,
+    //     z: targetZ,
+    //     duration: cameraDist*some_multiplier,
+    //     update: camera.updateProjectionMatrix()
+    //     easing: eastOutSine
+    // });
 }
 
 init()
