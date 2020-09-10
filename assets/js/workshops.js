@@ -1,8 +1,8 @@
 let sections = {
     1: false,
     2: false,
-    // 3: false,
-    // 4: false,
+    3: false,
+    4: false,
     // 5: false,
     // 6: false
 }
@@ -54,12 +54,11 @@ function checkUnderline() {
     //     triggerMenu(6)
     // } else if ($("#workshop5").offset().top - $(".block__workshop").offset().top <= 10) {
     //     triggerMenu(5)
-    // } else if ($("#workshop4").offset().top - $(".block__workshop").offset().top <= 10) {
-    //     triggerMenu(4)
-    // } else if ($("#workshop3").offset().top - $(".block__workshop").offset().top <= 10) {
-    //     triggerMenu(3)
-    // } else
-    if ($("#workshop2").offset().top - $(".block__workshop").offset().top <= 2) {
+    if ($("#workshop4").offset().top - $(".block__workshop").offset().top <= 10) {
+        triggerMenu(4)
+    } else if ($("#workshop3").offset().top - $(".block__workshop").offset().top <= 10) {
+        triggerMenu(3)
+    } else if ($("#workshop2").offset().top - $(".block__workshop").offset().top <= 2) {
         triggerMenu(2)
     } else if ($("#workshop1").offset().top - $(".block__workshop").offset().top <= 2) {
         triggerMenu(1)
@@ -77,6 +76,10 @@ function navWorkshop(n) {
             window.location.href = "workshops/git.html";
         } else if (n === 2) {
             window.location.href = "workshops/htmlcss.html";
+        } else if (n === 3) {
+            window.location.href = "workshops/pythonflask.html";
+        } else if (n === 4) {
+            window.location.href = "workshops/sql.html";
         }
     }
     checkUnderline()
@@ -92,12 +95,12 @@ $("#btn1").on("click", () => {
 $("#btn2").on("click", () => {
     navWorkshop(2)
 })
-// $("#btn3").on("click", () => {
-//     navWorkshop(3)
-// })
-// $("#btn4").on("click", () => {
-//     navWorkshop(4)
-// })
+$("#btn3").on("click", () => {
+    navWorkshop(3)
+})
+$("#btn4").on("click", () => {
+    navWorkshop(4)
+})
 // $("#btn5").on("click", () => {
 //     navWorkshop(5)
 // })
