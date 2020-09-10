@@ -309,6 +309,18 @@ loader.load('assets/models/room.glb', function (gltf) {
 }, undefined, function (e) {
     console.error(e);
 });
+
+loader.load('assets/models/h@h_bedroom_revised.gltf', function (gltf) {
+    var model = gltf.scene;
+    model.position.set(10, -2, 0);
+    model.scale.set(0.5, 0.5, 0.5);
+    model.matrixAutoUpdate = false;
+    model.updateMatrix()
+    scene.add(model);
+}, undefined, function (e) {
+    console.error(e);
+});
+
 loader.load('assets/models/cubby.glb', function (gltf) {
     var model = gltf.scene;
     model.position.set(10, -2.2, 1);
