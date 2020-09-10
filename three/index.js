@@ -77,10 +77,6 @@ function update() {
     renderercss.render(scene, camera.camera);
 }
 
-function init() {
-    window.addEventListener('resize', onWindowResize, false);
-}
-
 function onWindowResize() {
     camera.onResize()
     renderercss.setSize(window.innerWidth, window.innerHeight);
@@ -91,6 +87,6 @@ function onWindowResize() {
     }
 }
 
-init()
+window.addEventListener('resize', onWindowResize, false);
 
 animate()
