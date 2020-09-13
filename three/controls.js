@@ -7,7 +7,8 @@ class Controls {
         this.onMouseDownLon = 0;
         this.onMouseDownLat = 0;
         this.clickable = [];    //array that keeps track of zoomable items
-        this.hoverable = [];    //array that keeps track of hoverable items
+        this.clickableOnZoom = [];
+        this.hoverable = [];    //array that keeps track of hoverable groups of items
         this.intersected = false;
         this.iframe = iframe
         this.camera = camera;
@@ -16,6 +17,7 @@ class Controls {
         this.shouldAnimate = false;
         this.raycaster = new THREE.Raycaster();
         this.mouse = new THREE.Vector2();
+        this.isZoomed = false;
 
         this.raycaster.layers.set(0);
         this.addListeners()
@@ -72,25 +74,28 @@ class Controls {
         this.mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
         //update picking ray based off mouse and camera position
         this.raycaster.setFromCamera(this.mouse, this.camera.camera);
-        const intersects = this.raycaster.intersectObjects(this.clickable, true);
-        if (intersects.length > 0) {
-            this.camera.zoomOnObject(intersects[0].object);
-        } else {
-            this.camera.camX = 0;
-            this.camera.camY = 0;
-            this.camera.camZ = 0;
+        if (this.isZoomed) { // start checking for clicks on objects that are only clickable after zooming in (e.g. sticky notes)
+            const intersects = this.raycaster.intersectObjects(this.clickableOnZoom, true);
+            if (intersects.length > 0) {
+                this.camera.zoomOnObject(intersects[0].object);
+            } else {
+                this.camera.camX = 0;
+                this.camera.camY = 0;
+                this.camera.camZ = 0;
+                this.isZoomed = false;
+            }
+        } else { // only check for the first layer of clickable objects (e.g. the whiteboard but not the sticky notes)
+            const intersects = this.raycaster.intersectObjects(this.clickable, true);
+            if (intersects.length > 0) {
+                this.camera.zoomOnObject(intersects[0].object);
+                this.isZoomed = true;
+            } else {
+                this.camera.camX = 0;
+                this.camera.camY = 0;
+                this.camera.camZ = 0;
+                this.isZoomed = false;
+            }
         }
-        // let zoomedIn;
-        // if (zoomedIn) {
-        //     camera.position.set(0,0,0);
-        // } else {
-        //     for (var i = 0; i <clickable.length; i++) {
-        //         if ( raycaster.ray.intersectsBox(clickable[i]) === true ) {
-        //             zoomOnObject(clickable[i]);
-        //             zoomedIn = true;
-        //         }
-        //     }
-        // }
     }
 
     onPointerMove = (event) => {
@@ -130,7 +135,12 @@ class Controls {
                         // for each object in the model, store the current hex and then highlight the model
                         for (var j = 0; j < this.intersected.length; j++) {
                             this.intersected[j].currentHex = this.intersected[j].material.color.getHex();
-                            this.intersected[j].material.color.offsetHSL(0, 0.05, 0.035);
+                            this.intersected[j].material.color.offsetHSL(0, 0.05, 0.05);
+                            // if (this.intersected[j].currentHex == 16777215) {
+                            //     this.intersected[j].material.color.offsetHSL(0.2, 0.3, -0.05);
+                            // } else {
+                            //     this.intersected[j].material.color.offsetHSL(0, 0.05, 0.05);
+                            // }
                         }
                     }
                 }
