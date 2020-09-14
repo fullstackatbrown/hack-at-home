@@ -12,26 +12,21 @@ class Loader {
         // group the sticky notes all together
         this.stickynote_group1 = new THREE.Group();
         this.stickynote_group1.name = "sticknote_group1";
-        this.stickynote_group1.position.set(2, 2.5, 11);
+        this.stickynote_group1.position.set(4, 2.5, 9.75);
         this.stickynote_group1.scale.set(4,4,4);
         this.stickynote_group1.rotateY(THREE.MathUtils.degToRad(30))
         this.stickynote_group1.matrixAutoUpdate = false;
         this.stickynote_group1.updateMatrix();
+        this.controls.clickableOnZoom.push(this.stickynote_group1);
+        this.controls.hoverable.push(this.stickynote_group1);
+        this.scene.add(this.stickynote_group1);
 
         this.manager.onStart = function (url, itemsLoaded, itemsTotal) {
             console.log('Started loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.');
         };
+        
         this.loadModels();
-        this.scene.add(this.stickynote_group1);
         this.controls.clickableOnZoom.push(...this.controls.clickable.slice());
-        this.controls.clickableOnZoom.push(this.stickynote_group1);
-        this.controls.hoverable.push(this.stickynote_group1);
-
-        // var geo = new THREE.BoxBufferGeometry(1,1,1);
-        // var material = new THREE.MeshBasicMaterial({color: 0xff0000});
-        // var mesh = new THREE.Mesh(geo, material);
-        // mesh.position.set(2,2.5,11);
-        // scene.add(mesh);
     }
 
     // TODO: Modularize into individual loadModel functions
@@ -84,25 +79,24 @@ class Loader {
 
         loader.load('assets/models/bedroom-stickynotes-organized.gltf', (gltf) => {
             var model = gltf.scene;
-            // this.controls.clickable.push(model.children[2].children[0]);
-            // this.controls.hoverable.push(model.children[0]);
             var sticky_note = model.children[0]
-            sticky_note.position.set(0.5, 0, 0);
-            this.stickynote_group1.add(model.children[0]);
+            sticky_note.position.set(0, 0, 0);
+            this.stickynote_group1.add(sticky_note);
+            this.controls.clickableOnZoom.push(sticky_note);
         }, undefined, function (e) {
             console.error(e);
         });
 
-        loader.load('assets/models/bedroom-stickynotes-organized.gltf', (gltf) => {
-            var model = gltf.scene;
-            // this.controls.clickable.push(model.children[2].children[0]);
-            // this.controls.hoverable.push(model.children[0]);
-            var sticky_note = model.children[0]
-            sticky_note.position.set(0.75, 0, 0);
-            this.stickynote_group1.add(sticky_note);
-        }, undefined, function (e) {
-            console.error(e);
-        });
+        // loader.load('assets/models/bedroom-stickynotes-organized.gltf', (gltf) => {
+        //     var model = gltf.scene;
+        //     // this.controls.clickable.push(model.children[2].children[0]);
+        //     // this.controls.hoverable.push(model.children[0]);
+        //     var sticky_note = model.children[0]
+        //     sticky_note.position.set(0.75, 0, 0);
+        //     this.stickynote_group1.add(sticky_note);
+        // }, undefined, function (e) {
+        //     console.error(e);
+        // });
     }
 }
 
