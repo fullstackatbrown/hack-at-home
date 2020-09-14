@@ -77,7 +77,7 @@ class Controls {
         if (this.isZoomed) { // start checking for clicks on objects that are only clickable after zooming in (e.g. sticky notes)
             const intersects = this.raycaster.intersectObjects(this.clickableOnZoom, true);
             if (intersects.length > 0) {
-                this.camera.zoomOnObject(intersects[0].object);
+                this.camera.zoomOnObject(intersects[0].object, 0.9);
             } else {
                 this.camera.camX = 0;
                 this.camera.camY = 0;

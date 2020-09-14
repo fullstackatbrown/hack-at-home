@@ -72,9 +72,12 @@ class Camera {
             cameraDist = maxDim / (2 * Math.tan(hFOV / 2));
         }
 
+        // calculate distance the camera needs to travel to be cameraDist away from object
         distToTravel = Math.hypot(center.x, center.z) - cameraDist;
+        // decrease the distance to give buffer space
         distToTravel *= offset;
 
+        //calculate how much of distToTravel is in the x and z
         delZ = Math.abs(Math.sin(theta)) * distToTravel;
         delX = Math.cos(theta) * distToTravel;
 
