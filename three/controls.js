@@ -8,7 +8,7 @@ class Controls {
         this.onMouseDownLat = 0;
         this.clickable = [];    //array that keeps track of zoomable items
         this.clickableOnZoom = [];
-        this.hoverable = [];    //array that keeps track of hoverable groups of items
+        this.hoverable = [];    //array that keeps track of hoverable threejs groups of meshes and individual meshes
         this.intersected = false;
         this.iframe = iframe
         this.camera = camera;
@@ -136,12 +136,12 @@ class Controls {
                         for (var j = 0; j < this.intersected.length; j++) {
                             this.intersected[j].currentHex = this.intersected[j].material.color.getHex();
                             this.intersected[j].material.color.offsetHSL(0, 0.05, 0.05);
-                            // if (this.intersected[j].currentHex == 16777215) {
-                            //     this.intersected[j].material.color.offsetHSL(0.2, 0.3, -0.05);
-                            // } else {
-                            //     this.intersected[j].material.color.offsetHSL(0, 0.05, 0.05);
-                            // }
                         }
+                    } else if (this.hoverable[i] == intersects[0].object) {
+                        // redefine intersected as the single object in the model
+                        this.intersected = [this.hoverable[i]];
+                        this.intersected[0].currentHex = intersects[0].object.material.color.getHex();
+                        this.intersected[0].material.color.offsetHSL(0, 0.05, 0.05);
                     }
                 }
             }

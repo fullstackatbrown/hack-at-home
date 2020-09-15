@@ -10,16 +10,16 @@ class Loader {
         this.scene = scene;
 
         // group the sticky notes all together
-        this.stickynote_group1 = new THREE.Group();
-        this.stickynote_group1.name = "sticknote_group1";
-        this.stickynote_group1.position.set(4, 2.5, 9.75);
-        this.stickynote_group1.scale.set(4,4,4);
-        this.stickynote_group1.rotateY(THREE.MathUtils.degToRad(30))
-        this.stickynote_group1.matrixAutoUpdate = false;
-        this.stickynote_group1.updateMatrix();
-        this.controls.clickableOnZoom.push(this.stickynote_group1);
-        this.controls.hoverable.push(this.stickynote_group1);
-        this.scene.add(this.stickynote_group1);
+        // this.stickynote_group1 = new THREE.Group();
+        // this.stickynote_group1.name = "sticknote_group1";
+        // this.stickynote_group1.position.set(4, 2.5, 9.75);
+        // this.stickynote_group1.scale.set(4,4,4);
+        // this.stickynote_group1.rotateY(THREE.MathUtils.degToRad(30))
+        // this.stickynote_group1.matrixAutoUpdate = false;
+        // this.stickynote_group1.updateMatrix();
+        // this.controls.clickableOnZoom.push(this.stickynote_group1);
+        // // this.controls.hoverable.push(this.stickynote_group1);
+        // this.scene.add(this.stickynote_group1);
 
         this.manager.onStart = function (url, itemsLoaded, itemsTotal) {
             console.log('Started loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.');
@@ -79,10 +79,14 @@ class Loader {
 
         loader.load('assets/models/bedroom-stickynotes-organized.gltf', (gltf) => {
             var model = gltf.scene;
-            var sticky_note = model.children[0]
-            sticky_note.position.set(0, 0, 0);
-            this.stickynote_group1.add(sticky_note);
-            this.controls.clickableOnZoom.push(sticky_note);
+            model.position.set(2, -4.2, 11.25);
+            model.scale.set(4, 4, 4);
+            model.rotateY(THREE.MathUtils.degToRad(30))
+            model.matrixAutoUpdate = false;
+            model.updateMatrix()
+            this.controls.clickableOnZoom.push(model.children[0]);
+            this.controls.hoverable.push(model.children[0]);
+            this.scene.add(model);
         }, undefined, function (e) {
             console.error(e);
         });
