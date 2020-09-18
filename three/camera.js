@@ -45,58 +45,51 @@ class Camera {
         let center = new THREE.Vector3();
         let size = new THREE.Vector3();
         let cameraDist;
+        let distToTravel;
+        let delX;
+        let delZ;
+        let theta;
         //increase cameraDist so object isn't the entire screen
-        offset = offset || 1.75;
+        offset = offset || 0.75;
 
         // create bounding box from object and get center and dimensions of object
         let boundingBox = new THREE.Box3();
         boundingBox.setFromObject(box);
         boundingBox.getCenter(center);
         boundingBox.getSize(size);
+        let maxDim = Math.max(size.x, size.y, size.z); //check which dimension you have to fit view to
 
         this.camera.lookAt(center);
         // update y position of camera to level with the object
         this.camY = center.y;
-        // move the camera closer to the object (change x or z to move closer to object)
-        // adjust the other axis position to the center of the object
-        if (Math.abs(center.x) == Math.max(Math.abs(center.x), Math.abs(center.z))) {
-            this.camZ = center.z;
-            let maxDim = Math.max(size.y, size.z); //check which dimension you have to fit view to
-            if (maxDim === size.y) {
-                cameraDist = maxDim / (2 * Math.tan(fov / 2));
-                cameraDist += size.x / 2;
-                cameraDist *= offset;
-            } else { //do the same calculations but with horizontal field of view
-                const aspect = this.camera.aspect;
-                const hFOV = 2 * Math.atan(Math.tan(this.camera.fov / 2) * aspect);
-                cameraDist = maxDim / (2 * Math.tan(hFOV / 2));
-                cameraDist += size.x / 2;
-                cameraDist *= offset;
-            }
-            if (center.x > 0) {
-                this.camX = center.x - cameraDist;
-            } else {
-                this.camX = center.x + cameraDist;
-            }
-        } else { //set x, zoom on z axis
-            this.camX = center.x;
-            let maxDim = Math.max(size.y, size.x);
-            if (maxDim === size.y) {
-                cameraDist = maxDim / (2 * Math.tan(fov / 2));
-                cameraDist += size.z / 2;
-                cameraDist *= offset;
-            } else {
-                const aspect = this.camera.aspect;
-                const hFOV = 2 * Math.atan(Math.tan(this.camera.fov / 2) * aspect);
-                cameraDist = maxDim / (2 * Math.tan(hFOV / 2));
-                cameraDist += size.z / 2;
-                cameraDist *= offset;
-            }
-            if (center.z > 0) {
-                this.camZ = center.z - cameraDist;
-            } else {
-                this.camZ = center.z + cameraDist;
-            }
+
+        theta = Math.atan(center.z/center.x);
+        if (maxDim === size.y) {
+            cameraDist = maxDim / (2 * Math.tan(fov / 2));
+        } else { //do the same calculations but with horizontal field of view
+            const aspect = this.camera.aspect;
+            const hFOV = 2 * Math.atan(Math.tan(this.camera.fov / 2) * aspect);
+            cameraDist = maxDim / (2 * Math.tan(hFOV / 2));
+        }
+
+        // calculate distance the camera needs to travel to be cameraDist away from object
+        distToTravel = Math.hypot(center.x, center.z) - cameraDist;
+        // decrease the distance to give buffer space
+        distToTravel *= offset;
+
+        //calculate how much of distToTravel is in the x and z
+        delZ = Math.abs(Math.sin(theta)) * distToTravel;
+        delX = Math.cos(theta) * distToTravel;
+
+        if (center.x > 0) {
+            this.camX = delX;
+        } else {
+            this.camX = -delX;
+        }
+        if (center.z > 0) {
+            this.camZ = delZ;
+        } else {
+            this.camZ = -delZ;
         }
         this.camera.updateProjectionMatrix();
     }
