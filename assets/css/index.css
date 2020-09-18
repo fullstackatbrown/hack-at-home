@@ -207,7 +207,7 @@ footer {
 .btn__workshop {
     color: inherit;
     text-align: left;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
     border: none;
     padding: 6px 0px;
     position: relative;
@@ -215,7 +215,8 @@ footer {
 }
 
 .btn__workshop h2 {
-    margin: 0px
+    margin: 0px;
+    /*font-size: 20px;*/
 }
 
 .btn__open {

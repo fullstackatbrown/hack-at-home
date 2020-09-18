@@ -3,8 +3,8 @@ let sections = {
     2: false,
     3: false,
     4: false,
-    // 5: false,
-    // 6: false
+    5: false,
+    6: false
 }
 
 let numSections = Object.keys(sections).length
@@ -50,11 +50,11 @@ function closeAll(animate) {
 }
 
 function checkUnderline() {
-    // if ($("#workshop6").offset().top - $(".block__workshop").offset().top <= 10) {
-    //     triggerMenu(6)
-    // } else if ($("#workshop5").offset().top - $(".block__workshop").offset().top <= 10) {
-    //     triggerMenu(5)
-    if ($("#workshop4").offset().top - $(".block__workshop").offset().top <= 10) {
+    if ($("#workshop6").offset().top - $(".block__workshop").offset().top <= 10) {
+        triggerMenu(6)
+    } else if ($("#workshop5").offset().top - $(".block__workshop").offset().top <= 10) {
+        triggerMenu(5)
+    } else if ($("#workshop4").offset().top - $(".block__workshop").offset().top <= 10) {
         triggerMenu(4)
     } else if ($("#workshop3").offset().top - $(".block__workshop").offset().top <= 10) {
         triggerMenu(3)
@@ -80,6 +80,10 @@ function navWorkshop(n) {
             window.location.href = "workshops/pythonflask.html";
         } else if (n === 4) {
             window.location.href = "workshops/sql.html";
+        } else if (n === 5) {
+            window.location.href = "workshops/reactnative.html";
+        } else if (n === 6) {
+            window.location.href = "workshops/graphql.html";
         }
     }
     checkUnderline()
@@ -101,12 +105,12 @@ $("#btn3").on("click", () => {
 $("#btn4").on("click", () => {
     navWorkshop(4)
 })
-// $("#btn5").on("click", () => {
-//     navWorkshop(5)
-// })
-// $("#btn6").on("click", () => {
-//     navWorkshop(6)
-// })
+$("#btn5").on("click", () => {
+    navWorkshop(5)
+})
+$("#btn6").on("click", () => {
+    navWorkshop(6)
+})
 
 $(".btn__close").on("click", () => {
     if (largeMode) {
