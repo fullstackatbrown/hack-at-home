@@ -18,6 +18,7 @@ class Controls {
         this.raycaster = new THREE.Raycaster();
         this.mouse = new THREE.Vector2();
         this.isZoomed = false;
+        this.isZoomedSecond = false;
 
         this.raycaster.layers.set(0);
         this.addListeners()
@@ -77,17 +78,35 @@ class Controls {
         if (this.isZoomed) { // start checking for clicks on objects that are only clickable after zooming in (e.g. sticky notes)
             const intersects = this.raycaster.intersectObjects(this.clickableOnZoom, true);
             if (intersects.length > 0) {
-                this.camera.zoomOnObject(intersects[0].object, 0.9);
+                var normalMatrix = new THREE.Matrix3().getNormalMatrix(intersects[0].object.matrixWorld);
+                var normal = intersects[0].face.normal.clone().applyMatrix3( normalMatrix ).normalize();
+                this.camera.zoomOnObject(intersects[0].object, normal, 1);
+                this.isZoomedSecond = true;
             } else {
-                this.camera.camX = 0;
-                this.camera.camY = 0;
-                this.camera.camZ = 0;
-                this.isZoomed = false;
+                //check if clicking off second, internal layer of clickables to the first layer of clickables
+                const intersectsNew = this.raycaster.intersectObjects(this.clickable, true); 
+                if (this.isZoomedSecond && intersectsNew.length > 0) {
+                    var normalMatrix = new THREE.Matrix3().getNormalMatrix(intersectsNew[0].object.matrixWorld);
+                    var normal = intersectsNew[0].face.normal.clone().applyMatrix3( normalMatrix ).normalize();
+                    this.camera.zoomOnObject(intersectsNew[0].object, normal);
+                    this.isZoomed = true;
+                    this.isZoomedSecond = false;
+                } else { //check if clicking off all clickable objects completely
+                    this.camera.camX = 0;
+                    this.camera.camY = 0;
+                    this.camera.camZ = 0;
+                    this.isZoomed = false;
+                }
             }
         } else { // only check for the first layer of clickable objects (e.g. the whiteboard but not the sticky notes)
             const intersects = this.raycaster.intersectObjects(this.clickable, true);
             if (intersects.length > 0) {
-                this.camera.zoomOnObject(intersects[0].object);
+                var normalMatrix = new THREE.Matrix3().getNormalMatrix(intersects[0].object.matrixWorld);
+                var normal = intersects[0].face.normal.clone().applyMatrix3( normalMatrix ).normalize();
+                // console.log(intersects[0].object.geometry.computeVertexNormals())
+                // console.log(intersects[0].object)
+                console.log(intersects[0])
+                this.camera.zoomOnObject(intersects[0].object, normal);
                 this.isZoomed = true;
             } else {
                 this.camera.camX = 0;

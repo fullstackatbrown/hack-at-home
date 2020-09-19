@@ -41,7 +41,7 @@ class Camera {
         this.camera.updateProjectionMatrix();
     }
 
-    zoomOnObject = (box, offset) => {
+    zoomOnObject = (box, normal, offset) => {
         let center = new THREE.Vector3();
         let size = new THREE.Vector3();
         let cameraDist;
@@ -50,7 +50,7 @@ class Camera {
         let delZ;
         let theta;
         //increase cameraDist so object isn't the entire screen
-        offset = offset || 0.75;
+        offset = offset || 2.5;
 
         // create bounding box from object and get center and dimensions of object
         let boundingBox = new THREE.Box3();
@@ -58,7 +58,6 @@ class Camera {
         boundingBox.getCenter(center);
         boundingBox.getSize(size);
         let maxDim = Math.max(size.x, size.y, size.z); //check which dimension you have to fit view to
-
         this.camera.lookAt(center);
         // update y position of camera to level with the object
         this.camY = center.y;
@@ -75,21 +74,20 @@ class Camera {
         // calculate distance the camera needs to travel to be cameraDist away from object
         distToTravel = Math.hypot(center.x, center.z) - cameraDist;
         // decrease the distance to give buffer space
-        distToTravel *= offset;
 
         //calculate how much of distToTravel is in the x and z
         delZ = Math.abs(Math.sin(theta)) * distToTravel;
         delX = Math.cos(theta) * distToTravel;
 
         if (center.x > 0) {
-            this.camX = delX;
+            this.camX = delX - Math.abs(normal.x)*offset;
         } else {
-            this.camX = -delX;
+            this.camX = -delX + Math.abs(normal.x)*offset;
         }
         if (center.z > 0) {
-            this.camZ = delZ;
+            this.camZ = delZ - Math.abs(normal.z)*offset;
         } else {
-            this.camZ = -delZ;
+            this.camZ = -delZ + Math.abs(normal.z)*offset;
         }
         this.camera.updateProjectionMatrix();
     }

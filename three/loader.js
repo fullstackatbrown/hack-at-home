@@ -9,24 +9,11 @@ class Loader {
         this.controls = controls;
         this.scene = scene;
 
-        // group the sticky notes all together
-        // this.stickynote_group1 = new THREE.Group();
-        // this.stickynote_group1.name = "sticknote_group1";
-        // this.stickynote_group1.position.set(4, 2.5, 9.75);
-        // this.stickynote_group1.scale.set(4,4,4);
-        // this.stickynote_group1.rotateY(THREE.MathUtils.degToRad(30))
-        // this.stickynote_group1.matrixAutoUpdate = false;
-        // this.stickynote_group1.updateMatrix();
-        // this.controls.clickableOnZoom.push(this.stickynote_group1);
-        // // this.controls.hoverable.push(this.stickynote_group1);
-        // this.scene.add(this.stickynote_group1);
-
         this.manager.onStart = function (url, itemsLoaded, itemsTotal) {
             console.log('Started loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.');
         };
         
         this.loadModels();
-        this.controls.clickableOnZoom.push(...this.controls.clickable.slice());
     }
 
     // TODO: Modularize into individual loadModel functions
@@ -58,6 +45,13 @@ class Loader {
             this.controls.clickable.push(model.children[2].children[0]);
             this.controls.hoverable.push(model.children[2]);
             this.scene.add(model);
+            // var normalMatrix = new THREE.Matrix3().getNormalMatrix(intersects[0].object.matrixWorld);
+            // var normal = model.children[2].children[0].geometry.normal.clone().applyMatrix3( normalMatrix ).normalize();
+            // console.log(normal)
+            // model.children[2].children[0].geometry.computeFaceNormals()
+            // console.log(model.children[2].children[0].geometry)
+            var helper = new THREE.VertexNormalsHelper(model.children[2].children[0], 2, 0x00ff00, 1 );
+            this.scene.add(helper)
         }, undefined, function (e) {
             console.error(e);
         });
