@@ -2,6 +2,7 @@ import * as THREE from 'https://unpkg.com/three@0.119.1/build/three.module.js';
 
 import {GLTFLoader} from "https://unpkg.com/three@0.119.1/examples/jsm/loaders/GLTFLoader.js";
 import {DRACOLoader} from 'https://unpkg.com/three@0.119.1/examples/jsm/loaders/DRACOLoader.js';
+import {FaceNormalsHelper} from "https://unpkg.com/three@0.119.1/examples/jsm/helpers/FaceNormalsHelper.js";
 
 class Loader {
     constructor(scene, controls) {
@@ -14,6 +15,19 @@ class Loader {
         };
         
         this.loadModels();
+    }
+
+    // create a a plane facing the same direction as the model
+    // param deg: degrees that the model was rotated 
+    // returns the normal vector in world coordinates to be stored in userData
+    getNormal = (deg) => {
+        var geometry = new THREE.PlaneGeometry(1, 1);
+        var material = new THREE.MeshBasicMaterial( {color: 0xff0000} );
+        var plane = new THREE.Mesh( geometry, material );
+        plane.rotateY(THREE.MathUtils.degToRad(deg));
+        plane.updateMatrixWorld();
+        var normalMatrix = new THREE.Matrix3().getNormalMatrix(plane.matrixWorld);
+        return plane.geometry.faces[0].normal.clone().applyMatrix3( normalMatrix ).normalize();
     }
 
     // TODO: Modularize into individual loadModel functions
@@ -45,13 +59,12 @@ class Loader {
             this.controls.clickable.push(model.children[2].children[0]);
             this.controls.hoverable.push(model.children[2]);
             this.scene.add(model);
-            // var normalMatrix = new THREE.Matrix3().getNormalMatrix(intersects[0].object.matrixWorld);
-            // var normal = model.children[2].children[0].geometry.normal.clone().applyMatrix3( normalMatrix ).normalize();
-            // console.log(normal)
-            // model.children[2].children[0].geometry.computeFaceNormals()
-            // console.log(model.children[2].children[0].geometry)
-            var helper = new THREE.VertexNormalsHelper(model.children[2].children[0], 2, 0x00ff00, 1 );
-            this.scene.add(helper)
+
+            // var geometry = new THREE.PlaneGeometry(1, 1);
+            // var material = new THREE.MeshBasicMaterial( {color: 0xffff00} );
+            // var plane = new THREE.Mesh( geometry, material );
+            // plane.rotateY(THREE.MathUtils.degToRad(90))
+            model.children[2].children[0].userData = {normal: this.getNormal(90)};
         }, undefined, function (e) {
             console.error(e);
         });
@@ -67,6 +80,7 @@ class Loader {
             this.controls.clickable.push(model.children[0]);
             // this.controls.hoverable.push(model);
             this.scene.add(model);
+            model.children[0].userData = {normal: this.getNormal(30)};
         }, undefined, function (e) {
             console.error(e);
         });
@@ -80,6 +94,7 @@ class Loader {
             model.updateMatrix()
             this.controls.clickableOnZoom.push(model.children[0]);
             this.controls.hoverable.push(model.children[0]);
+            model.children[0].userData = {normal: this.getNormal(30)};
             this.scene.add(model);
         }, undefined, function (e) {
             console.error(e);

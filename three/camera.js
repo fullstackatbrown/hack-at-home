@@ -61,7 +61,7 @@ class Camera {
         this.camera.lookAt(center);
         // update y position of camera to level with the object
         this.camY = center.y;
-
+        // console.log(normal);
         theta = Math.atan(center.z/center.x);
         if (maxDim === size.y) {
             cameraDist = maxDim / (2 * Math.tan(fov / 2));
