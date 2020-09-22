@@ -9,6 +9,11 @@ class Loader {
         this.manager = new THREE.LoadingManager();
         this.controls = controls;
         this.scene = scene;
+        this.quaternion = new THREE.Quaternion();
+        this.rotationMatrix = new THREE.Matrix4();
+        this.yAxis = new THREE.Vector3( 0, 1, 0 );
+        this.normalMatrix = new THREE.Matrix3();
+        this.defaultPlaneNormal = new THREE.Vector3(0,0,1);
 
         this.manager.onStart = function (url, itemsLoaded, itemsTotal) {
             console.log('Started loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.');
@@ -17,17 +22,26 @@ class Loader {
         this.loadModels();
     }
 
-    // create a a plane facing the same direction as the model
-    // param deg: degrees that the model was rotated 
-    // returns the normal vector in world coordinates to be stored in userData
+    // create a rotation matrix from the input degrees
+    // param deg: degrees that a hypothetical plane has to be rotated to match the forward face of the model
+    //            *NOT ALWAYS THE SAME as the degrees the model is rotated*
+    //            *double check angle by adding a plane in when loading the model and rotating until matching the face*
+            // ex:
+            // var geometry = new THREE.PlaneGeometry(1, 1);
+            // var material = new THREE.MeshBasicMaterial( {color: 0xffff00} );
+            // var plane = new THREE.Mesh( geometry, material );
+            // plane.rotateY(THREE.MathUtils.degToRad(90))
+            // model.add(plane)
+    // returns the normal vector in world coordinates to be stored in userData (normal vector of the forward face)
     getNormal = (deg) => {
-        var geometry = new THREE.PlaneGeometry(1, 1);
-        var material = new THREE.MeshBasicMaterial( {color: 0xff0000} );
-        var plane = new THREE.Mesh( geometry, material );
-        plane.rotateY(THREE.MathUtils.degToRad(deg));
-        plane.updateMatrixWorld();
-        var normalMatrix = new THREE.Matrix3().getNormalMatrix(plane.matrixWorld);
-        return plane.geometry.faces[0].normal.clone().applyMatrix3( normalMatrix ).normalize();
+        // encode the rotation in a quarternion
+        this.quaternion.setFromAxisAngle(this.yAxis, THREE.MathUtils.degToRad(deg));
+        // apply the rotation to the rotation matrix
+        this.rotationMatrix.makeRotationFromQuaternion(this.quaternion);
+        // get the normal matrix from this new matrix
+        var normalMatrix = this.normalMatrix.getNormalMatrix(this.rotationMatrix);
+        // apply this normal matrix to the local coordinates of the default plane normal
+        return this.defaultPlaneNormal.clone().applyMatrix3(normalMatrix).normalize();
     }
 
     // TODO: Modularize into individual loadModel functions
@@ -59,11 +73,6 @@ class Loader {
             this.controls.clickable.push(model.children[2].children[0]);
             this.controls.hoverable.push(model.children[2]);
             this.scene.add(model);
-
-            // var geometry = new THREE.PlaneGeometry(1, 1);
-            // var material = new THREE.MeshBasicMaterial( {color: 0xffff00} );
-            // var plane = new THREE.Mesh( geometry, material );
-            // plane.rotateY(THREE.MathUtils.degToRad(90))
             model.children[2].children[0].userData = {normal: this.getNormal(90)};
         }, undefined, function (e) {
             console.error(e);
