@@ -58,7 +58,17 @@ class Controls {
     }
 
 
+    playAnimations = () => {
+        clearTimeout(this.animateTimeout)
+        this.shouldAnimate = true;
+        this.animateTimeout = setTimeout(() => {
+            this.shouldAnimate = false;
+        }, 600);
+    }
+
+
     onPointerStart = (event) => {
+        this.playAnimations()
         document.getElementsByTagName("body")[0].style.cursor = 'grabbing';
         // for disable interaction on drag
         this.iframe.style.pointerEvents = 'none';
@@ -116,12 +126,7 @@ class Controls {
     }
 
     onPointerMove = (event) => {
-        // Disable animations after mouse is stationary
-        clearTimeout(this.animateTimeout)
-        this.shouldAnimate = true;
-        this.animateTimeout = setTimeout(() => {
-            this.shouldAnimate = false;
-        }, 600);
+        this.playAnimations()
         if (this.isUserInteracting === true && !this.isZoomed) {
             let clientX = event.clientX || event.touches[0].clientX;
             let clientY = event.clientY || event.touches[0].clientY;
@@ -175,6 +180,7 @@ class Controls {
     }
 
     onPointerUp = () => {
+        this.playAnimations()
         document.getElementsByTagName("body")[0].style.cursor = 'default';
         // for disable interaction on drag
         this.iframe.style.pointerEvents = 'auto';
