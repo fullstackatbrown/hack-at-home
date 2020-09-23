@@ -11,6 +11,7 @@ class Camera {
         this.theta = 0;
         this.tiltX = 0;
         this.tiltY = 0;
+        this.isUserInteracting = false;
         this.camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 100);
 
         // set camera properties
@@ -26,7 +27,7 @@ class Camera {
         this.theta = THREE.MathUtils.degToRad(this.lon);
         this.phi += this.tiltY;
         this.theta += this.tiltX;
-        this.lon = this.lon + ((Math.round(this.lon / 60.0) * 60 - this.lon) * speed)
+        this.lon = this.isUserInteracting ? this.lon : this.lon + ((Math.round(this.lon / 60.0) * 60 - this.lon) * speed)
         this.camera.position.x = this.camera.position.x + ((this.camX - this.camera.position.x) / 2)
         this.camera.position.y = this.camera.position.y + ((this.camY - this.camera.position.y) / 2)
         this.camera.position.z = this.camera.position.z + ((this.camZ - this.camera.position.z) / 2)

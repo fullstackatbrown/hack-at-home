@@ -63,6 +63,7 @@ class Controls {
         // for disable interaction on drag
         this.iframe.style.pointerEvents = 'none';
         this.isUserInteracting = true;
+        this.camera.isUserInteracting = true;
         var clientX = event.clientX || event.touches[0].clientX;
         var clientY = event.clientY || event.touches[0].clientY;
         this.onMouseDownMouseX = clientX;
@@ -73,6 +74,7 @@ class Controls {
         //calculates device coordinates
         this.mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
         this.mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+
         //update picking ray based off mouse and camera position
         this.raycaster.setFromCamera(this.mouse, this.camera.camera);
         if (this.isZoomed) { // start checking for clicks on objects that are only clickable after zooming in (e.g. sticky notes)
@@ -84,7 +86,7 @@ class Controls {
                 this.isZoomedSecond = true;
             } else {
                 //check if clicking off second, internal layer of clickables to the first layer of clickables
-                const intersectsNew = this.raycaster.intersectObjects(this.clickable, true); 
+                const intersectsNew = this.raycaster.intersectObjects(this.clickable, true);
                 if (this.isZoomedSecond && intersectsNew.length > 0) {
                     this.camera.zoomOnObject(intersectsNew[0].object, intersectsNew[0].object.userData.normal);
                     this.isZoomed = true;
@@ -120,9 +122,9 @@ class Controls {
         this.animateTimeout = setTimeout(() => {
             this.shouldAnimate = false;
         }, 600);
-        if (this.isUserInteracting === true) {
-            var clientX = event.clientX || event.touches[0].clientX;
-            var clientY = event.clientY || event.touches[0].clientY;
+        if (this.isUserInteracting === true && !this.isZoomed) {
+            let clientX = event.clientX || event.touches[0].clientX;
+            let clientY = event.clientY || event.touches[0].clientY;
             this.camera.lon = (this.onMouseDownMouseX - clientX) * 0.1 + this.onMouseDownLon;
             this.camera.lat = (clientY - this.onMouseDownMouseY) * 0.1 + this.onMouseDownLat;
         }
@@ -177,6 +179,7 @@ class Controls {
         // for disable interaction on drag
         this.iframe.style.pointerEvents = 'auto';
         this.isUserInteracting = false;
+        this.camera.isUserInteracting = false;
     }
 }
 
