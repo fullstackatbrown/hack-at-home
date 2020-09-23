@@ -18,7 +18,7 @@ class Loader {
         this.manager.onStart = function (url, itemsLoaded, itemsTotal) {
             console.log('Started loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.');
         };
-        
+
         this.loadModels();
     }
 
@@ -51,7 +51,7 @@ class Loader {
         dracoLoader.setDecoderPath('node_modules/three/examples/js/libs/draco/gltf/');
         var loader = new GLTFLoader(this.manager);
         loader.setDRACOLoader(dracoLoader);
-        loader.load('assets/models/room.glb', (gltf) => {
+        loader.load('assets/models/room.gltf', (gltf) => {
             var model = gltf.scene;
             model.position.set(0, -4, 0);
             model.scale.set(4, 4, 4);
