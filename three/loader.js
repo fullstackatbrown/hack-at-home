@@ -2,7 +2,6 @@ import * as THREE from 'https://unpkg.com/three@0.119.1/build/three.module.js';
 
 import {GLTFLoader} from "https://unpkg.com/three@0.119.1/examples/jsm/loaders/GLTFLoader.js";
 import {DRACOLoader} from 'https://unpkg.com/three@0.119.1/examples/jsm/loaders/DRACOLoader.js';
-import {FaceNormalsHelper} from "https://unpkg.com/three@0.119.1/examples/jsm/helpers/FaceNormalsHelper.js";
 
 class Loader {
     constructor(scene, controls) {
@@ -103,7 +102,7 @@ class Loader {
             model.updateMatrix()
             this.controls.clickableOnZoom.push(model.children[0]);
             this.controls.hoverable.push(model.children[0]);
-            model.children[0].userData = {normal: this.getNormal(30)};
+            model.children[0].userData = {normal: this.getNormal(30), html: '/workshops/git.html'};
             this.scene.add(model);
         }, undefined, function (e) {
             console.error(e);
