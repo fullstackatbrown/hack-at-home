@@ -1,7 +1,8 @@
 import * as THREE from 'https://unpkg.com/three@0.119.1/build/three.module.js';
+import {CSS3DObject} from 'https://unpkg.com/three@0.119.1/examples/jsm/renderers/CSS3DRenderer.js';
 
 class Controls {
-    constructor(camera, iframe) {
+    constructor(camera, scene, iframe) {
         this.onMouseDownMouseX = 0;
         this.onMouseDownMouseY = 0;
         this.onMouseDownLon = 0;
@@ -12,6 +13,7 @@ class Controls {
         this.intersected = false;
         this.iframe = iframe
         this.camera = camera;
+        this.scene = scene;
         this.animateTimeout = null;
         this.isUserInteracting = false;
         this.shouldAnimate = false;
@@ -92,8 +94,13 @@ class Controls {
             if (intersects.length > 0) {
                 // var normalMatrix = new THREE.Matrix3().getNormalMatrix(intersects[0].object.matrixWorld);
                 // var normal = intersects[0].face.normal.clone().applyMatrix3( normalMatrix ).normalize();
-                this.camera.zoomOnObject(intersects[0].object, intersects[0].object.userData.normal, 1);
-                this.isZoomedSecond = true;
+                if (intersects[0].object.userData.html) { // if its a sticky note, add a new workshop
+                    var wkshop = new Workshop(1000, 0, 1500, -5*Math.PI / 6, intersects[0].object.userData.html);
+                    this.scene.add(wkshop);
+                } else { // if its not a sticky note, zoom in on the object
+                    this.camera.zoomOnObject(intersects[0].object, intersects[0].object.userData.normal, 1);
+                    this.isZoomedSecond = true;
+                }
             } else {
                 //check if clicking off second, internal layer of clickables to the first layer of clickables
                 const intersectsNew = this.raycaster.intersectObjects(this.clickable, true);
@@ -106,6 +113,7 @@ class Controls {
                     this.camera.camY = 0;
                     this.camera.camZ = 0;
                     this.isZoomed = false;
+                    this.scene.remove(this.scene.getObjectByName("wkshop"));
                 }
             }
         } else { // only check for the first layer of clickable objects (e.g. the whiteboard but not the sticky notes)
@@ -121,6 +129,7 @@ class Controls {
                 this.camera.camY = 0;
                 this.camera.camZ = 0;
                 this.isZoomed = false;
+                this.scene.remove(this.scene.getObjectByName("wkshop"));
             }
         }
     }
@@ -187,6 +196,29 @@ class Controls {
         this.isUserInteracting = false;
         this.camera.isUserInteracting = false;
     }
+}
+function Workshop(x, y, z, ry, url) {
+
+    var html = [
+
+      '<div style="width:' + 1000 + 'px; height:' + 800 + 'px;">',
+      '<iframe src="' + url + '" width="' + 1000 + '" height="' + 800 + '">',
+      '</iframe>',
+      '</div>'
+
+    ].join('\n');
+
+    var div = document.createElement('div');
+
+    $(div).html(html);
+    $(div).css("background-color","white");
+
+    var cssObject = new CSS3DObject(div);
+
+    cssObject.name = "wkshop";
+    cssObject.position.set(x,y,z);
+    cssObject.rotation.y = ry;
+    return cssObject;
 }
 
 export default Controls

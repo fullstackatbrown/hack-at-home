@@ -4,7 +4,6 @@ import Controls from './controls.js';
 import Loader from './loader.js';
 
 import {CSS3DRenderer, CSS3DObject} from 'https://unpkg.com/three@0.119.1/examples/jsm/renderers/CSS3DRenderer.js';
-
 var container = document.body;
 
 var iframe;
@@ -54,7 +53,7 @@ var Stream = function (x, y, z, ry) {
 var stream = new Stream(800, 100, 0, -Math.PI / 2)
 scene.add(stream);
 
-const controls = new Controls(camera, iframe);
+const controls = new Controls(camera, scene, iframe);
 const loader = new Loader(scene, controls)
 loader.manager.onLoad = function () {
     console.log('Loading complete!');
