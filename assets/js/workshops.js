@@ -4,7 +4,10 @@ let sections = {
     3: false,
     4: false,
     5: false,
-    6: false
+    6: false,
+    7: false,
+    8: false
+
 }
 
 let numSections = Object.keys(sections).length
@@ -50,7 +53,11 @@ function closeAll(animate) {
 }
 
 function checkUnderline() {
-    if ($("#workshop6").offset().top - $(".block__workshop").offset().top <= 10) {
+    if ($("#workshop8").offset().top - $(".block__workshop").offset().top <= 10) {
+        triggerMenu(8)
+    } else if ($("#workshop7").offset().top - $(".block__workshop").offset().top <= 10) {
+        triggerMenu(7)
+    } else if ($("#workshop6").offset().top - $(".block__workshop").offset().top <= 10) {
         triggerMenu(6)
     } else if ($("#workshop5").offset().top - $(".block__workshop").offset().top <= 10) {
         triggerMenu(5)
@@ -84,6 +91,10 @@ function navWorkshop(n) {
             window.location.href = "workshops/reactnative.html";
         } else if (n === 6) {
             window.location.href = "workshops/graphql.html";
+        } else if (n === 7) {
+            window.location.href = "workshops/security.html";
+        } else if (n === 8) {
+            window.location.href = "workshops/linux.html";
         }
     }
     checkUnderline()
@@ -110,6 +121,12 @@ $("#btn5").on("click", () => {
 })
 $("#btn6").on("click", () => {
     navWorkshop(6)
+})
+$("#btn7").on("click", () => {
+    navWorkshop(7)
+})
+$("#btn8").on("click", () => {
+    navWorkshop(8)
 })
 
 $(".btn__close").on("click", () => {
