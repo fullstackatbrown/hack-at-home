@@ -108,6 +108,21 @@ class Loader {
             console.error(e);
         });
 
+        loader.load('assets/models/bedroom-stickynotes-organized.gltf', (gltf) => {
+            var model = gltf.scene;
+            model.position.set(2, -5.2, 11.25);
+            model.scale.set(4, 4, 4);
+            model.rotateY(THREE.MathUtils.degToRad(30))
+            model.matrixAutoUpdate = false;
+            model.updateMatrix()
+            this.controls.clickableOnZoom.push(model.children[0]);
+            this.controls.hoverable.push(model.children[0]);
+            model.children[0].userData = {normal: this.getNormal(30), html: '/workshops/sql.html'};
+            this.scene.add(model);
+        }, undefined, function (e) {
+            console.error(e);
+        });
+
         // loader.load('assets/models/bedroom-stickynotes-organized.gltf', (gltf) => {
         //     var model = gltf.scene;
         //     // this.controls.clickable.push(model.children[2].children[0]);

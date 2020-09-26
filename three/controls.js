@@ -91,11 +91,12 @@ class Controls {
         this.raycaster.setFromCamera(this.mouse, this.camera.camera);
         if (this.isZoomed) { // start checking for clicks on objects that are only clickable after zooming in (e.g. sticky notes)
             const intersects = this.raycaster.intersectObjects(this.clickableOnZoom, true);
+            this.scene.remove(this.scene.getObjectByName("wkshop"));
             if (intersects.length > 0) {
                 // var normalMatrix = new THREE.Matrix3().getNormalMatrix(intersects[0].object.matrixWorld);
                 // var normal = intersects[0].face.normal.clone().applyMatrix3( normalMatrix ).normalize();
                 if (intersects[0].object.userData.html) { // if its a sticky note, add a new workshop
-                    var wkshop = new Workshop(1000, 0, 1500, -5*Math.PI / 6, intersects[0].object.userData.html);
+                    var wkshop = new Workshop(1000, 0, 1250, -5*Math.PI / 6, intersects[0].object.userData.html);
                     this.scene.add(wkshop);
                 } else { // if its not a sticky note, zoom in on the object
                     this.camera.zoomOnObject(intersects[0].object, intersects[0].object.userData.normal, 1);
@@ -201,8 +202,8 @@ function Workshop(x, y, z, ry, url) {
 
     var html = [
 
-      '<div style="width:' + 1000 + 'px; height:' + 800 + 'px;">',
-      '<iframe src="' + url + '" width="' + 1000 + '" height="' + 800 + '">',
+      '<div style="width:' + 1100 + 'px; height:' + 900 + 'px;">',
+      '<iframe src="' + url + '" width="' + 1100 + '" height="' + 900 + '"style="border-width:0px;">',
       '</iframe>',
       '</div>'
 
