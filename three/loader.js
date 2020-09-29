@@ -86,7 +86,7 @@ class Loader {
             model.updateMatrix()
             model.name = "whiteboard";
             this.controls.clickable.push(model.children[0]);
-            // this.controls.hoverable.push(model);
+            this.controls.hoverable.push(model);
             this.scene.add(model);
             model.children[0].userData = {normal: this.getNormal(30)};
         }, undefined, function (e) {
@@ -101,7 +101,7 @@ class Loader {
             model.matrixAutoUpdate = false;
             model.updateMatrix()
             this.controls.clickableOnZoom.push(model.children[0]);
-            this.controls.hoverable.push(model.children[0]);
+            this.controls.hoverableOnZoom.push(model.children[0]);
             model.children[0].userData = {normal: this.getNormal(30), html: '/workshops/git.html'};
             this.scene.add(model);
         }, undefined, function (e) {
@@ -116,7 +116,7 @@ class Loader {
             model.matrixAutoUpdate = false;
             model.updateMatrix()
             this.controls.clickableOnZoom.push(model.children[0]);
-            this.controls.hoverable.push(model.children[0]);
+            this.controls.hoverableOnZoom.push(model.children[0]);
             model.children[0].userData = {normal: this.getNormal(30), html: '/workshops/sql.html'};
             this.scene.add(model);
         }, undefined, function (e) {

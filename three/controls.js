@@ -10,6 +10,7 @@ class Controls {
         this.clickable = [];    //array that keeps track of zoomable items
         this.clickableOnZoom = [];
         this.hoverable = [];    //array that keeps track of hoverable threejs groups of meshes and individual meshes
+        this.hoverableOnZoom = [];
         this.intersected = false;
         this.iframe = iframe
         this.camera = camera;
@@ -155,26 +156,20 @@ class Controls {
 
         //update picking ray based off mouse and camera position
         this.raycaster.setFromCamera(this.mouse, this.camera.camera);
-        const intersects = this.raycaster.intersectObjects(this.hoverable, true);
+        let intersects = [];
+        if (this.isZoomed) {
+            intersects = this.raycaster.intersectObjects(this.hoverableOnZoom, true);
+        } else {
+            intersects = this.raycaster.intersectObjects(this.hoverable, true);
+        }
         // if the mouse intersects with an object in hoverable
         if (intersects.length > 0) {
             if (!this.intersected) {
-                // search through hoverable to see if the intersection is of a hoverable model
-                for (var i = 0; i < this.hoverable.length; i++) {
-                    if (this.hoverable[i].children.includes(intersects[0].object)) {
-                        // redefine intersected as the array of objects in the model
-                        this.intersected = this.hoverable[i].children;
-                        // for each object in the model, store the current hex and then highlight the model
-                        for (var j = 0; j < this.intersected.length; j++) {
-                            this.intersected[j].currentHex = this.intersected[j].material.color.getHex();
-                            this.intersected[j].material.color.offsetHSL(0, 0.05, 0.05);
-                        }
-                    } else if (this.hoverable[i] == intersects[0].object) {
-                        // redefine intersected as the single object in the model
-                        this.intersected = [this.hoverable[i]];
-                        this.intersected[0].currentHex = intersects[0].object.material.color.getHex();
-                        this.intersected[0].material.color.offsetHSL(0, 0.05, 0.05);
-                    }
+                document.getElementsByTagName("body")[0].style.cursor = 'pointer';
+                if (this.isZoomed) {
+                    this.highlightObj(this.hoverableOnZoom, intersects);
+                } else {
+                    this.highlightObj(this.hoverable, intersects);
                 }
             }
             // if mouse hovers off a hoverable object (no intersections)
@@ -185,6 +180,26 @@ class Controls {
                     this.intersected[j].material.color.setHex(this.intersected[j].currentHex);
                 }
                 this.intersected = null;
+            }
+            document.getElementsByTagName("body")[0].style.cursor = 'default';
+        }
+    }
+
+    highlightObj = (hoverType, intersects) => {
+        for (var i = 0; i < hoverType.length; i++) {
+            if (hoverType[i].children.includes(intersects[0].object)) {
+                // redefine intersected as the array of objects in the model
+                this.intersected = hoverType[i].children;
+                // for each object in the model, store the current hex and then highlight the model
+                for (var j = 0; j < this.intersected.length; j++) {
+                    this.intersected[j].currentHex = this.intersected[j].material.color.getHex();
+                    this.intersected[j].material.color.offsetHSL(0, 0.05, 0.05);
+                }
+            } else if (hoverType[i] == intersects[0].object) {
+                // redefine intersected as the single object in the model
+                this.intersected = [hoverType[i]];
+                this.intersected[0].currentHex = intersects[0].object.material.color.getHex();
+                this.intersected[0].material.color.offsetHSL(0, 0.05, 0.05);
             }
         }
     }
