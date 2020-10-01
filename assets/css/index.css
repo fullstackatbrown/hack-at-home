@@ -36,6 +36,12 @@ h2 {
     font-weight: 300;
 }
 
+h3 {
+    font-size: inherit;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
 p {
     font-weight: 200;
     line-height: 1.4;
@@ -121,14 +127,14 @@ footer {
     background-image: url("../images/bedroom.png");
 }
 
-.pg__bg_1 {
+.pg__bg_home {
     background-repeat: no-repeat;
     background-position: bottom;
     background-size: contain;
     background-image: url("../images/landscape.png");
 }
 
-.pg__bg_2 {
+.pg__bg_intro {
     padding-bottom: 10vw;
     background-color: #AFD8D0;
     background-repeat: no-repeat;
@@ -137,7 +143,7 @@ footer {
     background-image: url("../images/entryway1.png");
 }
 
-.pg__bg_3 {
+.pg__bg_faq {
     padding-bottom: 34vw;
     background-color: #F8DD64;
     background-repeat: no-repeat;
@@ -154,12 +160,52 @@ footer {
     transition: opacity 0.01s;
 }
 
+.timeline {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.timeline li {
+    display: flex;
+    justify-content: space-between;
+}
+
+.timeline li span {
+    white-space: nowrap;
+    margin-right: 30px;
+}
+
+.timeline li strong {
+    text-align: right;
+}
+
+.facebook-responsive {
+    margin-top: 20px;
+    overflow: hidden;
+    padding-bottom: 56.25%;
+    position: relative;
+    height: 0;
+}
+
+.facebook-responsive iframe {
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+}
+
 .btn {
     transition: 0.05s;
     cursor: pointer;
     display: flex;
     outline: none;
     /*justify-content: center;*/
+}
+
+.btn i {
+    margin-right: 1em;
 }
 
 .btn:hover {
@@ -192,6 +238,13 @@ footer {
 .btn__link_white {
     font-weight: 200;
     color: white;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.btn__link_black {
+    font-weight: 200;
+    color: black;
     display: inline-block;
     text-decoration: none;
 }
@@ -251,6 +304,18 @@ footer {
     margin: 0px 6px;
 }
 
+.speakers {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 100px);
+    grid-gap: 50px 50px;
+    text-align: center;
+}
+
+.speakers img {
+    height: auto;
+    width: 100%;
+}
+
 .block {
     margin-top: 30px;
     display: grid;
@@ -261,6 +326,12 @@ footer {
 .block__chunk {
     margin-top: 50px;
 }
+
+.block__chunk > .btn__link {
+    display: block;
+    margin-top: 1em;
+}
+
 
 .block__padded {
     padding: 140px 12%;
@@ -512,11 +583,11 @@ footer {
         margin-top: 20px;
     }
 
-    .pg__bg_1 {
+    .pg__bg_home {
         align-items: center;
     }
 
-    .pg__bg_3 {
+    .pg__bg_faq {
         padding-bottom: 40vw;
     }
 

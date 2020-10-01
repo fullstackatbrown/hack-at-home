@@ -181,7 +181,8 @@ class Controls {
                 }
                 this.intersected = null;
             }
-            document.getElementsByTagName("body")[0].style.cursor = 'default';
+            // TODO: this breaks grabbing dragging
+            // document.getElementsByTagName("body")[0].style.cursor = 'default';
         }
     }
 
