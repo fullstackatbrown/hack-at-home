@@ -81,13 +81,7 @@ class Loader {
             fridge.children[2].userData = {normal: this.getNormal(-140), offset: 6.5};
             model.add(fridge);
             this.scene.add(model);
-            // var geometry = new THREE.PlaneGeometry(1, 1);
-            // var material = new THREE.MeshBasicMaterial( {color: 0xffff00, side: THREE.FrontSide} );
-            // var plane = new THREE.Mesh( geometry, material );
-            // plane.position.set(14,0,3)
-            // plane.rotateY(THREE.MathUtils.degToRad(-140))
-            // model.add(plane)
-            console.log(fridge)
+            // console.log(fridge)
             model.matrixAutoUpdate = false;
             model.updateMatrix();
         }, undefined, function (e) {

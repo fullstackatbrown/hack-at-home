@@ -184,6 +184,7 @@ class Controls {
                     this.intersected[j].material.color.setHex(this.intersected[j].currentHex);
                 }
                 this.intersected = null;
+                document.getElementsByTagName("body")[0].style.cursor = 'default';
             }
             // TODO: this breaks grabbing dragging
             // document.getElementsByTagName("body")[0].style.cursor = 'default';
