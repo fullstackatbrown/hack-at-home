@@ -10,9 +10,9 @@ class Loader {
         this.scene = scene;
         this.quaternion = new THREE.Quaternion();
         this.rotationMatrix = new THREE.Matrix4();
-        this.yAxis = new THREE.Vector3( 0, 1, 0 );
+        this.yAxis = new THREE.Vector3(0, 1, 0);
         this.normalMatrix = new THREE.Matrix3();
-        this.defaultPlaneNormal = new THREE.Vector3(0,0,1);
+        this.defaultPlaneNormal = new THREE.Vector3(0, 0, 1);
 
         this.manager.onStart = function (url, itemsLoaded, itemsTotal) {
             console.log('Started loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.');
@@ -25,12 +25,19 @@ class Loader {
     // param deg: degrees that a hypothetical plane has to be rotated to match the forward face of the model
     //            *NOT ALWAYS THE SAME as the degrees the model is rotated*
     //            *double check angle by adding a plane in when loading the model and rotating until matching the face*
-            // ex:
-            // var geometry = new THREE.PlaneGeometry(1, 1);
-            // var material = new THREE.MeshBasicMaterial( {color: 0xffff00} );
-            // var plane = new THREE.Mesh( geometry, material );
-            // plane.rotateY(THREE.MathUtils.degToRad(90))
-            // model.add(plane)
+    // ex:
+    // var geometry = new THREE.PlaneGeometry(1, 1);
+    // var material = new THREE.MeshBasicMaterial( {color: 0xffff00} );
+    // var plane = new THREE.Mesh( geometry, material );
+    // plane.rotateY(THREE.MathUtils.degToRad(90))
+    // model.add(plane)
+    // ex:
+    // var geometry = new THREE.PlaneGeometry(1, 1);
+    // var material = new THREE.MeshBasicMaterial( {color: 0xffff00} );
+    // var plane = new THREE.Mesh( geometry, material );
+    // plane.rotateY(THREE.MathUtils.degToRad(90))
+    // model.add(plane)
+
     // returns the normal vector in world coordinates to be stored in userData (normal vector of the forward face)
     getNormal = (deg) => {
         // encode the rotation in a quarternion
@@ -44,7 +51,7 @@ class Loader {
     }
 
     // TODO: Modularize into individual loadModel functions
-    loadModels = () => {
+    loadModels = (array, offset) => {
         // consider compressing with draco
         var dracoLoader = new DRACOLoader();
         dracoLoader.setDecoderPath('node_modules/three/examples/js/libs/draco/gltf/');
@@ -52,11 +59,23 @@ class Loader {
         loader.setDRACOLoader(dracoLoader);
         loader.load('assets/models/room.gltf', (gltf) => {
             var model = gltf.scene;
-            model.position.set(0, -4, 0);
             model.scale.set(4, 4, 4);
+            model.position.set(0, 2, 0);
+
+            // center room
+            const box = new THREE.Box3().setFromObject(model);
+            const center = box.getCenter(new THREE.Vector3());
+            model.position.x += (model.position.x - center.x);
+            model.position.y += (model.position.y - center.y);
+            model.position.z += (model.position.z - center.z);
+
+            // offset room so that it is centered
+            model.position.x -= 0
+            model.position.z -= 1.08
+
+            this.scene.add(model);
             model.matrixAutoUpdate = false;
             model.updateMatrix();
-            this.scene.add(model);;
         }, undefined, function (e) {
             console.error(e);
         });

@@ -141,8 +141,8 @@ class Controls {
         if (this.isUserInteracting === true && !this.isZoomed) {
             let clientX = event.clientX || event.touches[0].clientX;
             let clientY = event.clientY || event.touches[0].clientY;
-            this.camera.lon = (this.onMouseDownMouseX - clientX) * 0.1 + this.onMouseDownLon;
-            this.camera.lat = (clientY - this.onMouseDownMouseY) * 0.1 + this.onMouseDownLat;
+            this.camera.lon = (this.onMouseDownMouseX - clientX) * 0.045 + this.onMouseDownLon;
+            this.camera.lat = (clientY - this.onMouseDownMouseY) * 0.045 + this.onMouseDownLat;
         }
         // jiggle screen
         this.camera.tiltX = this.camera.tiltX - ((this.camera.tiltX + (((window.innerWidth / 2) - event.clientX) / (window.innerWidth / 2)) / 25) / 4)
