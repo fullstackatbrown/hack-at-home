@@ -124,7 +124,11 @@ class Controls {
                 // var normalMatrix = new THREE.Matrix3().getNormalMatrix(intersects[0].object.matrixWorld);
                 // var normal = intersects[0].face.normal.clone().applyMatrix3( normalMatrix ).normalize();
                 // this.camera.zoomOnObject(intersects[0].object, normal);
-                this.camera.zoomOnObject(intersects[0].object, intersects[0].object.userData.normal);
+                if (intersects[0].object.userData.offset) {
+                    this.camera.zoomOnObject(intersects[0].object, intersects[0].object.userData.normal, intersects[0].object.userData.offset);
+                } else {
+                    this.camera.zoomOnObject(intersects[0].object, intersects[0].object.userData.normal);
+                }
                 this.isZoomed = true;
             } else {
                 this.camera.camX = 0;

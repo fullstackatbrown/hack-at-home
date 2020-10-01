@@ -73,7 +73,21 @@ class Loader {
             model.position.x -= 0
             model.position.z -= 1.08
 
+            var fridge = new THREE.Group();
+            fridge.add(...model.children.slice(38, 43));
+            this.controls.clickable.push(fridge.children[2]);
+            this.controls.hoverable.push(fridge.children[3]);
+            this.controls.hoverable.push(fridge.children[4]);
+            fridge.children[2].userData = {normal: this.getNormal(-140), offset: 6.5};
+            model.add(fridge);
             this.scene.add(model);
+            // var geometry = new THREE.PlaneGeometry(1, 1);
+            // var material = new THREE.MeshBasicMaterial( {color: 0xffff00, side: THREE.FrontSide} );
+            // var plane = new THREE.Mesh( geometry, material );
+            // plane.position.set(14,0,3)
+            // plane.rotateY(THREE.MathUtils.degToRad(-140))
+            // model.add(plane)
+            console.log(fridge)
             model.matrixAutoUpdate = false;
             model.updateMatrix();
         }, undefined, function (e) {
@@ -96,51 +110,51 @@ class Loader {
             console.error(e);
         });
 
-        loader.load('assets/models/bedroom-whiteboard.gltf', (gltf) => {
-            var model = gltf.scene;
-            model.position.set(2, -4.2, 11.25);
-            model.scale.set(4, 4, 4);
-            model.rotateY(THREE.MathUtils.degToRad(30))
-            model.matrixAutoUpdate = false;
-            model.updateMatrix()
-            model.name = "whiteboard";
-            this.controls.clickable.push(model.children[0]);
-            this.controls.hoverable.push(model);
-            this.scene.add(model);
-            model.children[0].userData = {normal: this.getNormal(30)};
-        }, undefined, function (e) {
-            console.error(e);
-        });
+        // loader.load('assets/models/bedroom-whiteboard.gltf', (gltf) => {
+        //     var model = gltf.scene;
+        //     model.position.set(2, -4.2, 11.25);
+        //     model.scale.set(4, 4, 4);
+        //     model.rotateY(THREE.MathUtils.degToRad(30))
+        //     model.matrixAutoUpdate = false;
+        //     model.updateMatrix()
+        //     model.name = "whiteboard";
+        //     this.controls.clickable.push(model.children[0]);
+        //     this.controls.hoverable.push(model);
+        //     this.scene.add(model);
+        //     model.children[0].userData = {normal: this.getNormal(30)};
+        // }, undefined, function (e) {
+        //     console.error(e);
+        // });
 
-        loader.load('assets/models/bedroom-stickynotes-organized.gltf', (gltf) => {
-            var model = gltf.scene;
-            model.position.set(2, -4.2, 11.25);
-            model.scale.set(4, 4, 4);
-            model.rotateY(THREE.MathUtils.degToRad(30))
-            model.matrixAutoUpdate = false;
-            model.updateMatrix()
-            this.controls.clickableOnZoom.push(model.children[0]);
-            this.controls.hoverableOnZoom.push(model.children[0]);
-            model.children[0].userData = {normal: this.getNormal(30), html: '/workshops/git.html'};
-            this.scene.add(model);
-        }, undefined, function (e) {
-            console.error(e);
-        });
+        // loader.load('assets/models/bedroom-stickynotes-organized.gltf', (gltf) => {
+        //     var model = gltf.scene;
+        //     model.position.set(2, -4.2, 11.25);
+        //     model.scale.set(4, 4, 4);
+        //     model.rotateY(THREE.MathUtils.degToRad(30))
+        //     model.matrixAutoUpdate = false;
+        //     model.updateMatrix()
+        //     this.controls.clickableOnZoom.push(model.children[0]);
+        //     this.controls.hoverableOnZoom.push(model.children[0]);
+        //     model.children[0].userData = {normal: this.getNormal(30), html: '/workshops/git.html'};
+        //     this.scene.add(model);
+        // }, undefined, function (e) {
+        //     console.error(e);
+        // });
 
-        loader.load('assets/models/bedroom-stickynotes-organized.gltf', (gltf) => {
-            var model = gltf.scene;
-            model.position.set(2, -5.2, 11.25);
-            model.scale.set(4, 4, 4);
-            model.rotateY(THREE.MathUtils.degToRad(30))
-            model.matrixAutoUpdate = false;
-            model.updateMatrix()
-            this.controls.clickableOnZoom.push(model.children[0]);
-            this.controls.hoverableOnZoom.push(model.children[0]);
-            model.children[0].userData = {normal: this.getNormal(30), html: '/workshops/sql.html'};
-            this.scene.add(model);
-        }, undefined, function (e) {
-            console.error(e);
-        });
+        // loader.load('assets/models/bedroom-stickynotes-organized.gltf', (gltf) => {
+        //     var model = gltf.scene;
+        //     model.position.set(2, -5.2, 11.25);
+        //     model.scale.set(4, 4, 4);
+        //     model.rotateY(THREE.MathUtils.degToRad(30))
+        //     model.matrixAutoUpdate = false;
+        //     model.updateMatrix()
+        //     this.controls.clickableOnZoom.push(model.children[0]);
+        //     this.controls.hoverableOnZoom.push(model.children[0]);
+        //     model.children[0].userData = {normal: this.getNormal(30), html: '/workshops/sql.html'};
+        //     this.scene.add(model);
+        // }, undefined, function (e) {
+        //     console.error(e);
+        // });
 
         // loader.load('assets/models/bedroom-stickynotes-organized.gltf', (gltf) => {
         //     var model = gltf.scene;

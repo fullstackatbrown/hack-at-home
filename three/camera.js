@@ -72,7 +72,7 @@ class Camera {
         // console.log(normal);
         theta = Math.atan(center.z/center.x);
         if (maxDim === size.y) {
-            cameraDist = maxDim / (2 * Math.tan(fov / 2));
+            cameraDist = maxDim / (2 * Math.tan(this.camera.fov / 2));
         } else { //do the same calculations but with horizontal field of view
             const aspect = this.camera.aspect;
             const hFOV = 2 * Math.atan(Math.tan(this.camera.fov / 2) * aspect);
