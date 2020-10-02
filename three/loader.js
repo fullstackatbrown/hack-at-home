@@ -31,12 +31,6 @@ class Loader {
     // var plane = new THREE.Mesh( geometry, material );
     // plane.rotateY(THREE.MathUtils.degToRad(90))
     // model.add(plane)
-    // ex:
-    // var geometry = new THREE.PlaneGeometry(1, 1);
-    // var material = new THREE.MeshBasicMaterial( {color: 0xffff00} );
-    // var plane = new THREE.Mesh( geometry, material );
-    // plane.rotateY(THREE.MathUtils.degToRad(90))
-    // model.add(plane)
 
     // returns the normal vector in world coordinates to be stored in userData (normal vector of the forward face)
     getNormal = (deg) => {
@@ -73,15 +67,19 @@ class Loader {
             model.position.x -= 0
             model.position.z -= 1.08
 
+            //make the fridge clickable and hoverable
             var fridge = new THREE.Group();
             fridge.add(...model.children.slice(38, 43));
-            this.controls.clickable.push(fridge.children[2]);
-            this.controls.hoverable.push(fridge.children[3]);
-            this.controls.hoverable.push(fridge.children[4]);
+            this.controls.hoverable.push(fridge);
+            // specify which part of the fridge to zoom in on
+            fridge.userData = {toZoom: fridge.children[2]};
+            // give the top door information for camera.zoomOnObject
             fridge.children[2].userData = {normal: this.getNormal(-140), offset: 6.5};
+            this.controls.clickable.push(fridge);
             model.add(fridge);
+
             this.scene.add(model);
-            // console.log(fridge)
+
             model.matrixAutoUpdate = false;
             model.updateMatrix();
         }, undefined, function (e) {
