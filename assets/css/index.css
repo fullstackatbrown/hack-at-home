@@ -19,14 +19,22 @@ canvas {
     display: block;
 }
 
-section {
-}
-
 h1 {
     font-family: 'Cutive Mono', monospace;
     margin: 0px 0px 18px;
     font-size: 50px;
     font-weight: 400;
+}
+
+section {
+}
+
+section h1 {
+    margin-bottom: 80px;
+}
+
+#s1 h1 {
+    margin-bottom: 18px;
 }
 
 h2 {
@@ -226,6 +234,7 @@ footer {
     padding: 10px 20px;
     background-color: #F4DE77;
     border-radius: 10px;
+    display: inline-block;
 }
 
 .btn__link {
@@ -306,7 +315,7 @@ footer {
 
 .speakers {
     display: grid;
-    grid-template-columns: repeat(auto-fit, 100px);
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
     grid-gap: 50px 50px;
     text-align: center;
 }
@@ -314,17 +323,32 @@ footer {
 .speakers img {
     height: auto;
     width: 100%;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.speakers h2, .speakers strong, .speakers span {
+    margin-top: 5px;
+    display: block;
+    margin-bottom: 0px;
+}
+
+.speakers strong {
+    font-weight: 400;
+}
+
+.speakers span {
+    font-weight: 200;
 }
 
 .block {
-    margin-top: 30px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 0px 100px;
 }
 
 .block__chunk {
-    margin-top: 50px;
+    margin-bottom: 50px;
 }
 
 .block__chunk > .btn__link {
@@ -368,12 +392,17 @@ footer {
     flex-direction: row;
 }
 
-.block__blurb {
-    margin-top: 50px;
+.charity img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin-right: 40px;
+    margin-bottom: 20px;
 }
 
-.block__buttons {
-    padding-top: 50px;
+.charity {
+    display: flex;
+    flex-direction: row;
 }
 
 .dropdown {
@@ -606,6 +635,10 @@ footer {
 @media only screen and (max-width: 800px) {
     .block__workshop {
         width: 0%;
+    }
+
+    .charity {
+        flex-direction: column;
     }
 
     .workshop {
