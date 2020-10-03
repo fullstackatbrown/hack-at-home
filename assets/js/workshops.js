@@ -6,8 +6,9 @@ let sections = {
     5: false,
     6: false,
     7: false,
-    8: false
-
+    8: false,
+    9: false,
+    10: false
 }
 
 let numSections = Object.keys(sections).length
@@ -53,7 +54,11 @@ function closeAll(animate) {
 }
 
 function checkUnderline() {
-    if ($("#workshop8").offset().top - $(".block__workshop").offset().top <= 10) {
+    if ($("#workshop10").offset().top - $(".block__workshop").offset().top <= 10) {
+        triggerMenu(10)
+    } else if ($("#workshop9").offset().top - $(".block__workshop").offset().top <= 10) {
+        triggerMenu(9)
+    } else if ($("#workshop8").offset().top - $(".block__workshop").offset().top <= 10) {
         triggerMenu(8)
     } else if ($("#workshop7").offset().top - $(".block__workshop").offset().top <= 10) {
         triggerMenu(7)
@@ -95,6 +100,10 @@ function navWorkshop(n) {
             window.location.href = "workshops/security.html";
         } else if (n === 8) {
             window.location.href = "workshops/linux.html";
+        } else if (n === 9) {
+            window.location.href = "workshops/assembly.html";
+        } else if (n === 10) {
+            window.location.href = "workshops/maya.html";
         }
     }
     checkUnderline()
@@ -127,6 +136,12 @@ $("#btn7").on("click", () => {
 })
 $("#btn8").on("click", () => {
     navWorkshop(8)
+})
+$("#btn9").on("click", () => {
+    navWorkshop(9)
+})
+$("#btn10").on("click", () => {
+    navWorkshop(10)
 })
 
 $(".btn__close").on("click", () => {
