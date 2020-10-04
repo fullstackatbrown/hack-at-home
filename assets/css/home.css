@@ -10,7 +10,7 @@
 
 .overlay div {
     display: flex;
-    transition: 0.1s;
+    transition: 0.2s;
 }
 
 .overlay div:nth-child(1), .overlay div:nth-child(3) {
@@ -22,6 +22,10 @@
 }
 
 .overlay div:nth-child(1):hover, .overlay div:nth-child(3):hover{
+    opacity: 0.5;
+}
+
+.overlay div:nth-child(1):active, .overlay div:nth-child(3):active{
     opacity: 0.2;
 }
 
