@@ -27,12 +27,12 @@ scene.background = new THREE.Color(0xffffff);
 const camera = new Camera();
 
 // Shadow light
-// var light = new THREE.HemisphereLight( 0xffffff, 0x474747, 1.2 );
-// light.position.set( 0, 3, 0 );
-// scene.add(light);
+var light = new THREE.HemisphereLight( 0xffffff, 0x8f8f8f, 1.0 );
+light.position.set( 0, 3, 0 );
+scene.add(light);
 
 // Ambient light
-var light = new THREE.AmbientLight(0xffffff, 1);
+var light = new THREE.AmbientLight(0xffffff, 0.2);
 scene.add(light);
 
 var Stream = function (x, y, z, ry) {
