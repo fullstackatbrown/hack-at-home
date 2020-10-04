@@ -22,9 +22,9 @@ class Controls {
         this.mouse = new THREE.Vector2();
         this.isZoomed = false;
         this.isZoomedSecond = false;
-        // object to zoom in on out of the entire group (linked to toZoom in userData) 
+        // object to zoom in on out of the entire group (linked to toZoom in userData)
         // (e.g. zoom on top door, but make entire fridge clickable)
-        this.objToZoom = null; 
+        this.objToZoom = null;
 
         this.raycaster.layers.set(0);
         this.addListeners()
@@ -156,7 +156,7 @@ class Controls {
     }
 
     onPointerMove = (event) => {
-        this.playAnimations()
+        // this.playAnimations()
         if (this.isUserInteracting === true && !this.isZoomed) {
             let clientX = event.clientX || event.touches[0].clientX;
             let clientY = event.clientY || event.touches[0].clientY;
@@ -164,10 +164,8 @@ class Controls {
             this.camera.lat = (clientY - this.onMouseDownMouseY) * 0.045 + this.onMouseDownLat;
         }
         // jiggle screen
-        this.camera.tiltX = this.camera.tiltX - ((this.camera.tiltX + (((window.innerWidth / 2) - event.clientX) / (window.innerWidth / 2)) / 25) / 4)
-        this.camera.tiltY = this.camera.tiltY - ((this.camera.tiltY + (((window.innerHeight / 2) - event.clientY) / (window.innerHeight / 2)) / 25) / 4)
-
-        // tiltX = window.innerWidth
+        // this.camera.tiltX = this.camera.tiltX - ((this.camera.tiltX + (((window.innerWidth / 2) - event.clientX) / (window.innerWidth / 2)) / 55) / 3)
+        // this.camera.tiltY = this.camera.tiltY - ((this.camera.tiltY + (((window.innerHeight / 2) - event.clientY) / (window.innerHeight / 2)) / 55) / 3)
 
         //calculates device coordinates
         this.mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
