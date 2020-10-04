@@ -548,6 +548,7 @@ footer {
     width: 100vw;
     position: fixed;
     pointer-events: none;
+    top: 0px;
     z-index: 1000;
     overflow: hidden;
 }
@@ -577,6 +578,17 @@ footer {
 
 .clouds__right_active {
     left: -100%;
+}
+
+.spinner {
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #E8E8E8;
+    z-index: 2000;
 }
 
 @media only screen and (max-width: 600px) {

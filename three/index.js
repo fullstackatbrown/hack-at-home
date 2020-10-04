@@ -26,7 +26,13 @@ scene.background = new THREE.Color(0xffffff);
 
 const camera = new Camera();
 
-var light = new THREE.AmbientLight(0xffffff); // soft white light
+// Shadow light
+// var light = new THREE.HemisphereLight( 0xffffff, 0x474747, 1.2 );
+// light.position.set( 0, 3, 0 );
+// scene.add(light);
+
+// Ambient light
+var light = new THREE.AmbientLight(0xffffff, 1);
 scene.add(light);
 
 var Stream = function (x, y, z, ry) {
@@ -50,7 +56,7 @@ var Stream = function (x, y, z, ry) {
 
 // TODO: bind horizontal scroll to room change
 
-var stream = new Stream(800, 100, 0, -Math.PI / 2)
+var stream = new Stream(2800, 100, -1500, -Math.PI / 4)
 scene.add(stream);
 
 const controls = new Controls(camera, scene, iframe);
@@ -58,8 +64,10 @@ const loader = new Loader(scene, controls)
 loader.manager.onLoad = function () {
     console.log('Loading complete!');
     update();
-    $(".clouds__right").removeClass("clouds__right_active")
-    $(".clouds__left").removeClass("clouds__left_active")
+    $(".spinner").animate({opacity: 0}, 500, () => {
+        $(".clouds__right").removeClass("clouds__right_active")
+        $(".clouds__left").removeClass("clouds__left_active")
+    })
 };
 
 function animate() {

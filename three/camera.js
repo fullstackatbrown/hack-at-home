@@ -12,7 +12,7 @@ class Camera {
         this.tiltX = 0;
         this.tiltY = 0;
         this.isUserInteracting = false;
-        this.camera = new THREE.PerspectiveCamera(28, window.innerWidth / window.innerHeight, 0.1, 100);
+        this.camera = new THREE.PerspectiveCamera(22, window.innerWidth / window.innerHeight, 0.1, 100);
 
         // set camera properties
         this.camera.position.set(0, 0, 0);
@@ -27,7 +27,7 @@ class Camera {
         this.theta = THREE.MathUtils.degToRad(this.lon);
         this.phi += this.tiltY/2;
         this.theta += this.tiltX/2;
-        this.theta += THREE.MathUtils.degToRad(10.11111)  // Offset so that we look directly at a wall
+        this.theta += THREE.MathUtils.degToRad(10)  // Offset so that we look directly at a wall
         this.lon = this.isUserInteracting ? this.lon : this.lon + ((Math.round(this.lon / (360/9)) * (360/9) - this.lon) * speed)
         this.camera.position.x = this.camera.position.x + ((this.camX - this.camera.position.x) / 2)
         this.camera.position.y = this.camera.position.y + ((this.camY - this.camera.position.y) / 2)

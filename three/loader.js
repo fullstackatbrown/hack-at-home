@@ -67,6 +67,20 @@ class Loader {
             model.position.x -= 0
             model.position.z -= 1.08
 
+            // convert all models to toon texture (broken)
+            // const traverseModel = (model) => model.children.map((o) => {
+            //     if (o.isMesh) {
+            //         var newMaterial = new THREE.MeshToonMaterial({
+            //             // color: "blue"
+            //         });
+            //         console.log(o)
+            //         o.material = newMaterial
+            //     } else if (o.isGroup) {
+            //         traverseModel(o)
+            //     }
+            // });
+            // traverseModel(model)
+
             //make the fridge clickable and hoverable
             var fridge = new THREE.Group();
             fridge.add(...model.children.slice(38, 43));
@@ -77,30 +91,28 @@ class Loader {
             fridge.children[2].userData = {normal: this.getNormal(-140), offset: 6.5};
             this.controls.clickable.push(fridge);
             model.add(fridge);
-
             this.scene.add(model);
-
             model.matrixAutoUpdate = false;
             model.updateMatrix();
         }, undefined, function (e) {
             console.error(e);
         });
-
-        loader.load('assets/models/cubby.glb', (gltf) => {
-            var model = gltf.scene;
-            model.position.set(10, -2.2, 1);
-            model.scale.set(1, 1, 1);
-            model.rotateY(THREE.MathUtils.degToRad(180))
-            model.matrixAutoUpdate = false;
-            model.updateMatrix()
-            model.name = "cubby";
-            this.controls.clickable.push(model.children[2].children[0]);
-            this.controls.hoverable.push(model.children[2]);
-            this.scene.add(model);
-            model.children[2].children[0].userData = {normal: this.getNormal(90)};
-        }, undefined, function (e) {
-            console.error(e);
-        });
+        //
+        // loader.load('assets/models/cubby.glb', (gltf) => {
+        //     var model = gltf.scene;
+        //     model.position.set(10, -2.2, 1);
+        //     model.scale.set(1, 1, 1);
+        //     model.rotateY(THREE.MathUtils.degToRad(180))
+        //     model.matrixAutoUpdate = false;
+        //     model.updateMatrix()
+        //     model.name = "cubby";
+        //     this.controls.clickable.push(model.children[2].children[0]);
+        //     this.controls.hoverable.push(model.children[2]);
+        //     this.scene.add(model);
+        //     model.children[2].children[0].userData = {normal: this.getNormal(90)};
+        // }, undefined, function (e) {
+        //     console.error(e);
+        // });
 
         // loader.load('assets/models/bedroom-whiteboard.gltf', (gltf) => {
         //     var model = gltf.scene;
