@@ -1,3 +1,14 @@
+.spinner {
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #E8E8E8;
+    z-index: 2000;
+}
+
 .lds-ellipsis {
     display: inline-block;
     position: relative;

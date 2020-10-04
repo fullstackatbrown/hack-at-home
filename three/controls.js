@@ -1,6 +1,10 @@
 import * as THREE from 'https://unpkg.com/three@0.119.1/build/three.module.js';
 import {CSS3DObject} from 'https://unpkg.com/three@0.119.1/examples/jsm/renderers/CSS3DRenderer.js';
 
+const trueMod = (n, m) => {
+    return ((n % m) + m) % m;
+}
+
 class Controls {
     constructor(camera, scene, iframe) {
         this.onMouseDownMouseX = 0;
@@ -37,6 +41,12 @@ class Controls {
         window.addEventListener('touchstart', this.onPointerStart, false);
         window.addEventListener('touchmove', this.onPointerMove, false);
         window.addEventListener('touchend', this.onPointerUp, false);
+        $("#arrow-left").on('click', () => {
+            this.navigateTo(trueMod(this.camera.currentIndex - 1, 9))
+        })
+        $("#arrow-right").on('click', () => {
+            this.navigateTo(trueMod(this.camera.currentIndex + 1, 9))
+        })
 
         window.addEventListener('dragover', function (event) {
             event.preventDefault();
@@ -74,6 +84,10 @@ class Controls {
 
 
     onPointerStart = (event) => {
+        // If we are on the 10% margins of the screen, do not register
+        if (Math.min(event.clientX, event.view.innerWidth - event.clientX) <= (event.view.innerWidth * 0.1)) {
+            return
+        }
         this.playAnimations()
         document.getElementsByTagName("body")[0].style.cursor = 'grabbing';
         // for disable interaction on drag
@@ -156,7 +170,7 @@ class Controls {
     }
 
     onPointerMove = (event) => {
-        // this.playAnimations()
+        this.playAnimations()
         if (this.isUserInteracting === true && !this.isZoomed) {
             let clientX = event.clientX || event.touches[0].clientX;
             let clientY = event.clientY || event.touches[0].clientY;
@@ -230,6 +244,17 @@ class Controls {
         this.iframe.style.pointerEvents = 'auto';
         this.isUserInteracting = false;
         this.camera.isUserInteracting = false;
+    }
+
+    navigateTo = (index) => {
+        // TODO: GET THE MATH RIGHT
+        this.playAnimations()
+        const distanceLeft = (index - trueMod(Math.round(this.camera.lon / (360/9)), 9))
+        const distanceRight = -1 * (trueMod(Math.round(this.camera.lon / (360/9)), 9) - 9 - index)
+        console.log(index, trueMod(Math.round(this.camera.lon / (360/9)), 9), distanceRight, distanceLeft)
+        const minDirect = Math.abs(distanceLeft) < Math.abs(distanceRight) ? distanceLeft : distanceRight
+        // const minDirect = distanceLeft
+        this.camera.targetAngle = (Math.round(this.camera.lon / (360/9)) + minDirect) * (360/9)
     }
 }
 function Workshop(x, y, z, ry, url) {

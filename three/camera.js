@@ -2,6 +2,7 @@ import * as THREE from 'https://unpkg.com/three@0.119.1/build/three.module.js';
 
 class Camera {
     constructor() {
+        this.speed = 0.2 // snap speed
         this.lat = 0;
         this.lon = 0;
         this.camX = 0;
@@ -11,6 +12,8 @@ class Camera {
         this.theta = 0;
         this.tiltX = 0;
         this.tiltY = 0;
+        this.targetAngle = -1;
+        this.currentIndex = 0;
         this.isUserInteracting = false;
         this.camera = new THREE.PerspectiveCamera(22, window.innerWidth / window.innerHeight, 0.1, 100);
 
@@ -21,14 +24,22 @@ class Camera {
     }
 
     update = () => {
-        let speed = 0.2 // snap speed
+        this.currentIndex = Math.round(this.lon / (360/9))
         this.lat = Math.max(-85, Math.min(85, this.lat));
         this.phi = THREE.MathUtils.degToRad(90)
         this.theta = THREE.MathUtils.degToRad(this.lon);
         this.phi += this.tiltY/2;
         this.theta += this.tiltX/2;
         this.theta += THREE.MathUtils.degToRad(10)  // Offset so that we look directly at a wall
-        this.lon = this.isUserInteracting ? this.lon : this.lon + ((Math.round(this.lon / (360/9)) * (360/9) - this.lon) * speed)
+        if (this.targetAngle === -1) {
+            this.lon = this.isUserInteracting ? this.lon : this.lon + ((Math.round(this.lon / (360/9)) * (360/9) - this.lon) * this.speed)
+        } else {
+            if (this.isUserInteracting) {
+                this.targetAngle = -1
+            } else {
+                this.lon = this.lon + (this.targetAngle - this.lon) * this.speed
+            }
+        }
         this.camera.position.x = this.camera.position.x + ((this.camX - this.camera.position.x) / 2)
         this.camera.position.y = this.camera.position.y + ((this.camY - this.camera.position.y) / 2)
         this.camera.position.z = this.camera.position.z + ((this.camZ - this.camera.position.z) / 2)
