@@ -145,6 +145,9 @@ class Controls {
                     this.camera.camX = 0;
                     this.camera.camY = 0;
                     this.camera.camZ = 0;
+                    // re-show arrows
+                    $("#arrow-left").removeClass("arrow__hidden")
+                    $("#arrow-right").removeClass("arrow__hidden")
                     this.isZoomed = false;
                     this.scene.remove(this.scene.getObjectByName("wkshop"));
                 }
