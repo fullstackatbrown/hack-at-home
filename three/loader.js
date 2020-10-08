@@ -88,6 +88,8 @@ class Loader {
             // plane.position.set(-18,3,-34)
             model.add(plane)
 
+            this.scene.add(model);
+
             //make the fridge clickable and hoverable
             var fridge = new THREE.Group();
             fridge.add(...model.children.slice(34, 38));
@@ -100,11 +102,29 @@ class Loader {
             model.add(fridge);
 
             // console.log(model.children[921])
-            model.children[921].userData = {normal: this.getNormal(-60), offset: 20};
-            this.controls.clickable.push(model.children[921])
+            // model.children[921].userData = {normal: this.getNormal(-60), offset: 20};
+            // this.controls.clickable.push(model.children[921])
 
-            this.scene.add(model);
-            console.log(model)
+            var donate = this.scene.getObjectByName("Cube078")
+            donate.userData = {link: "http://stackoverflow.com"}
+            this.controls.hoverable.push(donate);
+            this.controls.clickable.push(donate);
+
+            // var sponsors = this.scene.getObjectByName("Cube076")
+            // sponsors.userData = {normal: this.getNormal(-60), offset: 45}
+            // this.controls.hoverable.push(sponsors);
+            // this.controls.clickable.push(sponsors);
+
+            var bloomberg = this.scene.getObjectByName("logoBBGblck_Reg")
+            bloomberg.userData = {link: "http://bloomberg.com"}
+            this.controls.hoverable.push(bloomberg);
+            this.controls.clickableOnZoom.push(bloomberg);
+
+            var sponsors_white = this.scene.getObjectByName("Cube077")
+            sponsors_white.userData = {normal: this.getNormal(-60), offset: 50000/(window.innerWidth)}
+            this.controls.hoverable.push(sponsors_white);
+            this.controls.clickable.push(sponsors_white);
+
             model.matrixAutoUpdate = false;
             model.updateMatrix();
         }, undefined, function (e) {
