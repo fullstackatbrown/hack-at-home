@@ -250,13 +250,14 @@ class Controls {
         // TODO: GET THE MATH RIGHT
         this.playAnimations()
         const distanceLeft = (index - trueMod(Math.round(this.camera.lon / (360/9)), 9))
-        const distanceRight = -1 * (trueMod(Math.round(this.camera.lon / (360/9)), 9) - 9 - index)
+        const distanceRight = (index + 9*(!index) - 9*(!trueMod(Math.round(this.camera.lon / (360/9)), 9)) - trueMod(Math.round(this.camera.lon / (360/9)), 9))
         console.log(index, trueMod(Math.round(this.camera.lon / (360/9)), 9), distanceRight, distanceLeft)
         const minDirect = Math.abs(distanceLeft) < Math.abs(distanceRight) ? distanceLeft : distanceRight
         // const minDirect = distanceLeft
         this.camera.targetAngle = (Math.round(this.camera.lon / (360/9)) + minDirect) * (360/9)
     }
 }
+
 function Workshop(x, y, z, ry, url) {
 
     var html = [
