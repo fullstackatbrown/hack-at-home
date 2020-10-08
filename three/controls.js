@@ -42,10 +42,14 @@ class Controls {
         window.addEventListener('touchmove', this.onPointerMove, false);
         window.addEventListener('touchend', this.onPointerUp, false);
         $("#arrow-left").on('click', () => {
-            this.navigateTo(trueMod(this.camera.currentIndex - 1, 9))
+            if(!this.isZoomed) {
+                this.navigateTo(trueMod(this.camera.currentIndex - 1, 9))
+            }
         })
         $("#arrow-right").on('click', () => {
-            this.navigateTo(trueMod(this.camera.currentIndex + 1, 9))
+            if(!this.isZoomed) {
+                this.navigateTo(trueMod(this.camera.currentIndex + 1, 9))
+            }
         })
 
         window.addEventListener('dragover', function (event) {
@@ -115,13 +119,13 @@ class Controls {
                 this.objToZoom = intersects[0].object;
                 if (this.objToZoom.userData.html) { // if its a sticky note, add a new workshop
                     console.log("yes")
-                    var wkshop = new Workshop(1000, 0, 1250, -5*Math.PI / 6, this.objToZoom.userData.html);
+                    var wkshop = new Workshop(-6600,-40,-2700, Math.PI / 3, this.objToZoom.userData.html);
                     this.scene.add(wkshop);
                 } else { // if its not a sticky note, zoom in on the object
                     if(this.objToZoom.userData.link) {
                         window.open(this.objToZoom.userData.link);
                     } else {
-                        this.camera.zoomOnObject(this.objToZoom, this.objToZoom.userData.normal);
+                        this.camera.zoomOnObject(this.objToZoom);
                         this.isZoomedSecond = true;
                     }
                 }
@@ -134,7 +138,7 @@ class Controls {
                     } else {
                         this.objToZoom = intersectsNew[0].object;
                     }
-                    this.camera.zoomOnObject(this.objToZoom, this.objToZoom.userData.normal);
+                    this.camera.zoomOnObject(this.objToZoom);
                     this.isZoomed = true;
                     this.isZoomedSecond = false;
                 } else { //check if clicking off all clickable objects completely
@@ -151,6 +155,7 @@ class Controls {
         } else { // only check for the first layer of clickable objects (e.g. the whiteboard but not the sticky notes)
             const intersects = this.raycaster.intersectObjects(this.clickable, true);
             if (intersects.length > 0) {
+                console.log(intersects)
                 if (intersects[0].object.userData.link) {
                     window.open(intersects[0].object.userData.link);
                 } else {
@@ -159,14 +164,14 @@ class Controls {
                     } else {
                         this.objToZoom = intersects[0].object;
                     }
-                    if (this.objToZoom.userData.offset) {
+                    if (this.objToZoom.userData.offsetX) {
                         if (this.objToZoom.userData.angle) {
-                            this.camera.zoomOnObject(this.objToZoom, this.objToZoom.userData.normal, this.objToZoom.userData.offset, this.objToZoom.userData.angle);
+                            this.camera.zoomOnObject(this.objToZoom, this.objToZoom.userData.offsetX, this.objToZoom.userData.offsetZ, this.objToZoom.userData.angle);
                         } else {
-                            this.camera.zoomOnObject(this.objToZoom, this.objToZoom.userData.normal, this.objToZoom.userData.offset);
+                            this.camera.zoomOnObject(this.objToZoom, this.objToZoom.userData.offsetX, this.objToZoom.userData.offsetZ);
                         }
                     } else {
-                        this.camera.zoomOnObject(this.objToZoom, this.objToZoom.userData.normal);
+                        this.camera.zoomOnObject(this.objToZoom);
                     }
                     this.isZoomed = true;
                 }
@@ -275,8 +280,8 @@ class Controls {
 function Workshop(x, y, z, ry, url) {
 
     var html = [
-      '<div style="width:' + 1100 + 'px; height:' + 900 + 'px;">',
-      '<iframe src="' + url + '" width="' + 1100 + '" height="' + 900 + '"style="border-width:0px;">',
+      '<div style="width:' + 2100 + 'px; height:' + 2100 + 'px;">',
+      '<iframe src="' + url + '" width="' + 2100 + '" height="' + 2100 + '"style="border-width:0px;">',
       '</iframe>',
       '</div>'
     ].join('\n');
