@@ -72,14 +72,16 @@ class Loader {
             //make the fridge clickable and hoverable
             var fridge = new THREE.Group();
             fridge.add(...model.children.slice(34, 38));
+            fridge.add(this.scene.getObjectByName("Text151"), this.scene.getObjectByName("Text152"), this.scene.getObjectByName("Text153"), this.scene.getObjectByName("Plane036"))
             this.controls.hoverable.push(fridge);
             // specify which part of the fridge to zoom in on
             fridge.userData = {toZoom: fridge.children[2]};
             // give the top door information for camera.zoomOnObject
-            fridge.children[2].userData = {offsetX: 0.5, offsetZ: 0.45};
+            fridge.children[2].userData = {offsetX: 0.54, offsetZ: 0.52};
             // fridge.children[2].userData = {normal: new THREE.Vector3(0, 0, 0), offset: 50};
             this.controls.clickable.push(fridge);
             model.add(fridge);
+
 
             var donate = this.scene.getObjectByName("Cube078")
             donate.userData = {link: "http://stackoverflow.com"}
@@ -163,24 +165,27 @@ class Loader {
             // graphql.userData = {html: '/workshops/graphql.html'};
 
             // index 4 = html
+            console.log(whiteboard.children)
             var git = whiteboard.children[1];
             git.userData = {html: '/workshops/git.html'};
             var sql = whiteboard.children[2];
             sql.userData = {html: '/workshops/sql.html'};
-            var py = whiteboard.children[4];
-            py.userData = {html: '/workshops/flaskpython.html'};
-            var sec = whiteboard.children[6];
-            sec.userData = {html: '/workshops/security.html'};
-            var react = whiteboard.children[6];
-            react.userData = {html: '/workshops/reactnative.html'};
-            var html = whiteboard.children[8];
-            html.userData = {html: '/workshops/htmlcss.html'};
             var maya = whiteboard.children[3];
             maya.userData = {html: '/workshops/maya.html'};
+            var py = whiteboard.children[4];
+            py.userData = {html: '/workshops/flaskpython.html'};
+            var asm = whiteboard.children[5];
+            asm.userData = {html: '/workshops/assembly.html'};
+            var react = whiteboard.children[6];
+            react.userData = {html: '/workshops/reactnative.html'};
             var linux = whiteboard.children[8];
             linux.userData = {html: '/workshops/linux.html'};
             var graphql = whiteboard.children[9];
             graphql.userData = {html: '/workshops/graphql.html'};
+            var html = whiteboard.children[10];
+            html.userData = {html: '/workshops/htmlcss.html'};
+            var sec = whiteboard.children[7];
+            sec.userData = {html: '/workshops/security.html'};
 
 
             this.controls.hoverableOnZoom.push(...whiteboard.children.slice(1))
