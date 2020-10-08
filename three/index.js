@@ -9,7 +9,7 @@ var container = document.body;
 var iframe;
 
 var renderer = new THREE.WebGLRenderer({antialias: true});
-renderer.setPixelRatio(window.devicePixelRatio);
+renderer.setPixelRatio(window.devicePixelRatio*(7/10));
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.outputEncoding = THREE.sRGBEncoding;
 renderer.setClearColor(0xffffff, 1);
@@ -19,6 +19,7 @@ var renderercss = new CSS3DRenderer();
 renderercss.setSize(window.innerWidth, window.innerHeight);
 renderercss.domElement.style.position = 'absolute';
 renderercss.domElement.style.top = '0px';
+renderercss.domElement.style.zIndex = '10000';
 container.appendChild(renderercss.domElement);
 
 var scene = new THREE.Scene();
@@ -41,7 +42,7 @@ var Stream = function (x, y, z, ry) {
     div.style.height = '320px';
     div.style.backgroundColor = '#000';
     iframe = document.createElement('iframe');
-    iframe.style.width = '480px';
+    iframe.style.width = '586px';
     iframe.style.height = '320px';
     iframe.style.border = '0px';
     iframe.id = 'stream'
@@ -56,7 +57,7 @@ var Stream = function (x, y, z, ry) {
 
 // TODO: bind horizontal scroll to room change
 
-var stream = new Stream(2800, 100, -1500, -Math.PI / 4)
+var stream = new Stream(-3126, -428, 3820, (7*(Math.PI / 9)))
 scene.add(stream);
 
 const controls = new Controls(camera, scene, iframe);

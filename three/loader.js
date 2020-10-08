@@ -54,7 +54,7 @@ class Loader {
         loader.load('assets/models/room.gltf', (gltf) => {
             var model = gltf.scene;
             model.scale.set(4, 4, 4);
-            model.position.set(0, 2, 0);
+            model.position.set(0, 0, 0);
 
             // center room
             const box = new THREE.Box3().setFromObject(model);
@@ -64,7 +64,7 @@ class Loader {
             model.position.z += (model.position.z - center.z);
 
             // offset room so that it is centered
-            model.position.x -= 0
+            model.position.x -= -2.825
             model.position.z -= 1.08
 
             // convert all models to toon texture (broken)

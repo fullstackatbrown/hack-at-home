@@ -15,7 +15,7 @@ class Camera {
         this.targetAngle = -1;
         this.currentIndex = 0;
         this.isUserInteracting = false;
-        this.camera = new THREE.PerspectiveCamera(22, window.innerWidth / window.innerHeight, 0.1, 100);
+        this.camera = new THREE.PerspectiveCamera(25, window.innerWidth / window.innerHeight, 0.1, 100);
 
         // set camera properties
         this.camera.position.set(0, 0, 0);
