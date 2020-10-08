@@ -186,7 +186,6 @@ footer {
 }
 
 .indent > .btn__link {
-    display: block;
     margin-top: 1em;
 }
 
@@ -298,13 +297,22 @@ footer {
 }
 
 .btn__workshop {
-    color: inherit;
+    color: black;
     text-align: left;
-    margin-bottom: 6px;
+    display: inline-block;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 8px 8px 8px 0px;
     border: none;
-    padding: 6px 0px;
+    padding: 6px 6px;
     position: relative;
-    background-color: transparent;
+    background-color: #F4DE77;
+}
+
+.btn__workshop:hover{
+    opacity: 1;
+    background-color: #ffec96;
 }
 
 .btn__workshop h2 {
@@ -728,6 +736,11 @@ footer {
 
     .block__blurb {
         margin-top: 20px;
+    }
+
+    .block__buttons {
+        display: flex;
+        flex-direction: row;
     }
 
     .pg__bg_home {
