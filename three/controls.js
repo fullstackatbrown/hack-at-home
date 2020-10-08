@@ -122,8 +122,12 @@ class Controls {
                     var wkshop = new Workshop(1000, 0, 1250, -5*Math.PI / 6, this.objToZoom.userData.html);
                     this.scene.add(wkshop);
                 } else { // if its not a sticky note, zoom in on the object
-                    this.camera.zoomOnObject(this.objToZoom, this.objToZoom.userData.normal);
-                    this.isZoomedSecond = true;
+                    if(this.objToZoom.userData.link) {
+                        window.open(this.objToZoom.userData.link);
+                    } else {
+                        this.camera.zoomOnObject(this.objToZoom, this.objToZoom.userData.normal);
+                        this.isZoomedSecond = true;
+                    }
                 }
             } else {
                 //check if clicking off second, internal layer of clickables to the first layer of clickables
@@ -148,17 +152,21 @@ class Controls {
         } else { // only check for the first layer of clickable objects (e.g. the whiteboard but not the sticky notes)
             const intersects = this.raycaster.intersectObjects(this.clickable, true);
             if (intersects.length > 0) {
-                if (intersects[0].object.parent.userData.toZoom) {
-                    this.objToZoom = intersects[0].object.parent.userData.toZoom;
+                if (intersects[0].object.userData.link) {
+                    window.open(intersects[0].object.userData.link);
                 } else {
-                    this.objToZoom = intersects[0].object;
+                    if (intersects[0].object.parent.userData.toZoom) {
+                        this.objToZoom = intersects[0].object.parent.userData.toZoom;
+                    } else {
+                        this.objToZoom = intersects[0].object;
+                    }
+                    if (this.objToZoom.userData.offset) {
+                        this.camera.zoomOnObject(this.objToZoom, this.objToZoom.userData.normal, this.objToZoom.userData.offset);
+                    } else {
+                        this.camera.zoomOnObject(this.objToZoom, this.objToZoom.userData.normal);
+                    }
+                    this.isZoomed = true;
                 }
-                if (this.objToZoom.userData.offset) {
-                    this.camera.zoomOnObject(this.objToZoom, this.objToZoom.userData.normal, this.objToZoom.userData.offset);
-                } else {
-                    this.camera.zoomOnObject(this.objToZoom, this.objToZoom.userData.normal);
-                }
-                this.isZoomed = true;
             } else {
                 this.camera.camX = 0;
                 this.camera.camY = 0;
