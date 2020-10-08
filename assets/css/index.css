@@ -61,7 +61,6 @@ ul {
     font-weight: 200;
     padding-left: 16px;
     margin: 0px;
-    /*list-style-type: none;*/
 }
 
 li {
@@ -77,6 +76,11 @@ footer {
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-end;
+}
+
+.bullets {
+    list-style-type: none;
+    border-left: 1px solid black;
 }
 
 .center {
@@ -141,34 +145,62 @@ footer {
     background-repeat: no-repeat;
     background-position: bottom;
     background-size: contain;
-    background-color: #92B770;
-    background-image: url("../images/bedroom.png");
+    background-color: #EF993A;
+    background-image: url("../images/rooms/bed.png");
 }
 
-.pg__bg_home {
+.pg__bg {
     background-repeat: no-repeat;
     background-position: bottom;
     background-size: contain;
+}
+
+.pg__bg_home {
     background-image: url("../images/landscape.png");
 }
 
 .pg__bg_intro {
     padding-bottom: 10vw;
     background-color: #AFD8D0;
-    background-repeat: no-repeat;
-    background-position: bottom;
-    background-size: contain;
-    background-image: url("../images/entryway1.png");
+    background-image: url("../images/rooms/entryway1.png");
 }
 
-.pg__bg_faq {
+.pg__bg_donate {
+    background-color: #294291;
+    color: white;
+    background-image: url("../images/rooms/plant-room.png");
+}
+
+.pg__faq {
     background-color: #F8DD64;
     padding-bottom: 0px;
 }
 
 .pg__sponsors {
-    background-color: #93B770;
+    background-color: #C13633;
     color: white;
+    padding-bottom: 100px;
+}
+
+.pg__hack {
+    color: white;
+    background-color: #93B770;
+    padding-bottom: 0px;
+}
+
+.pg__watch {
+    background-color: #24441E;
+    color: white;
+    padding-bottom: 0px;
+}
+
+.pg__play {
+    background-color: #EB9B83;
+    padding-bottom: 0px;
+}
+
+.pg__people {
+    background-color: #AFD8D0;
 }
 
 .smoke {
@@ -180,12 +212,12 @@ footer {
 }
 
 .indent {
-    border-left: 1px solid black;
+    border-left: 1px solid white;
     padding-left: 30px;
     margin-top: 36px;
 }
 
-.indent > .btn__link {
+.indent > .btn__link_blue {
     margin-top: 1em;
 }
 
@@ -288,6 +320,13 @@ footer {
     text-decoration: none;
 }
 
+.btn__link_blue {
+    color: #dbfff8;
+    font-weight: 300;
+    display: inline-block;
+    text-decoration: none;
+}
+
 .btn__header {
     color: inherit;
     text-decoration: none;
@@ -362,7 +401,7 @@ footer {
 
 .people img {
     height: auto;
-    width: 60%;
+    width: 50%;
     border-radius: 50%;
     margin-bottom: 10px;
 }
@@ -398,6 +437,18 @@ footer {
     max-width: 100%;
     object-fit: contain;
     padding: 40px 60px;
+}
+
+.sponsors__gold a, .sponsors__silver a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sponsors__gold a:hover, .sponsors__silver a:hover {
+    transition: 0.2s;
+    cursor: pointer;
+    opacity: 0.5;
 }
 
 .sponsors__silver img {
@@ -443,7 +494,7 @@ footer {
 }
 
 .sponsors__silver div:nth-child(2) div {
-    border: 20px solid #EF993A;
+    border: 20px solid #EB9B83;
 }
 
 .hanger {
@@ -499,7 +550,7 @@ footer {
     height: calc(75% - 2vw);
     top: 15%;
     right: -50vw;
-    background-color: #92B770;
+    background-color: #EF993A;
     border-radius: 12px;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -564,7 +615,7 @@ footer {
     padding: 20px 60px;
     display: flex;
     justify-content: space-between;
-    background-color: #92B770;
+    background-color: #EF993A;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
