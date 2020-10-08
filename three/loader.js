@@ -103,6 +103,56 @@ class Loader {
             this.controls.hoverable.push(form);
             this.controls.clickable.push(form);
 
+            var berg = this.scene.getObjectByName("logoBBGblck_Reg")
+            berg.userData = {link: "https://bloomberg.com"}
+            this.controls.hoverableOnZoom.push(berg);
+            this.controls.clickableOnZoom.push(berg);
+
+            var mule = this.scene.getObjectByName("sticker-mule-logo-light-stacked")
+            mule.userData = {link: "https://stickermule.com"}
+            this.controls.hoverableOnZoom.push(mule);
+            this.controls.clickableOnZoom.push(mule);
+
+            var fb = this.scene.getObjectByName("FB_Fam_Logo")
+            fb.userData = {link: "https://stickermule.com"}
+            this.controls.hoverableOnZoom.push(fb);
+            this.controls.clickableOnZoom.push(fb);
+
+            var thm = this.scene.getObjectByName("THMlogo")
+            thm.userData = {link: "https://tryhackme.com"}
+            this.controls.hoverableOnZoom.push(thm);
+            this.controls.clickableOnZoom.push(thm);
+
+            var google = this.scene.getObjectByName("Google_Cloud_horizontal_grey_text_-_for_light_background_only_0")
+            google.userData = {link: "https://cloud.google.com/"}
+            this.controls.hoverableOnZoom.push(google);
+            this.controls.clickableOnZoom.push(google);
+
+            var cit = this.scene.getObjectByName("Citizens_TM_Horz_RGB_HEX_(1)")
+            cit.userData = {link: "https://www.citizensbank.com/HomePage.aspx"}
+            this.controls.hoverableOnZoom.push(cit);
+            this.controls.clickableOnZoom.push(cit);
+
+            var eye = this.scene.getObjectByName("logo_kinetic_eye")
+            eye.userData = {link: "http://kineticeye.io/"}
+            this.controls.hoverableOnZoom.push(eye);
+            this.controls.clickableOnZoom.push(eye);
+
+            var wolf = this.scene.getObjectByName("Hackathon_Logo_Wolfram_2020_Vector")
+            wolf.userData = {link: "https://www.wolfram.com/language/"}
+            this.controls.hoverableOnZoom.push(wolf);
+            this.controls.clickableOnZoom.push(wolf);
+
+            var on = this.scene.getObjectByName("Onshape")
+            on.userData = {link: "https://www.onshape.com/"}
+            this.controls.hoverableOnZoom.push(on);
+            this.controls.clickableOnZoom.push(on);
+
+            var pan = this.scene.getObjectByName("Pangea_Logo_2020")
+            pan.userData = {link: "https://www.about.pangea.app/"}
+            this.controls.hoverableOnZoom.push(pan);
+            this.controls.clickableOnZoom.push(pan);
+
             var sponsors = this.scene.getObjectByName("Cube076")
             sponsors.userData = {offsetX: .35, offsetZ: .35}
             this.controls.hoverable.push(sponsors);
