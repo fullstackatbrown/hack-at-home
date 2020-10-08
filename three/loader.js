@@ -115,13 +115,8 @@ class Loader {
             // this.controls.hoverable.push(sponsors);
             // this.controls.clickable.push(sponsors);
 
-            var bloomberg = this.scene.getObjectByName("logoBBGblck_Reg")
-            bloomberg.userData = {link: "http://bloomberg.com"}
-            this.controls.hoverable.push(bloomberg);
-            this.controls.clickableOnZoom.push(bloomberg);
-
             var sponsors_white = this.scene.getObjectByName("Cube077")
-            sponsors_white.userData = {normal: this.getNormal(-60), offset: 50000/(window.innerWidth)}
+            sponsors_white.userData = {normal: this.getNormal(-60), offset: 50}
             this.controls.hoverable.push(sponsors_white);
             this.controls.clickable.push(sponsors_white);
 

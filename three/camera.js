@@ -85,11 +85,9 @@ class Camera {
         if (maxDim === size.y) {
             cameraDist = maxDim / (2 * Math.tan(this.camera.fov / 2));
         } else { //do the same calculations but with horizontal field of view
-            const aspect = this.camera.aspect;
-            const hFOV = 2 * Math.atan(Math.tan(this.camera.fov / 2) * aspect);
+            const hFOV = 2 * Math.atan(Math.tan(this.camera.fov / 2) * 1.5);
             cameraDist = maxDim / (2 * Math.tan(hFOV / 2));
         }
-
         // calculate distance the camera needs to travel to be cameraDist away from object
         distToTravel = Math.hypot(center.x, center.z) - cameraDist;
         // decrease the distance to give buffer space
