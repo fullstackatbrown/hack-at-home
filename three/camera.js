@@ -60,7 +60,7 @@ class Camera {
         this.camera.updateProjectionMatrix();
     }
 
-    zoomOnObject = (box, normal, offset, angle) => {
+    zoomOnObject = (box, offsetX, offsetZ, angle) => {
         let center = new THREE.Vector3();
         let size = new THREE.Vector3();
         let cameraDist;
@@ -69,7 +69,8 @@ class Camera {
         let delZ;
         let theta;
         //increase cameraDist so object isn't the entire screen
-        offset = offset || 2.5;
+        offsetX = offsetX || .5;
+        offsetZ = offsetZ || .5;
 
         // create bounding box from object and get center and dimensions of object
         let boundingBox = new THREE.Box3();
@@ -93,18 +94,19 @@ class Camera {
         // decrease the distance to give buffer space
 
         //calculate how much of distToTravel is in the x and z
-        delZ = Math.abs(Math.sin(theta)) * distToTravel;
-        delX = Math.cos(theta) * distToTravel;
+        delZ = Math.abs(Math.sin(theta)) * distToTravel*offsetZ;
+        delX = Math.cos(theta) * distToTravel *offsetX;
+        
 
         if (center.x > 0) {
-            this.camX = delX - Math.abs(normal.x)*offset;
+            this.camX = delX;
         } else {
-            this.camX = -delX + Math.abs(normal.x)*offset;
+            this.camX = -delX;
         }
         if (center.z > 0) {
-            this.camZ = delZ - Math.abs(normal.z)*offset;
+            this.camZ = delZ;
         } else {
-            this.camZ = -delZ + Math.abs(normal.z)*offset;
+            this.camZ = -delZ;
         }
 
         if (angle) {

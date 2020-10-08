@@ -74,12 +74,12 @@ class Loader {
             fridge.add(...model.children.slice(34, 38));
             this.controls.hoverable.push(fridge);
             // specify which part of the fridge to zoom in on
-            fridge.userData = {toZoom: fridge.children[1]};
+            fridge.userData = {toZoom: fridge.children[2]};
             // give the top door information for camera.zoomOnObject
-            fridge.children[1].userData = {normal: this.getNormal(20), offset: 20};
+            fridge.children[2].userData = {offsetX: 0.5, offsetZ: 0.45};
+            // fridge.children[2].userData = {normal: new THREE.Vector3(0, 0, 0), offset: 50};
             this.controls.clickable.push(fridge);
             model.add(fridge);
-
 
             var donate = this.scene.getObjectByName("Cube078")
             donate.userData = {link: "http://stackoverflow.com"}
@@ -102,18 +102,17 @@ class Loader {
             this.controls.clickable.push(form);
 
             var sponsors = this.scene.getObjectByName("Cube076")
-            sponsors.userData = {normal: this.getNormal(-60), offset: 55}
+            sponsors.userData = {offsetX: .35, offsetZ: .35}
             this.controls.hoverable.push(sponsors);
             this.controls.clickable.push(sponsors);
 
             var sponsors_white = this.scene.getObjectByName("Plane023")
-            sponsors_white.userData = {normal: this.getNormal(-60), offset: 30}
             this.controls.hoverable.push(sponsors_white);
             this.controls.clickable.push(sponsors_white);
 
             var laptop = this.scene.getObjectByName("Laptop001")
             laptop.userData = {toZoom: laptop.children[0]}
-            laptop.children[0].userData = {normal: this.getNormal(-140), offset: 15, angle:20}
+            laptop.children[0].userData = {offsetX: .63, offsetZ: .71, angle:20}
             this.controls.hoverable.push(laptop);
             this.controls.clickable.push(laptop);
 
@@ -133,7 +132,7 @@ class Loader {
             this.controls.clickableOnZoom.push(data);
 
             var whiteboard = new THREE.Group()
-            this.scene.getObjectByName("Cube017").userData = {normal: this.getNormal(60), offset: 35}
+            this.scene.getObjectByName("Cube017").userData = {offsetX: 0.5, offsetZ: 0.46}
             whiteboard.add(this.scene.getObjectByName("Cube017"))
             whiteboard.add(...model.children.slice(288, 298))
             whiteboard.add(model.children[744])
