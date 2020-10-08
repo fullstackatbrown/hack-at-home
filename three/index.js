@@ -59,6 +59,26 @@ var Stream = function (x, y, z, ry) {
 var stream = new Stream(-3095, -420, 3700, (7 * (Math.PI / 9)))
 scene.add(stream);
 
+// var html = [
+//     '<div style="width:' + 1100 + 'px; height:' + 900 + 'px;">',
+//     '<iframe src="' + '/workshops/htmlcss.html' + '" width="' + 1100 + '" height="' + 900 + '"style="border-width:0px;">',
+//     '</iframe>',
+//     '</div>'
+//   ].join('\n');
+
+// var div = document.createElement('div');
+
+//   $(div).html(html);
+//   $(div).css("background-color","white");
+
+// var cssObject = new CSS3DObject(div);
+
+// cssObject.name = "wkshop";
+// cssObject.position.set(-5595,-320,-2700);
+// cssObject.rotation.y = (3 * (Math.PI / 9));
+
+// scene.add(cssObject);
+
 // Test sphere
 // var geometry = new THREE.SphereGeometry( 0.5, 32, 32 );
 // var material = new THREE.MeshBasicMaterial( {color: 0xffff00} );

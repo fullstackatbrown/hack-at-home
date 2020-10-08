@@ -132,7 +132,7 @@ class Loader {
             this.controls.clickableOnZoom.push(data);
 
             var whiteboard = new THREE.Group()
-            this.scene.getObjectByName("Cube017").userData = {offsetX: 0.5, offsetZ: 0.46}
+            this.scene.getObjectByName("Cube017").userData = {offsetX: 0.53, offsetZ: 0.5}
             whiteboard.add(this.scene.getObjectByName("Cube017"))
             whiteboard.add(...model.children.slice(288, 298))
             whiteboard.add(model.children[744])
@@ -141,26 +141,48 @@ class Loader {
             this.controls.clickable.push(whiteboard);
             model.add(whiteboard);
 
+            // var git = whiteboard.children[1];
+            // git.userData = {html: '/workshops/git.html'};
+            // var sql = whiteboard.children[2];
+            // sql.userData = {html: '/workshops/sql.html'};
+            // var html = whiteboard.children[3];
+            // html.userData = {html: '/workshops/htmlcss.html'};
+            // var maya = whiteboard.children[4];
+            // maya.userData = {html: '/workshops/maya.html'};
+            // var python = whiteboard.children[5];
+            // python.userData = {html: '/workshops/flaskpython.html'};
+            // var asm = whiteboard.children[6];
+            // asm.userData = {html: '/workshops/assembly.html'};
+            // var react = whiteboard.children[7];
+            // react.userData = {html: '/workshops/reactnative.html'};
+            // var security = whiteboard.children[8];
+            // security.userData = {html: '/workshops/security.html'};
+            // var linux = whiteboard.children[9];
+            // linux.userData = {html: '/workshops/linux.html'};
+            // var graphql = whiteboard.children[11];
+            // graphql.userData = {html: '/workshops/graphql.html'};
+
+            // index 4 = html
             var git = whiteboard.children[1];
             git.userData = {html: '/workshops/git.html'};
             var sql = whiteboard.children[2];
             sql.userData = {html: '/workshops/sql.html'};
-            var html = whiteboard.children[3];
-            html.userData = {html: '/workshops/htmlcss.html'};
-            var maya = whiteboard.children[4];
-            maya.userData = {html: '/workshops/maya.html'};
-            var python = whiteboard.children[5];
-            python.userData = {html: '/workshops/flaskpython.html'};
-            var asm = whiteboard.children[6];
-            asm.userData = {html: '/workshops/assembly.html'};
-            var react = whiteboard.children[7];
+            var py = whiteboard.children[4];
+            py.userData = {html: '/workshops/flaskpython.html'};
+            var sec = whiteboard.children[6];
+            sec.userData = {html: '/workshops/security.html'};
+            var react = whiteboard.children[6];
             react.userData = {html: '/workshops/reactnative.html'};
-            var security = whiteboard.children[8];
-            security.userData = {html: '/workshops/security.html'};
-            var linux = whiteboard.children[9];
+            var html = whiteboard.children[8];
+            html.userData = {html: '/workshops/htmlcss.html'};
+            var maya = whiteboard.children[3];
+            maya.userData = {html: '/workshops/maya.html'};
+            var linux = whiteboard.children[8];
             linux.userData = {html: '/workshops/linux.html'};
-            var graphql = whiteboard.children[11];
+            var graphql = whiteboard.children[9];
             graphql.userData = {html: '/workshops/graphql.html'};
+
+
             this.controls.hoverableOnZoom.push(...whiteboard.children.slice(1))
             this.controls.clickableOnZoom.push(...whiteboard.children.slice(1))
 
