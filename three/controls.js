@@ -172,6 +172,9 @@ class Controls {
                 this.camera.camY = 0;
                 this.camera.camZ = 0;
                 this.isZoomed = false;
+                // re-show arrows
+                $("#arrow-left").removeClass("arrow__hidden")
+                $("#arrow-right").removeClass("arrow__hidden")
                 this.scene.remove(this.scene.getObjectByName("wkshop"));
             }
         }
@@ -269,12 +272,10 @@ class Controls {
 function Workshop(x, y, z, ry, url) {
 
     var html = [
-
       '<div style="width:' + 1100 + 'px; height:' + 900 + 'px;">',
       '<iframe src="' + url + '" width="' + 1100 + '" height="' + 900 + '"style="border-width:0px;">',
       '</iframe>',
       '</div>'
-
     ].join('\n');
 
     var div = document.createElement('div');

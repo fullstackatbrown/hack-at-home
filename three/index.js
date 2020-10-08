@@ -59,6 +59,13 @@ var Stream = function (x, y, z, ry) {
 var stream = new Stream(-3095, -420, 3700, (7 * (Math.PI / 9)))
 scene.add(stream);
 
+// Test sphere
+// var geometry = new THREE.SphereGeometry( 0.5, 32, 32 );
+// var material = new THREE.MeshBasicMaterial( {color: 0xffff00} );
+// var sphere = new THREE.Mesh( geometry, material );
+// sphere.position.set(-19.794935691667966, -6.325510698485902, -34.6286650156092)
+// scene.add(sphere)
+
 const controls = new Controls(camera, scene, iframe);
 const loader = new Loader(scene, controls)
 loader.manager.onLoad = function () {
