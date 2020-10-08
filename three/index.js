@@ -4,12 +4,13 @@ import Controls from './controls.js';
 import Loader from './loader.js';
 
 import {CSS3DRenderer, CSS3DObject} from 'https://unpkg.com/three@0.119.1/examples/jsm/renderers/CSS3DRenderer.js';
+
 var container = document.body;
 
 var iframe;
 
 var renderer = new THREE.WebGLRenderer({antialias: true});
-renderer.setPixelRatio(window.devicePixelRatio*(7/10));
+renderer.setPixelRatio(window.devicePixelRatio * (7 / 10));
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.outputEncoding = THREE.sRGBEncoding;
 renderer.setClearColor(0xffffff, 1);
@@ -28,8 +29,8 @@ scene.background = new THREE.Color(0xffffff);
 const camera = new Camera();
 
 // Shadow light
-var light = new THREE.HemisphereLight( 0xffffff, 0x8f8f8f, 1.0 );
-light.position.set( 0, 3, 0 );
+var light = new THREE.HemisphereLight(0xffffff, 0x8f8f8f, 1.0);
+light.position.set(0, 3, 0);
 scene.add(light);
 
 // Ambient light
@@ -38,8 +39,6 @@ scene.add(light);
 
 var Stream = function (x, y, z, ry) {
     var div = document.createElement('div');
-    div.style.width = '480px';
-    div.style.height = '320px';
     div.style.backgroundColor = '#000';
     iframe = document.createElement('iframe');
     iframe.style.width = '586px';
@@ -47,7 +46,7 @@ var Stream = function (x, y, z, ry) {
     iframe.style.border = '0px';
     iframe.id = 'stream'
     // iframe.style.pointerEvents = 'none';
-    iframe.src = 'https://player.twitch.tv/?channel=starlitedrivein&parent=localhost';
+    iframe.src = 'https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fhackingathome%2Fposts%2F136587818172473&width=586&height=320';
     div.appendChild(iframe);
     var object = new CSS3DObject(div);
     object.position.set(x, y, z);
@@ -57,7 +56,7 @@ var Stream = function (x, y, z, ry) {
 
 // TODO: bind horizontal scroll to room change
 
-var stream = new Stream(-3126, -428, 3820, (7*(Math.PI / 9)))
+var stream = new Stream(-3095, -420, 3700, (7 * (Math.PI / 9)))
 scene.add(stream);
 
 const controls = new Controls(camera, scene, iframe);

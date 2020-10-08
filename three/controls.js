@@ -178,8 +178,8 @@ class Controls {
             this.camera.lat = (clientY - this.onMouseDownMouseY) * 0.045 + this.onMouseDownLat;
         }
         // jiggle screen
-        // this.camera.tiltX = this.camera.tiltX - ((this.camera.tiltX + (((window.innerWidth / 2) - event.clientX) / (window.innerWidth / 2)) / 55) / 3)
-        // this.camera.tiltY = this.camera.tiltY - ((this.camera.tiltY + (((window.innerHeight / 2) - event.clientY) / (window.innerHeight / 2)) / 55) / 3)
+        this.camera.tiltX = this.camera.tiltX - ((this.camera.tiltX + (((window.innerWidth / 2) - event.clientX) / (window.innerWidth / 2)) / 55) / 3)
+        this.camera.tiltY = this.camera.tiltY - ((this.camera.tiltY + (((window.innerHeight / 2) - event.clientY) / (window.innerHeight / 2)) / 55) / 3)
 
         //calculates device coordinates
         this.mouse.x = (event.clientX / window.innerWidth) * 2 - 1;

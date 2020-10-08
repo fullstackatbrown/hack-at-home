@@ -1,32 +1,32 @@
-.overlay {
+#arrow-left, #arrow-right {
+    z-index: 10000000;
     color: white;
-    position: fixed;
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    z-index: 5000;
-}
-
-.overlay div {
-    display: flex;
-    transition: 0.2s;
-}
-
-.overlay div:nth-child(1), .overlay div:nth-child(2) {
+    position: absolute;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     width: 10%;
+    height: 100vh;
 }
 
-.overlay div:nth-child(1):hover, .overlay div:nth-child(3):hover{
+#arrow-left {
+    left: 0;
+}
+
+#arrow-right {
+    right: 0;
+}
+
+#arrow-left:hover {
+    opacity: 0;
+}
+
+#arrow-left:hover, #arrow-right:hover{
     opacity: 0.5;
 }
 
-.overlay div:nth-child(1):active, .overlay div:nth-child(3):active{
+#arrow-left:active, #arrow-right:active{
     opacity: 0.2;
 }
 
