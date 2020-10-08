@@ -60,7 +60,7 @@ class Camera {
         this.camera.updateProjectionMatrix();
     }
 
-    zoomOnObject = (box, normal, offset) => {
+    zoomOnObject = (box, normal, offset, angle) => {
         let center = new THREE.Vector3();
         let size = new THREE.Vector3();
         let cameraDist;
@@ -105,6 +105,11 @@ class Camera {
             this.camZ = delZ - Math.abs(normal.z)*offset;
         } else {
             this.camZ = -delZ + Math.abs(normal.z)*offset;
+        }
+
+        if (angle) {
+            this.camX += 3 * Math.cos(THREE.MathUtils.degToRad(angle));  
+            this.camZ += 3 * Math.sin(THREE.MathUtils.degToRad(angle));
         }
         this.camera.updateProjectionMatrix();
     }

@@ -111,14 +111,10 @@ class Controls {
             const intersects = this.raycaster.intersectObjects(this.clickableOnZoom, true);
             this.scene.remove(this.scene.getObjectByName("wkshop"));
             if (intersects.length > 0) {
-                // if what is clicked on is part of a group, check what should be zoomed in on in the group
-                if (intersects[0].object.parent.userData.toZoom) {
-                    this.objToZoom = intersects[0].object.parent.userData.toZoom;
-                // if there is no group, the object to zoom in on is what was clicked
-                } else {
-                    this.objToZoom = intersects[0].object;
-                }
+                console.log(intersects)
+                this.objToZoom = intersects[0].object;
                 if (this.objToZoom.userData.html) { // if its a sticky note, add a new workshop
+                    console.log("yes")
                     var wkshop = new Workshop(1000, 0, 1250, -5*Math.PI / 6, this.objToZoom.userData.html);
                     this.scene.add(wkshop);
                 } else { // if its not a sticky note, zoom in on the object
@@ -161,7 +157,11 @@ class Controls {
                         this.objToZoom = intersects[0].object;
                     }
                     if (this.objToZoom.userData.offset) {
-                        this.camera.zoomOnObject(this.objToZoom, this.objToZoom.userData.normal, this.objToZoom.userData.offset);
+                        if (this.objToZoom.userData.angle) {
+                            this.camera.zoomOnObject(this.objToZoom, this.objToZoom.userData.normal, this.objToZoom.userData.offset, this.objToZoom.userData.angle);
+                        } else {
+                            this.camera.zoomOnObject(this.objToZoom, this.objToZoom.userData.normal, this.objToZoom.userData.offset);
+                        }
                     } else {
                         this.camera.zoomOnObject(this.objToZoom, this.objToZoom.userData.normal);
                     }
@@ -234,13 +234,13 @@ class Controls {
                 // for each object in the model, store the current hex and then highlight the model
                 for (var j = 0; j < this.intersected.length; j++) {
                     this.intersected[j].currentHex = this.intersected[j].material.color.getHex();
-                    this.intersected[j].material.color.offsetHSL(0, 0.05, 0.05);
+                    this.intersected[j].material.color.offsetHSL(-0.025, 0.05, 0.05);
                 }
             } else if (hoverType[i] == intersects[0].object) {
                 // redefine intersected as the single object in the model
                 this.intersected = [hoverType[i]];
                 this.intersected[0].currentHex = intersects[0].object.material.color.getHex();
-                this.intersected[0].material.color.offsetHSL(0, 0.05, 0.05);
+                this.intersected[0].material.color.offsetHSL(-0.025, 0.05, 0.05);
             }
         }
     }

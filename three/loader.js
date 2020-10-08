@@ -67,27 +67,6 @@ class Loader {
             model.position.x -= -2.825
             model.position.z -= 1.08
 
-            // convert all models to toon texture (broken)
-            // const traverseModel = (model) => model.children.map((o) => {
-            //     if (o.isMesh) {
-            //         var newMaterial = new THREE.MeshToonMaterial({
-            //             // color: "blue"
-            //         });
-            //         console.log(o)
-            //         o.material = newMaterial
-            //     } else if (o.isGroup) {
-            //         traverseModel(o)
-            //     }
-            // });
-            // traverseModel(model)
-            var geometry = new THREE.PlaneGeometry(1, 1);
-            var material = new THREE.MeshBasicMaterial( {color: 0xff0000} );
-            var plane = new THREE.Mesh( geometry, material );
-            plane.rotateY(THREE.MathUtils.degToRad(20))
-            plane.position.set(9.2,0.2,-14)
-            // plane.position.set(-18,3,-34)
-            model.add(plane)
-
             this.scene.add(model);
 
             //make the fridge clickable and hoverable
@@ -101,24 +80,90 @@ class Loader {
             this.controls.clickable.push(fridge);
             model.add(fridge);
 
-            // console.log(model.children[921])
-            // model.children[921].userData = {normal: this.getNormal(-60), offset: 20};
-            // this.controls.clickable.push(model.children[921])
 
             var donate = this.scene.getObjectByName("Cube078")
             donate.userData = {link: "http://stackoverflow.com"}
             this.controls.hoverable.push(donate);
             this.controls.clickable.push(donate);
 
-            // var sponsors = this.scene.getObjectByName("Cube076")
-            // sponsors.userData = {normal: this.getNormal(-60), offset: 45}
-            // this.controls.hoverable.push(sponsors);
-            // this.controls.clickable.push(sponsors);
+            var discord = this.scene.getObjectByName("Cube073")
+            discord.userData = {link: "http://discord.com"}
+            this.controls.hoverable.push(discord);
+            this.controls.clickable.push(discord);
 
-            var sponsors_white = this.scene.getObjectByName("Cube077")
-            sponsors_white.userData = {normal: this.getNormal(-60), offset: 50}
+            var minecraft = this.scene.getObjectByName("Cube074")
+            minecraft.userData = {link: "http://minecraft.com"}
+            this.controls.hoverable.push(minecraft);
+            this.controls.clickable.push(minecraft);
+
+            var form = this.scene.getObjectByName("Cube075")
+            form.userData = {link: "http://google.com"}
+            this.controls.hoverable.push(form);
+            this.controls.clickable.push(form);
+
+            var sponsors = this.scene.getObjectByName("Cube076")
+            sponsors.userData = {normal: this.getNormal(-60), offset: 55}
+            this.controls.hoverable.push(sponsors);
+            this.controls.clickable.push(sponsors);
+
+            var sponsors_white = this.scene.getObjectByName("Plane023")
+            sponsors_white.userData = {normal: this.getNormal(-60), offset: 30}
             this.controls.hoverable.push(sponsors_white);
             this.controls.clickable.push(sponsors_white);
+
+            var laptop = this.scene.getObjectByName("Laptop001")
+            laptop.userData = {toZoom: laptop.children[0]}
+            laptop.children[0].userData = {normal: this.getNormal(-140), offset: 15, angle:20}
+            this.controls.hoverable.push(laptop);
+            this.controls.clickable.push(laptop);
+
+            var ctf = this.scene.getObjectByName("Cube072")
+            ctf.userData = {link: "http://google.com"}
+            this.controls.hoverableOnZoom.push(ctf);
+            this.controls.clickableOnZoom.push(ctf);
+
+            var proj = this.scene.getObjectByName("Cube071")
+            proj.userData = {link: "http://google.com"}
+            this.controls.hoverableOnZoom.push(proj);
+            this.controls.clickableOnZoom.push(proj);
+
+            var data = this.scene.getObjectByName("Cube015")
+            data.userData = {link: "http://google.com"}
+            this.controls.hoverableOnZoom.push(data);
+            this.controls.clickableOnZoom.push(data);
+
+            var whiteboard = new THREE.Group()
+            this.scene.getObjectByName("Cube017").userData = {normal: this.getNormal(60), offset: 35}
+            whiteboard.add(this.scene.getObjectByName("Cube017"))
+            whiteboard.add(...model.children.slice(288, 298))
+            whiteboard.add(model.children[744])
+            whiteboard.userData = {toZoom: whiteboard.children[0]}
+            this.controls.hoverable.push(whiteboard);
+            this.controls.clickable.push(whiteboard);
+            model.add(whiteboard);
+
+            var git = whiteboard.children[1];
+            git.userData = {html: '/workshops/git.html'};
+            var sql = whiteboard.children[2];
+            sql.userData = {html: '/workshops/sql.html'};
+            var html = whiteboard.children[3];
+            html.userData = {html: '/workshops/htmlcss.html'};
+            var maya = whiteboard.children[4];
+            maya.userData = {html: '/workshops/maya.html'};
+            var python = whiteboard.children[5];
+            python.userData = {html: '/workshops/flaskpython.html'};
+            var asm = whiteboard.children[6];
+            asm.userData = {html: '/workshops/assembly.html'};
+            var react = whiteboard.children[7];
+            react.userData = {html: '/workshops/reactnative.html'};
+            var security = whiteboard.children[8];
+            security.userData = {html: '/workshops/security.html'};
+            var linux = whiteboard.children[9];
+            linux.userData = {html: '/workshops/linux.html'};
+            var graphql = whiteboard.children[11];
+            graphql.userData = {html: '/workshops/graphql.html'};
+            this.controls.hoverableOnZoom.push(...whiteboard.children.slice(1))
+            this.controls.clickableOnZoom.push(...whiteboard.children.slice(1))
 
             model.matrixAutoUpdate = false;
             model.updateMatrix();
