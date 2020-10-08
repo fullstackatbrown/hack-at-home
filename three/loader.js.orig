@@ -54,7 +54,7 @@ class Loader {
         loader.load('assets/models/room.gltf', (gltf) => {
             var model = gltf.scene;
             model.scale.set(4, 4, 4);
-            model.position.set(0, 0, 0);
+            model.position.set(0, 2, 0);
 
             // center room
             const box = new THREE.Box3().setFromObject(model);
@@ -64,7 +64,7 @@ class Loader {
             model.position.z += (model.position.z - center.z);
 
             // offset room so that it is centered
-            model.position.x -= -2.825
+            model.position.x -= 0
             model.position.z -= 1.08
 
             // convert all models to toon texture (broken)
@@ -80,31 +80,18 @@ class Loader {
             //     }
             // });
             // traverseModel(model)
-            var geometry = new THREE.PlaneGeometry(1, 1);
-            var material = new THREE.MeshBasicMaterial( {color: 0xff0000} );
-            var plane = new THREE.Mesh( geometry, material );
-            plane.rotateY(THREE.MathUtils.degToRad(20))
-            plane.position.set(9.2,0.2,-14)
-            // plane.position.set(-18,3,-34)
-            model.add(plane)
 
             //make the fridge clickable and hoverable
             var fridge = new THREE.Group();
-            fridge.add(...model.children.slice(34, 38));
+            fridge.add(...model.children.slice(38, 43));
             this.controls.hoverable.push(fridge);
             // specify which part of the fridge to zoom in on
-            fridge.userData = {toZoom: fridge.children[1]};
+            fridge.userData = {toZoom: fridge.children[2]};
             // give the top door information for camera.zoomOnObject
-            fridge.children[1].userData = {normal: this.getNormal(20), offset: 20};
+            fridge.children[2].userData = {normal: this.getNormal(-140), offset: 6.5};
             this.controls.clickable.push(fridge);
             model.add(fridge);
-
-            // console.log(model.children[921])
-            model.children[921].userData = {normal: this.getNormal(-60), offset: 20};
-            this.controls.clickable.push(model.children[921])
-
             this.scene.add(model);
-            console.log(model)
             model.matrixAutoUpdate = false;
             model.updateMatrix();
         }, undefined, function (e) {
