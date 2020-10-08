@@ -673,13 +673,13 @@ footer {
 .clouds__left {
     position: fixed;
     height: 100vh;
-    right: 100%;
+    left:-400vh;
     object-fit: cover;
-    transition: right 2s;
+    transition: left 1s;
 }
 
 .clouds__left_active {
-    right: -100%;
+    left: 0;
 }
 
 .clouds__right {
@@ -687,14 +687,13 @@ footer {
     transform: scaleX(-1);
     position: fixed;
     height: 100vh;
-    left: 100%;
-    width: auto;
+    right: -400vh;
     object-fit: cover;
-    transition: left 2s;
+    transition: right 1s;
 }
 
 .clouds__right_active {
-    left: -100%;
+    right: 0;
 }
 
 @media only screen and (max-width: 600px) {

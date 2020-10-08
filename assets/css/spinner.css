@@ -7,6 +7,7 @@
     align-items: center;
     background-color: #E8E8E8;
     z-index: 2000;
+    opacity: 0;
 }
 
 .lds-ellipsis {

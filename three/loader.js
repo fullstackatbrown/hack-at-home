@@ -51,7 +51,7 @@ class Loader {
         dracoLoader.setDecoderPath('node_modules/three/examples/js/libs/draco/gltf/');
         var loader = new GLTFLoader(this.manager);
         loader.setDRACOLoader(dracoLoader);
-        loader.load('assets/models/room.gltf', (gltf) => {
+        loader.load('assets/models/room.gltf?v=1', (gltf) => {
             var model = gltf.scene;
             model.scale.set(4, 4, 4);
             model.position.set(0, 0, 0);

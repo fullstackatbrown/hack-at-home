@@ -78,10 +78,6 @@ class Camera {
         boundingBox.getSize(size);
         let maxDim = Math.max(size.x, size.y, size.z); //check which dimension you have to fit view to
         this.camera.lookAt(center);
-
-        console.log(box)
-        console.log(boundingBox)
-        console.log(center)
         // update y position of camera to level with the object
         this.camY = center.y;
         // console.log(normal);

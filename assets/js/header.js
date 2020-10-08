@@ -32,9 +32,10 @@ $(window).on('scroll', function (e) {
 $('#house').on("click", function () {
     $('.clouds__left').addClass("clouds__left_active")
     $('.clouds__right').addClass("clouds__right_active")
+    console.log("WOW")
     setTimeout(() => {
         document.getElementById("house-link").click();
-    }, 2000)
+    }, 1000)
 })
 
 adaptHeader()

@@ -1,7 +1,7 @@
 import * as THREE from 'https://unpkg.com/three@0.119.1/build/three.module.js';
-import Camera from './camera.js';
-import Controls from './controls.js';
-import Loader from './loader.js';
+import Camera from './camera.js?v=1';
+import Controls from './controls.js?v=1';
+import Loader from './loader.js?v=1';
 
 import {CSS3DRenderer, CSS3DObject} from 'https://unpkg.com/three@0.119.1/examples/jsm/renderers/CSS3DRenderer.js';
 
@@ -67,6 +67,8 @@ loader.manager.onLoad = function () {
     $(".spinner").animate({opacity: 0}, 500, () => {
         $(".clouds__right").removeClass("clouds__right_active")
         $(".clouds__left").removeClass("clouds__left_active")
+        $("#arrow-left").removeClass("arrow__hidden")
+        $("#arrow-right").removeClass("arrow__hidden")
     })
 };
 
@@ -97,3 +99,6 @@ function onWindowResize() {
 window.addEventListener('resize', onWindowResize, false);
 
 animate()
+
+// Animate spinner in
+$(".spinner").animate({opacity: 1}, 500)
