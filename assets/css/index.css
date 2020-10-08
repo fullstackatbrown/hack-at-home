@@ -27,6 +27,7 @@ h1 {
 }
 
 section {
+    position: relative
 }
 
 section h1 {
@@ -101,6 +102,10 @@ footer {
     margin-left: 10px;
 }
 
+.image__bottom {
+    width: 100vw;
+}
+
 .pg {
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -157,12 +162,8 @@ footer {
 }
 
 .pg__bg_faq {
-    padding-bottom: 34vw;
     background-color: #F8DD64;
-    background-repeat: no-repeat;
-    background-position: bottom;
-    background-size: contain;
-    background-image: url("../images/kitchen.png");
+    padding-bottom: 0px;
 }
 
 .pg__sponsors {
