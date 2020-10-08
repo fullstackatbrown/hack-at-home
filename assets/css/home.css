@@ -13,6 +13,7 @@
 .arrow__hidden {
     transition: 0.5s;
     opacity: 0;
+    pointer-events: none;
 }
 
 #arrow-left {

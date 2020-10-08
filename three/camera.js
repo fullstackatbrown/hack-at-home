@@ -72,10 +72,15 @@ class Camera {
         offsetX = offsetX || .5;
         offsetZ = offsetZ || .5;
 
+        // remove nav arrows
+        $("#arrow-left").addClass("arrow__hidden")
+        $("#arrow-right").addClass("arrow__hidden")
+
         // create bounding box from object and get center and dimensions of object
         let boundingBox = new THREE.Box3();
         boundingBox.setFromObject(box);
         boundingBox.getCenter(center);
+        console.log(center)
         boundingBox.getSize(size);
         let maxDim = Math.max(size.x, size.y, size.z); //check which dimension you have to fit view to
         this.camera.lookAt(center);
@@ -110,7 +115,7 @@ class Camera {
         }
 
         if (angle) {
-            this.camX += 3 * Math.cos(THREE.MathUtils.degToRad(angle));  
+            this.camX += 3 * Math.cos(THREE.MathUtils.degToRad(angle));
             this.camZ += 3 * Math.sin(THREE.MathUtils.degToRad(angle));
         }
         this.camera.updateProjectionMatrix();
