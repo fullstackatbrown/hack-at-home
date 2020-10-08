@@ -54,7 +54,7 @@ class Loader {
         loader.load('assets/models/room.gltf?v=1', (gltf) => {
             var model = gltf.scene;
             model.scale.set(4, 4, 4);
-            model.position.set(0, 0, 0);
+            model.position.set(0, 2.2, 0);
 
             // center room
             const box = new THREE.Box3().setFromObject(model);
