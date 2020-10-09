@@ -252,37 +252,37 @@ class Loader {
             this.controls.clickable.push(cribs);
 
             // charities
-            var psu = this.scene.getObjectByName("Providence_Student_Union")
+            var psu = this.scene.getObjectByName("Providence_Student_Union001")
             psu.userData = {link: "https://www.pvdstudentunion.org/"}
             this.controls.hoverable.push(psu);
             this.controls.clickable.push(psu);
 
-            var pysm = this.scene.getObjectByName("Providence_Youth_Student_Movement")
+            var pysm = this.scene.getObjectByName("Providence_Youth_Student_Movement001")
             pysm.userData = {link: "https://www.prysm.us/"}
             this.controls.hoverable.push(pysm);
             this.controls.clickable.push(pysm);
 
-            var rdc = this.scene.getObjectByName("Refugee_Dream_Center")
+            var rdc = this.scene.getObjectByName("Refugee_Dream_Center001")
             rdc.userData = {link: "http://www.refugeedreamcenter.org/"}
             this.controls.hoverable.push(rdc);
             this.controls.clickable.push(rdc);
 
-            var tmf = this.scene.getObjectByName("Trayvon_Martin_Foundation")
+            var tmf = this.scene.getObjectByName("Trayvon_Martin_Foundation001")
             tmf.userData = {link: "https://www.trayvonmartinfoundation.org/"}
             this.controls.hoverable.push(tmf);
             this.controls.clickable.push(tmf);
 
-            var msf = this.scene.getObjectByName("DoctorsWithoutBorders")
+            var msf = this.scene.getObjectByName("DoctorsWithoutBorders001")
             msf.userData = {link: "https://www.doctorswithoutborders.org/"}
             this.controls.hoverable.push(msf);
             this.controls.clickable.push(msf);
 
-            var naacp = this.scene.getObjectByName("NAACP_Empowerment_Programs")
+            var naacp = this.scene.getObjectByName("NAACP_Empowerment_Programs001")
             naacp.userData = {link: "https://www.naacp.org/empowerment-programs/"}
             this.controls.hoverable.push(naacp);
             this.controls.clickable.push(naacp);
 
-            var nyagv = this.scene.getObjectByName("NYAGV_Education_Fund")
+            var nyagv = this.scene.getObjectByName("NYAGV_Education_Fund001")
             nyagv.userData = {link: "https://nyagv.org/"}
             this.controls.hoverable.push(nyagv);
             this.controls.clickable.push(nyagv);
@@ -317,8 +317,8 @@ class Loader {
             lin.userData = {html: 'frames/linux.html'};
             var graph = whiteboard.children[10];
             graph.userData = {html: 'frames/graphql.html'};
-            var graph = whiteboard.children[11];
-            graph.userData = {html: 'frames/launch.html'};
+            // var graph = whiteboard.children[11];
+            // graph.userData = {html: 'frames/launch.html'};
             var react = whiteboard.children[7];
             react.userData = {html: 'frames/reactnative.html'};
 
