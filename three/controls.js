@@ -245,13 +245,13 @@ class Controls {
                 // for each object in the model, store the current hex and then highlight the model
                 for (var j = 0; j < this.intersected.length; j++) {
                     this.intersected[j].currentHex = this.intersected[j].material.color.getHex();
-                    this.intersected[j].material.color.offsetHSL(-0.025, 0.05, 0.05);
+                    this.intersected[j].material.color.offsetHSL(-0.03, 0.1, 0.05);
                 }
             } else if (hoverType[i] == intersects[0].object) {
                 // redefine intersected as the single object in the model
                 this.intersected = [hoverType[i]];
                 this.intersected[0].currentHex = intersects[0].object.material.color.getHex();
-                this.intersected[0].material.color.offsetHSL(-0.025, 0.05, 0.05);
+                this.intersected[0].material.color.offsetHSL(-0.03, 0.1, 0.05);
             }
         }
     }
