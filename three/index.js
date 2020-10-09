@@ -13,7 +13,8 @@ var container = document.body;
 var iframe;
 
 var renderer = new THREE.WebGLRenderer({antialias: true});
-renderer.setPixelRatio(window.devicePixelRatio * (10 / 10));
+// resolution
+renderer.setPixelRatio(window.devicePixelRatio * (9 / 10));
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.outputEncoding = THREE.sRGBEncoding;
 renderer.setClearColor(0xffffff, 1);
