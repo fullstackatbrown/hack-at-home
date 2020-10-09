@@ -174,6 +174,7 @@ loader.manager.onLoad = function () {
         $(".clouds__left").removeClass("clouds__left_active")
         $("#arrow-left").removeClass("arrow__hidden")
         $("#arrow-right").removeClass("arrow__hidden")
+        $(".return").removeClass("arrow__hidden")
     })
 };
 

@@ -148,6 +148,7 @@ class Controls {
                     // re-show arrows
                     $("#arrow-left").removeClass("arrow__hidden")
                     $("#arrow-right").removeClass("arrow__hidden")
+                    $(".return").removeClass("arrow__hidden")
                     this.isZoomed = false;
                     this.scene.remove(this.scene.getObjectByName("wkshop"));
                 }
@@ -184,6 +185,7 @@ class Controls {
                 // re-show arrows
                 $("#arrow-left").removeClass("arrow__hidden")
                 $("#arrow-right").removeClass("arrow__hidden")
+                $(".return").removeClass("arrow__hidden")
                 this.scene.remove(this.scene.getObjectByName("wkshop"));
             }
         }

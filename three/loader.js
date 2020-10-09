@@ -272,6 +272,11 @@ class Loader {
             this.controls.hoverable.push(tmf);
             this.controls.clickable.push(tmf);
 
+            var msf = this.scene.getObjectByName("DoctorsWithoutBorders")
+            msf.userData = {link: "https://www.doctorswithoutborders.org/"}
+            this.controls.hoverable.push(msf);
+            this.controls.clickable.push(msf);
+
             var naacp = this.scene.getObjectByName("NAACP_Empowerment_Programs")
             naacp.userData = {link: "https://www.naacp.org/empowerment-programs/"}
             this.controls.hoverable.push(naacp);
@@ -312,6 +317,8 @@ class Loader {
             lin.userData = {html: 'frames/linux.html'};
             var graph = whiteboard.children[10];
             graph.userData = {html: 'frames/graphql.html'};
+            var graph = whiteboard.children[11];
+            graph.userData = {html: 'frames/launch.html'};
             var react = whiteboard.children[7];
             react.userData = {html: 'frames/reactnative.html'};
 
