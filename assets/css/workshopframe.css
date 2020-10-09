@@ -1,0 +1,20 @@
+.pg {
+    padding: 0px !important;
+    background-color: transparent;
+}
+
+.github__container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+    align-items: center;
+}
+
+.github__button {
+    text-decoration: none;
+}
+
+.workshop__organizers-full {
+    display: flex;
+    flex-direction: row;
+}

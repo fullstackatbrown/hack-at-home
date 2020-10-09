@@ -119,7 +119,7 @@ class Controls {
                 this.objToZoom = intersects[0].object;
                 if (this.objToZoom.userData.html) { // if its a sticky note, add a new workshop
                     console.log("yes")
-                    var wkshop = new Workshop(-6600,-40,-2700, Math.PI / 3, this.objToZoom.userData.html);
+                    var wkshop = new Workshop(-2900,20,-1200, Math.PI / 3, this.objToZoom.userData.html);
                     this.scene.add(wkshop);
                 } else { // if its not a sticky note, zoom in on the object
                     if(this.objToZoom.userData.link) {
@@ -281,8 +281,8 @@ class Controls {
 function Workshop(x, y, z, ry, url) {
 
     var html = [
-      '<div style="width:' + 1300 + 'px; height:' + 1300 + 'px;">',
-      '<iframe src="' + url + '" width="' + 1300 + '" height="' + 1300 + '"style="border-width:0px;">',
+      '<div style="width:' + 800 + 'px; height:' + 1000 + 'px;">',
+      '<iframe src="' + url + '" width="' + 800 + '" height="' + 950 + '"style="border-width:0px;">',
       '</iframe>',
       '</div>'
     ].join('\n');
