@@ -1,18 +1,20 @@
 let offset = 0
-const more = $(".more-arrow"),
-    schedule = $(".schedule")
+const moreSchedule = $("#more-schedule"),
+    moreCharities = $("#more-charities"),
+    schedule = $(".schedule"),
+    charities = $(".charities")
 $(".schedule").on('scroll', (e) => {
-    offset = schedule[0].scrollHeight-(schedule.scrollTop()+schedule.height())
+    offset = schedule[0].scrollHeight - (schedule.scrollTop() + schedule.height())
     console.log(offset)
     if (offset <= 10) {
-        more.addClass("inactive")
+        moreSchedule.addClass("inactive")
     } else {
-        more.removeClass("inactive")
+        moreSchedule.removeClass("inactive")
     }
 })
 
-more.on('click', () => {
-    schedule.animate({
-        scrollTop: schedule.scrollTop() + schedule.height()
+moreCharities.on('click', () => {
+    charities.animate({
+        scrollTop: charities.scrollTop() + charities.height()
     }, {duration: 300, queue: true, easing: "swing"})
 })

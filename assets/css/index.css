@@ -181,6 +181,7 @@ footer {
 }
 
 .pg__bg_donate {
+    padding-bottom: 20vw;
     background-color: #294291;
     color: white;
     background-image: url("../images/rooms/plant-room.png");
@@ -252,7 +253,7 @@ footer {
     margin-right: 30px;
 }
 
-.timeline li strong {
+.timeline li a {
     text-align: right;
 }
 
@@ -272,16 +273,21 @@ footer {
     position: absolute;
 }
 
-.schedule {
+.schedule, .charities {
     height: 500px;
     overflow: scroll;
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
 }
 
 ::-webkit-scrollbar {
     width: 0px; /* Remove scrollbar space */
     background: transparent; /* Optional: just make scrollbar invisible */
+}
+
+/*modify charities height*/
+.charities {
+    height: 600px
 }
 
 .btn {
@@ -591,12 +597,25 @@ footer {
     flex-direction: row;
 }
 
-.charity img {
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
+.charity a {
     margin-right: 40px;
     margin-bottom: 20px;
+    width: 80px;
+    height: 80px;
+    transition: 0.2s;
+    display: inline-block;
+}
+
+.charity a:hover {
+    opacity: 0.5;
+}
+
+.charity img {
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+    background-color: white;
+    padding: 10px;
 }
 
 .charity {
@@ -818,11 +837,6 @@ footer {
         margin-top: 20px;
     }
 
-    .block__buttons {
-        display: flex;
-        flex-direction: row;
-    }
-
     .pg__bg_home {
         align-items: center;
     }
@@ -833,6 +847,18 @@ footer {
 
     .block {
         grid-template-columns: 1fr;
+    }
+
+    .schedule, .charities {
+        height: auto;
+    }
+
+    .more-arrow {
+        display: none;
+    }
+
+    .block__adaptive {
+        margin-bottom: 50px;
     }
 }
 
