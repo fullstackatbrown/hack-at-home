@@ -164,6 +164,7 @@ class Controls {
                     } else {
                         this.objToZoom = intersects[0].object;
                     }
+                    console.log(this.objToZoom)
                     if (this.objToZoom.userData.offsetX) {
                         if (this.objToZoom.userData.angle) {
                             this.camera.zoomOnObject(this.objToZoom, this.objToZoom.userData.offsetX, this.objToZoom.userData.offsetZ, this.objToZoom.userData.angle);

@@ -287,6 +287,16 @@ class Loader {
             this.controls.hoverableOnZoom.push(...whiteboard.children.slice(1))
             this.controls.clickableOnZoom.push(...whiteboard.children.slice(1))
 
+            var blueno = new THREE.Group()
+            blueno.add(this.scene.getObjectByName("Sphere099"), this.scene.getObjectByName("Sphere106"));
+            blueno.add(this.scene.getObjectByName("Sphere104"), this.scene.getObjectByName("Sphere103"),this.scene.getObjectByName("Sphere102"));
+            blueno.add(this.scene.getObjectByName("Sphere101"), this.scene.getObjectByName("Sphere105"),this.scene.getObjectByName("Sphere108"),this.scene.getObjectByName("Sphere107"));
+            blueno.userData = {toZoom: blueno.children[6]}
+            blueno.children[6].userData = {offsetX: 0.82, offsetZ: 0.85}
+            this.controls.hoverable.push(blueno);
+            this.controls.clickable.push(blueno);
+            model.add(blueno)
+            
             model.matrixAutoUpdate = false;
             model.updateMatrix();
         }, undefined, function (e) {
