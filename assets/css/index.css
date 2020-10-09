@@ -322,7 +322,7 @@ footer {
 }
 
 .btn__link {
-    color: #254092;
+    color: #1c2e76;
     font-weight: 300;
     display: inline-block;
     text-decoration: none;
@@ -343,7 +343,7 @@ footer {
 }
 
 .btn__link_blue {
-    color: #dbfff8;
+    color: #e8fffb;
     font-weight: 300;
     display: inline-block;
     text-decoration: none;
@@ -355,6 +355,7 @@ footer {
     padding: 5px 10px;
     display: flex;
     align-items: center;
+    white-space: nowrap;
 }
 
 .btn__workshop {
@@ -778,6 +779,7 @@ footer {
 }
 
 .inactive {
+    pointer-events: none;
     transition: 0.2s;
     opacity: 0
 }

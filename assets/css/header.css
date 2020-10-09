@@ -87,7 +87,7 @@ header {
     position: absolute;
     height: 2px;
     width: 100%;
-    background: black;
+    background-color: black;
     border-radius: 9px;
     opacity: 1;
     left: 0;
@@ -121,7 +121,7 @@ header {
 
 /* open styles */
 .header__hamburger.open span {
-    background-color: white;
+    background-color: white !important;
 }
 
 .header__hamburger.open span:nth-child(1) {
