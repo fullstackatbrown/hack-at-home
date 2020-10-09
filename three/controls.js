@@ -280,8 +280,8 @@ class Controls {
 function Workshop(x, y, z, ry, url) {
 
     var html = [
-      '<div style="width:' + 2100 + 'px; height:' + 2100 + 'px;">',
-      '<iframe src="' + url + '" width="' + 2100 + '" height="' + 2100 + '"style="border-width:0px;">',
+      '<div style="width:' + 1300 + 'px; height:' + 1300 + 'px;">',
+      '<iframe src="' + url + '" width="' + 1300 + '" height="' + 1300 + '"style="border-width:0px;">',
       '</iframe>',
       '</div>'
     ].join('\n');
