@@ -85,22 +85,22 @@ class Loader {
 
             // button links
             var donate = this.scene.getObjectByName("Cube078")
-            donate.userData = {link: "http://stackoverflow.com"}
+            donate.userData = {link: "https://payment.brown.edu/C20460_ustores/web/product_detail.jsp?PRODUCTID=3823&SINGLESTORE=true"}
             this.controls.hoverable.push(donate);
             this.controls.clickable.push(donate);
 
             var discord = this.scene.getObjectByName("Cube073")
-            discord.userData = {link: "http://discord.com"}
+            discord.userData = {link: "https://discord.com/invite/3beg2cZ"}
             this.controls.hoverable.push(discord);
             this.controls.clickable.push(discord);
 
             var minecraft = this.scene.getObjectByName("Cube074")
-            minecraft.userData = {link: "http://minecraft.com"}
+            minecraft.userData = {link: "https://docs.google.com/document/d/1SE-BYPjhGQVgYiQ-w-MMmPsh8x7QXLjFD0DPUK7SyhY/edit"}
             this.controls.hoverable.push(minecraft);
             this.controls.clickable.push(minecraft);
 
             var form = this.scene.getObjectByName("Cube075")
-            form.userData = {link: "http://google.com"}
+            form.userData = {link: "https://docs.google.com/forms/d/e/1FAIpQLSfRUbCAt5AFFu7T_KsmI0VSbn2alpN1mc5m0lat9Af85JvJ1w/viewform"}
             this.controls.hoverable.push(form);
             this.controls.clickable.push(form);
 
@@ -111,12 +111,12 @@ class Loader {
             this.controls.clickableOnZoom.push(berg);
 
             var mule = this.scene.getObjectByName("sticker-mule-logo-light-stacked")
-            mule.userData = {link: "https://stickermule.com"}
+            mule.userData = {link: "http://hackp.ac/mlh-stickermule-hackathons"}
             this.controls.hoverableOnZoom.push(mule);
             this.controls.clickableOnZoom.push(mule);
 
             var fb = this.scene.getObjectByName("FB_Fam_Logo")
-            fb.userData = {link: "https://stickermule.com"}
+            fb.userData = {link: "https://www.facebook.com/"}
             this.controls.hoverableOnZoom.push(fb);
             this.controls.clickableOnZoom.push(fb);
 
@@ -171,7 +171,7 @@ class Loader {
             this.controls.clickable.push(laptop);
 
             var ctf = this.scene.getObjectByName("Cube072")
-            ctf.userData = {link: "http://google.com"}
+            ctf.userData = {link: "http://tryhackme.com/jr/hackhome"}
             this.controls.hoverableOnZoom.push(ctf);
             this.controls.clickableOnZoom.push(ctf);
 
@@ -187,67 +187,67 @@ class Loader {
 
             // play links
             var ice1 = this.scene.getObjectByName("Text064")
-            ice1.userData = {link: "http://google.com"}
+            ice1.userData = {link: "https://brown.zoom.us/j/99364996618"}
             this.controls.hoverable.push(ice1);
             this.controls.clickable.push(ice1);
 
             var ice2 = this.scene.getObjectByName("Text065")
-            ice2.userData = {link: "http://google.com"}
+            ice2.userData = {link: "https://brown.zoom.us/j/99364996618"}
             this.controls.hoverable.push(ice2);
             this.controls.clickable.push(ice2);
 
             var ice3 = this.scene.getObjectByName("Text066")
-            ice3.userData = {link: "http://google.com"}
+            ice3.userData = {link: "https://brown.zoom.us/j/99364996618"}
             this.controls.hoverable.push(ice3);
             this.controls.clickable.push(ice3);
 
             var ice4 = this.scene.getObjectByName("Text067")
-            ice4.userData = {link: "http://google.com"}
+            ice4.userData = {link: "https://brown.zoom.us/j/99364996618"}
             this.controls.hoverable.push(ice4);
             this.controls.clickable.push(ice4);
 
-            var kickoff = this.scene.getObjectByName("Text068")
-            kickoff.userData = {link: "http://google.com"}
-            this.controls.hoverable.push(kickoff);
-            this.controls.clickable.push(kickoff);
+            // var kickoff = this.scene.getObjectByName("Text068")
+            // kickoff.userData = {link: "http://google.com"}
+            // this.controls.hoverable.push(kickoff);
+            // this.controls.clickable.push(kickoff);
 
             var airforce = this.scene.getObjectByName("Text069")
-            airforce.userData = {link: "http://google.com"}
+            airforce.userData = {link: "https://brown.zoom.us/j/93153349690"}
             this.controls.hoverable.push(airforce);
             this.controls.clickable.push(airforce);
 
             var lightcomp = this.scene.getObjectByName("Text070")
-            lightcomp.userData = {link: "http://google.com"}
+            lightcomp.userData = {link: "https://brown.zoom.us/j/92332648228"}
             this.controls.hoverable.push(lightcomp);
             this.controls.clickable.push(lightcomp);
 
             var cloudhero = this.scene.getObjectByName("Text071")
-            cloudhero.userData = {link: "http://google.com"}
+            cloudhero.userData = {link: "https://www.youtube.com/watch?v=Hgv_CerTBjw"}
             this.controls.hoverable.push(cloudhero);
             this.controls.clickable.push(cloudhero);
 
             var among1 = this.scene.getObjectByName("Text072")
-            among1.userData = {link: "http://google.com"}
+            among1.userData = {link: "https://brown.zoom.us/j/94661706666"}
             this.controls.hoverable.push(among1);
             this.controls.clickable.push(among1);
 
             var bobross = this.scene.getObjectByName("Text073")
-            bobross.userData = {link: "http://google.com"}
+            bobross.userData = {link: "https://brown.zoom.us/j/92443062135"}
             this.controls.hoverable.push(bobross);
             this.controls.clickable.push(bobross);
 
             var among2 = this.scene.getObjectByName("Text074")
-            among2.userData = {link: "http://google.com"}
+            among2.userData = {link: "https://brown.zoom.us/j/91421738929"}
             this.controls.hoverable.push(among2);
             this.controls.clickable.push(among2);
 
             var talent = this.scene.getObjectByName("Text075")
-            talent.userData = {link: "http://google.com"}
+            talent.userData = {link: "https://brown.zoom.us/j/8228456147"}
             this.controls.hoverable.push(talent);
             this.controls.clickable.push(talent);
 
             var cribs = this.scene.getObjectByName("Text076")
-            cribs.userData = {link: "http://google.com"}
+            cribs.userData = {link: "https://brown.zoom.us/j/92345421016"}
             this.controls.hoverable.push(cribs);
             this.controls.clickable.push(cribs);
 
