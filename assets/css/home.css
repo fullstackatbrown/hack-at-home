@@ -1,3 +1,14 @@
+.return {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    padding: 10px;
+    margin: 20px;
+    z-index: 30000000;
+    color: black;
+    text-decoration: none;
+}
+
 #arrow-left, #arrow-right {
     z-index: 10000000;
     color: white;
