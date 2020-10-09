@@ -73,6 +73,7 @@ class Loader {
             var fridge = new THREE.Group();
             fridge.add(...model.children.slice(34, 38));
             fridge.add(this.scene.getObjectByName("Text151"), this.scene.getObjectByName("Text152"), this.scene.getObjectByName("Text153"), this.scene.getObjectByName("Plane036"))
+            fridge.add(this.scene.getObjectByName("Fridge_Handle_1"));
             this.controls.hoverable.push(fridge);
             // specify which part of the fridge to zoom in on
             fridge.userData = {toZoom: fridge.children[2]};
@@ -82,7 +83,7 @@ class Loader {
             this.controls.clickable.push(fridge);
             model.add(fridge);
 
-
+            // button links
             var donate = this.scene.getObjectByName("Cube078")
             donate.userData = {link: "http://stackoverflow.com"}
             this.controls.hoverable.push(donate);
@@ -103,6 +104,7 @@ class Loader {
             this.controls.hoverable.push(form);
             this.controls.clickable.push(form);
 
+            // sponsor links
             var berg = this.scene.getObjectByName("logoBBGblck_Reg")
             berg.userData = {link: "https://bloomberg.com"}
             this.controls.hoverableOnZoom.push(berg);
@@ -183,60 +185,104 @@ class Loader {
             this.controls.hoverableOnZoom.push(data);
             this.controls.clickableOnZoom.push(data);
 
+            // play links
+            var ice1 = this.scene.getObjectByName("Text064")
+            ice1.userData = {link: "http://google.com"}
+            this.controls.hoverable.push(ice1);
+            this.controls.clickable.push(ice1);
+
+            var ice2 = this.scene.getObjectByName("Text065")
+            ice2.userData = {link: "http://google.com"}
+            this.controls.hoverable.push(ice2);
+            this.controls.clickable.push(ice2);
+
+            var ice3 = this.scene.getObjectByName("Text066")
+            ice3.userData = {link: "http://google.com"}
+            this.controls.hoverable.push(ice3);
+            this.controls.clickable.push(ice3);
+
+            var ice4 = this.scene.getObjectByName("Text067")
+            ice4.userData = {link: "http://google.com"}
+            this.controls.hoverable.push(ice4);
+            this.controls.clickable.push(ice4);
+
+            var kickoff = this.scene.getObjectByName("Text068")
+            kickoff.userData = {link: "http://google.com"}
+            this.controls.hoverable.push(kickoff);
+            this.controls.clickable.push(kickoff);
+
+            var airforce = this.scene.getObjectByName("Text069")
+            airforce.userData = {link: "http://google.com"}
+            this.controls.hoverable.push(airforce);
+            this.controls.clickable.push(airforce);
+
+            var lightcomp = this.scene.getObjectByName("Text070")
+            lightcomp.userData = {link: "http://google.com"}
+            this.controls.hoverable.push(lightcomp);
+            this.controls.clickable.push(lightcomp);
+
+            var cloudhero = this.scene.getObjectByName("Text071")
+            cloudhero.userData = {link: "http://google.com"}
+            this.controls.hoverable.push(cloudhero);
+            this.controls.clickable.push(cloudhero);
+
+            var among1 = this.scene.getObjectByName("Text072")
+            among1.userData = {link: "http://google.com"}
+            this.controls.hoverable.push(among1);
+            this.controls.clickable.push(among1);
+
+            var bobross = this.scene.getObjectByName("Text073")
+            bobross.userData = {link: "http://google.com"}
+            this.controls.hoverable.push(bobross);
+            this.controls.clickable.push(bobross);
+
+            var among2 = this.scene.getObjectByName("Text074")
+            among2.userData = {link: "http://google.com"}
+            this.controls.hoverable.push(among2);
+            this.controls.clickable.push(among2);
+
+            var talent = this.scene.getObjectByName("Text075")
+            talent.userData = {link: "http://google.com"}
+            this.controls.hoverable.push(talent);
+            this.controls.clickable.push(talent);
+
+            var cribs = this.scene.getObjectByName("Text076")
+            cribs.userData = {link: "http://google.com"}
+            this.controls.hoverable.push(cribs);
+            this.controls.clickable.push(cribs);
+
+            // whiteboard with workshops
             var whiteboard = new THREE.Group()
             this.scene.getObjectByName("Cube017").userData = {offsetX: 0.53, offsetZ: 0.5}
             whiteboard.add(this.scene.getObjectByName("Cube017"))
-            whiteboard.add(...model.children.slice(288, 298))
-            whiteboard.add(model.children[744])
+            whiteboard.add(this.scene.getObjectByName("Sticky_Notes001"), this.scene.getObjectByName("Sticky_Notes002"), this.scene.getObjectByName("Sticky_Notes003"))
+            whiteboard.add(this.scene.getObjectByName("Sticky_Notes004"), this.scene.getObjectByName("Sticky_Notes005"), this.scene.getObjectByName("Sticky_Notes006"))
+            whiteboard.add(this.scene.getObjectByName("Sticky_Notes007"), this.scene.getObjectByName("Sticky_Notes008"), this.scene.getObjectByName("Sticky_Notes009"), this.scene.getObjectByName("Sticky_Notes010"))
             whiteboard.userData = {toZoom: whiteboard.children[0]}
             this.controls.hoverable.push(whiteboard);
             this.controls.clickable.push(whiteboard);
             model.add(whiteboard);
 
-            // var git = whiteboard.children[1];
-            // git.userData = {html: '/workshops/git.html'};
-            // var sql = whiteboard.children[2];
-            // sql.userData = {html: '/workshops/sql.html'};
-            // var html = whiteboard.children[3];
-            // html.userData = {html: '/workshops/htmlcss.html'};
-            // var maya = whiteboard.children[4];
-            // maya.userData = {html: '/workshops/maya.html'};
-            // var python = whiteboard.children[5];
-            // python.userData = {html: '/workshops/flaskpython.html'};
-            // var asm = whiteboard.children[6];
-            // asm.userData = {html: '/workshops/assembly.html'};
-            // var react = whiteboard.children[7];
-            // react.userData = {html: '/workshops/reactnative.html'};
-            // var security = whiteboard.children[8];
-            // security.userData = {html: '/workshops/security.html'};
-            // var linux = whiteboard.children[9];
-            // linux.userData = {html: '/workshops/linux.html'};
-            // var graphql = whiteboard.children[11];
-            // graphql.userData = {html: '/workshops/graphql.html'};
-
-            // index 4 = html
-            console.log(whiteboard.children)
             var git = whiteboard.children[1];
-            git.userData = {html: '/workshops/git.html'};
+            git.userData = {html: 'frames/git.html'};
             var sql = whiteboard.children[2];
-            sql.userData = {html: '/workshops/sql.html'};
-            var maya = whiteboard.children[3];
-            maya.userData = {html: '/workshops/maya.html'};
-            var py = whiteboard.children[4];
-            py.userData = {html: '/workshops/flaskpython.html'};
-            var asm = whiteboard.children[5];
-            asm.userData = {html: '/workshops/assembly.html'};
-            var react = whiteboard.children[6];
-            react.userData = {html: '/workshops/reactnative.html'};
-            var linux = whiteboard.children[8];
-            linux.userData = {html: '/workshops/linux.html'};
-            var graphql = whiteboard.children[9];
-            graphql.userData = {html: '/workshops/graphql.html'};
-            var html = whiteboard.children[10];
-            html.userData = {html: '/workshops/htmlcss.html'};
-            var sec = whiteboard.children[7];
-            sec.userData = {html: '/workshops/security.html'};
-
+            sql.userData = {html: 'frames/sql.html'};
+            var html = whiteboard.children[3];
+            html.userData = {html: 'frames/htmlcss.html'};
+            var maya = whiteboard.children[4];
+            maya.userData = {html: 'frames/maya.html'};
+            var py = whiteboard.children[5];
+            py.userData = {html: 'frames/flaskpython.html'};
+            var asm = whiteboard.children[6];
+            asm.userData = {html: 'frames/assembly.html'};
+            var sec = whiteboard.children[8];
+            sec.userData = {html: 'frames/security.html'};
+            var lin = whiteboard.children[9];
+            lin.userData = {html: 'frames/linux.html'};
+            var graph = whiteboard.children[10];
+            graph.userData = {html: 'frames/graphql.html'};
+            var react = whiteboard.children[7];
+            react.userData = {html: 'frames/reactnative.html'};
 
             this.controls.hoverableOnZoom.push(...whiteboard.children.slice(1))
             this.controls.clickableOnZoom.push(...whiteboard.children.slice(1))
@@ -246,79 +292,6 @@ class Loader {
         }, undefined, function (e) {
             console.error(e);
         });
-        //
-        // loader.load('assets/models/cubby.glb', (gltf) => {
-        //     var model = gltf.scene;
-        //     model.position.set(10, -2.2, 1);
-        //     model.scale.set(1, 1, 1);
-        //     model.rotateY(THREE.MathUtils.degToRad(180))
-        //     model.matrixAutoUpdate = false;
-        //     model.updateMatrix()
-        //     model.name = "cubby";
-        //     this.controls.clickable.push(model.children[2].children[0]);
-        //     this.controls.hoverable.push(model.children[2]);
-        //     this.scene.add(model);
-        //     model.children[2].children[0].userData = {normal: this.getNormal(90)};
-        // }, undefined, function (e) {
-        //     console.error(e);
-        // });
-
-        // loader.load('assets/models/bedroom-whiteboard.gltf', (gltf) => {
-        //     var model = gltf.scene;
-        //     model.position.set(2, -4.2, 11.25);
-        //     model.scale.set(4, 4, 4);
-        //     model.rotateY(THREE.MathUtils.degToRad(30))
-        //     model.matrixAutoUpdate = false;
-        //     model.updateMatrix()
-        //     model.name = "whiteboard";
-        //     this.controls.clickable.push(model.children[0]);
-        //     this.controls.hoverable.push(model);
-        //     this.scene.add(model);
-        //     model.children[0].userData = {normal: this.getNormal(30)};
-        // }, undefined, function (e) {
-        //     console.error(e);
-        // });
-
-        // loader.load('assets/models/bedroom-stickynotes-organized.gltf', (gltf) => {
-        //     var model = gltf.scene;
-        //     model.position.set(2, -4.2, 11.25);
-        //     model.scale.set(4, 4, 4);
-        //     model.rotateY(THREE.MathUtils.degToRad(30))
-        //     model.matrixAutoUpdate = false;
-        //     model.updateMatrix()
-        //     this.controls.clickableOnZoom.push(model.children[0]);
-        //     this.controls.hoverableOnZoom.push(model.children[0]);
-        //     model.children[0].userData = {normal: this.getNormal(30), html: '/workshops/git.html'};
-        //     this.scene.add(model);
-        // }, undefined, function (e) {
-        //     console.error(e);
-        // });
-
-        // loader.load('assets/models/bedroom-stickynotes-organized.gltf', (gltf) => {
-        //     var model = gltf.scene;
-        //     model.position.set(2, -5.2, 11.25);
-        //     model.scale.set(4, 4, 4);
-        //     model.rotateY(THREE.MathUtils.degToRad(30))
-        //     model.matrixAutoUpdate = false;
-        //     model.updateMatrix()
-        //     this.controls.clickableOnZoom.push(model.children[0]);
-        //     this.controls.hoverableOnZoom.push(model.children[0]);
-        //     model.children[0].userData = {normal: this.getNormal(30), html: '/workshops/sql.html'};
-        //     this.scene.add(model);
-        // }, undefined, function (e) {
-        //     console.error(e);
-        // });
-
-        // loader.load('assets/models/bedroom-stickynotes-organized.gltf', (gltf) => {
-        //     var model = gltf.scene;
-        //     // this.controls.clickable.push(model.children[2].children[0]);
-        //     // this.controls.hoverable.push(model.children[0]);
-        //     var sticky_note = model.children[0]
-        //     sticky_note.position.set(0.75, 0, 0);
-        //     this.stickynote_group1.add(sticky_note);
-        // }, undefined, function (e) {
-        //     console.error(e);
-        // });
     }
 }
 
