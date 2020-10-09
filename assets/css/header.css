@@ -56,6 +56,7 @@ header {
 .header__logo {
     height: 17px;
     margin-bottom: 2px;
+    fill: currentColor;
 }
 
 .header__hamburger-menu {

@@ -13,15 +13,26 @@ $('.header__hamburger').on("click", function () {
 });
 
 function adaptHeader() {
-    console.log($("#s4").offset().top - $(window).scrollTop() )
-    if ($("#s4").offset().top - $(window).scrollTop() <= 2 ) {
-        $("header").css({backgroundColor: "rgb(248,221,100,1)"})
+    if ($("#s10").offset().top - $(window).scrollTop() <= 2 ) {
+        $("header").css({backgroundColor: "#AFD8D0", color: "black"})
+    } else if ($("#s9").offset().top - $(window).scrollTop() <= 2 ) {
+        $("header").css({backgroundColor: "#C13633", color: "white"})
+    } else if ($("#s8").offset().top - $(window).scrollTop() <= 2 ) {
+        $("header").css({backgroundColor: "#F9DD64", color: "black"})
+    } else if ($("#s7").offset().top - $(window).scrollTop() <= 2 ) {
+        $("header").css({backgroundColor: "#EF993A", color: "white"})
+    } else if ($("#s6").offset().top - $(window).scrollTop() <= 2 ) {
+        $("header").css({backgroundColor: "#294291", color: "white"})
+    } else if ($("#s5").offset().top - $(window).scrollTop() <= 2 ) {
+        $("header").css({backgroundColor: "#EB9B83", color: "black"})
+    } else if ($("#s4").offset().top - $(window).scrollTop() <= 2 ) {
+        $("header").css({backgroundColor: "#24441E", color: "white"})
     } else if ($("#s3").offset().top - $(window).scrollTop() <= 2 ) {
-        $("header").css({backgroundColor: "rgb(145,183,112,1)"})
+        $("header").css({backgroundColor: "#91b770", color: "white"})
     } else if ($("#s2").offset().top - $(window).scrollTop() <= 2 ) {
-        $("header").css({backgroundColor: "rgb(175,216,208,1)"})
+        $("header").css({backgroundColor: "#afd8d0", color: "black"})
     } else {
-        $("header").css({backgroundColor: "rgb(255,255,255,1)"})
+        $("header").css({backgroundColor: "#ffffff", color: "black"})
     }
 }
 
@@ -32,7 +43,6 @@ $(window).on('scroll', function (e) {
 $('#house').on("click", function () {
     $('.clouds__left').addClass("clouds__left_active")
     $('.clouds__right').addClass("clouds__right_active")
-    console.log("WOW")
     setTimeout(() => {
         document.getElementById("house-link").click();
     }, 1000)

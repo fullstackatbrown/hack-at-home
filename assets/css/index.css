@@ -88,6 +88,21 @@ footer {
     justify-content: center;
 }
 
+.more-arrow {
+    border-top: 1px solid white;
+    padding-top: 14px;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.more-arrow:hover {
+    opacity: 0.5;
+}
+
+.more-arrow:active {
+    opacity: 0.2;
+}
+
 .footer__contacts div {
     margin-top: 10px;
 }
@@ -258,8 +273,15 @@ footer {
 }
 
 .schedule {
-    /*height: 800px;*/
+    height: 500px;
     overflow: scroll;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+::-webkit-scrollbar {
+    width: 0px; /* Remove scrollbar space */
+    background: transparent; /* Optional: just make scrollbar invisible */
 }
 
 .btn {
@@ -349,7 +371,7 @@ footer {
     background-color: #F4DE77;
 }
 
-.btn__workshop:hover{
+.btn__workshop:hover {
     opacity: 1;
     background-color: #ffec96;
 }
@@ -732,7 +754,7 @@ footer {
 .clouds__left {
     position: fixed;
     height: 100vh;
-    left:-400vh;
+    left: -400vh;
     object-fit: cover;
     transition: left 1s;
 }
@@ -753,6 +775,11 @@ footer {
 
 .clouds__right_active {
     right: 0;
+}
+
+.inactive {
+    transition: 0.2s;
+    opacity: 0
 }
 
 @media only screen and (max-width: 600px) {
