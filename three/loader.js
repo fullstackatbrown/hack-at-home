@@ -176,12 +176,12 @@ class Loader {
             this.controls.clickableOnZoom.push(ctf);
 
             var proj = this.scene.getObjectByName("Cube071")
-            proj.userData = {link: "http://google.com"}
+            proj.userData = {link: "https://hack-home.devpost.com/"}
             this.controls.hoverableOnZoom.push(proj);
             this.controls.clickableOnZoom.push(proj);
 
             var data = this.scene.getObjectByName("Cube015")
-            data.userData = {link: "http://google.com"}
+            data.userData = {link: "https://hack-home.devpost.com/"}
             this.controls.hoverableOnZoom.push(data);
             this.controls.clickableOnZoom.push(data);
 
