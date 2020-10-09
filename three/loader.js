@@ -176,12 +176,12 @@ class Loader {
             this.controls.clickableOnZoom.push(ctf);
 
             var proj = this.scene.getObjectByName("Cube071")
-            proj.userData = {link: "https://hack-home.devpost.com/"}
+            proj.userData = {link: "https://hack-home.devpost.com/#projects"}
             this.controls.hoverableOnZoom.push(proj);
             this.controls.clickableOnZoom.push(proj);
 
             var data = this.scene.getObjectByName("Cube015")
-            data.userData = {link: "https://hack-home.devpost.com/"}
+            data.userData = {link: "https://hack-home.devpost.com/#datasets"}
             this.controls.hoverableOnZoom.push(data);
             this.controls.clickableOnZoom.push(data);
 
@@ -251,6 +251,37 @@ class Loader {
             this.controls.hoverable.push(cribs);
             this.controls.clickable.push(cribs);
 
+            // charities
+            var psu = this.scene.getObjectByName("Providence_Student_Union")
+            psu.userData = {link: "https://www.pvdstudentunion.org/"}
+            this.controls.hoverable.push(psu);
+            this.controls.clickable.push(psu);
+
+            var pysm = this.scene.getObjectByName("Providence_Youth_Student_Movement")
+            pysm.userData = {link: "https://www.prysm.us/"}
+            this.controls.hoverable.push(pysm);
+            this.controls.clickable.push(pysm);
+
+            var rdc = this.scene.getObjectByName("Refugee_Dream_Center")
+            rdc.userData = {link: "http://www.refugeedreamcenter.org/"}
+            this.controls.hoverable.push(rdc);
+            this.controls.clickable.push(rdc);
+
+            var tmf = this.scene.getObjectByName("Trayvon_Martin_Foundation")
+            tmf.userData = {link: "https://www.trayvonmartinfoundation.org/"}
+            this.controls.hoverable.push(tmf);
+            this.controls.clickable.push(tmf);
+
+            var naacp = this.scene.getObjectByName("NAACP_Empowerment_Programs")
+            naacp.userData = {link: "https://www.naacp.org/empowerment-programs/"}
+            this.controls.hoverable.push(naacp);
+            this.controls.clickable.push(naacp);
+
+            var nyagv = this.scene.getObjectByName("NYAGV_Education_Fund")
+            nyagv.userData = {link: "https://nyagv.org/"}
+            this.controls.hoverable.push(nyagv);
+            this.controls.clickable.push(nyagv);
+
             // whiteboard with workshops
             var whiteboard = new THREE.Group()
             this.scene.getObjectByName("Cube017").userData = {offsetX: 0.53, offsetZ: 0.5}
@@ -296,7 +327,7 @@ class Loader {
             this.controls.hoverable.push(blueno);
             this.controls.clickable.push(blueno);
             model.add(blueno)
-            
+
             model.matrixAutoUpdate = false;
             model.updateMatrix();
         }, undefined, function (e) {

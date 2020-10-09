@@ -253,7 +253,7 @@ footer {
     margin-right: 30px;
 }
 
-.timeline li a {
+.timeline li strong, .timeline li a {
     text-align: right;
 }
 
