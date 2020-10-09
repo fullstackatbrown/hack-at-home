@@ -264,25 +264,25 @@ class Loader {
             model.add(whiteboard);
 
             var git = whiteboard.children[1];
-            git.userData = {html: 'workshops/git.html'};
+            git.userData = {html: 'frames/git.html'};
             var sql = whiteboard.children[2];
-            sql.userData = {html: 'workshops/sql.html'};
+            sql.userData = {html: 'frames/sql.html'};
             var html = whiteboard.children[3];
-            html.userData = {html: 'workshops/htmlcss.html'};
+            html.userData = {html: 'frames/htmlcss.html'};
             var maya = whiteboard.children[4];
-            maya.userData = {html: 'workshops/maya.html'};
+            maya.userData = {html: 'frames/maya.html'};
             var py = whiteboard.children[5];
-            py.userData = {html: 'workshops/flaskpython.html'};
+            py.userData = {html: 'frames/flaskpython.html'};
             var asm = whiteboard.children[6];
-            asm.userData = {html: 'workshops/assembly.html'};
+            asm.userData = {html: 'frames/assembly.html'};
             var sec = whiteboard.children[8];
-            sec.userData = {html: 'workshops/security.html'};
+            sec.userData = {html: 'frames/security.html'};
             var lin = whiteboard.children[9];
-            lin.userData = {html: 'workshops/linux.html'};
+            lin.userData = {html: 'frames/linux.html'};
             var graph = whiteboard.children[10];
-            graph.userData = {html: 'workshops/graphql.html'};
+            graph.userData = {html: 'frames/graphql.html'};
             var react = whiteboard.children[7];
-            react.userData = {html: 'workshops/reactnative.html'};
+            react.userData = {html: 'frames/reactnative.html'};
 
             this.controls.hoverableOnZoom.push(...whiteboard.children.slice(1))
             this.controls.clickableOnZoom.push(...whiteboard.children.slice(1))
