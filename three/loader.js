@@ -293,7 +293,7 @@ class Loader {
             whiteboard.add(this.scene.getObjectByName("Cube017"))
             whiteboard.add(this.scene.getObjectByName("Sticky_Notes001"), this.scene.getObjectByName("Sticky_Notes002"), this.scene.getObjectByName("Sticky_Notes003"))
             whiteboard.add(this.scene.getObjectByName("Sticky_Notes004"), this.scene.getObjectByName("Sticky_Notes005"), this.scene.getObjectByName("Sticky_Notes006"))
-            whiteboard.add(this.scene.getObjectByName("Sticky_Notes007"), this.scene.getObjectByName("Sticky_Notes008"), this.scene.getObjectByName("Sticky_Notes009"), this.scene.getObjectByName("Sticky_Notes010"))
+            whiteboard.add(this.scene.getObjectByName("Sticky_Notes007"), this.scene.getObjectByName("Sticky_Notes008"), this.scene.getObjectByName("Sticky_Notes009"), this.scene.getObjectByName("Sticky_Notes010"),  this.scene.getObjectByName("Sticky_Notes013"))
             whiteboard.userData = {toZoom: whiteboard.children[0]}
             this.controls.hoverable.push(whiteboard);
             this.controls.clickable.push(whiteboard);
@@ -317,8 +317,8 @@ class Loader {
             lin.userData = {html: 'frames/linux.html'};
             var graph = whiteboard.children[10];
             graph.userData = {html: 'frames/graphql.html'};
-            // var graph = whiteboard.children[11];
-            // graph.userData = {html: 'frames/launch.html'};
+            var graph = whiteboard.children[11];
+            graph.userData = {html: 'frames/launch.html'};
             var react = whiteboard.children[7];
             react.userData = {html: 'frames/reactnative.html'};
 
